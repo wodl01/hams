@@ -44,7 +44,7 @@ public class Think_Sprite : MonoBehaviour
             up = 0.46f;
         }
 
-        if(hamsterScript.hunger < hamsterScript.hungerToFeed && )
+        //if(hamsterScript.hunger < hamsterScript.hungerToFeed && )
 
         if (Input.GetKeyDown(KeyCode.D) && change == true)
         {

@@ -10,10 +10,13 @@ public class dongScript : MonoBehaviour
     public GameObject CoinPrefap;
 
     GameObject imform;
-    public imformScript imformscript;
+    [SerializeField] imformScript imformscript;
 
     GameObject dish;
-    public DishScript Dishscript;
+    [SerializeField] DishScript dishscript;
+
+    GameObject waterbowl;
+    [SerializeField] WaterBowlScript waterBowlScript;
 
     public int ddGoldRate = 20;
     public int ddNormalRate = 80;
@@ -29,8 +32,10 @@ public class dongScript : MonoBehaviour
     {
         imform = GameObject.Find("Imform");
         imformscript = imform.GetComponent<imformScript>();
-        dish = GameObject.Find("dish1");
-        Dishscript = dish.GetComponent<DishScript>();
+        dish = GameObject.Find("dish");
+        dishscript = dish.GetComponent<DishScript>();
+        waterbowl = GameObject.Find("waterbowl");
+        waterBowlScript = waterbowl.GetComponent<WaterBowlScript>();
     }
 
 
@@ -66,6 +71,19 @@ public class dongScript : MonoBehaviour
                 }
             }
         }
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
+            Vector3 cameraPos = maincamera.transform.position;
+            if (hit.collider != null)
+            {
+                if (hit.collider.tag == "WaterBowl")
+                {
+                    WaterBowl();
+                }
+            }
+        }
     }
 
     void DdongEvent(RaycastHit2D hit)
@@ -78,12 +96,19 @@ public class dongScript : MonoBehaviour
     }
     void Dish()
     {
-        if(Dishscript.isFull == false)
+        if(dishscript.isFull == false)
         {
             Debug.Log("dwdw");
-            Dishscript.isFull = true;
+            dishscript.isFull = true;
         }
         
+    }
+    void WaterBowl()
+    {
+        if(waterBowlScript.waterGauge == 0)
+        {
+            waterBowlScript.waterGauge = 4;
+        }
     }
 }
 

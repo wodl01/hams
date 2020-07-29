@@ -14,9 +14,13 @@ public class Move : MonoBehaviour
     public float speed;
     public float hunger;
     public int hungerToFeed;
+    public float thirsty;
+    public int thirstyToDrink;
     public int foodcalorie;
+    public int watercalorie;
     public bool isGoingtoDish;
     public bool iamHungry;
+    public bool iamThirsty;
 
     [SerializeField] bool dishIsClosedByHamSter;
 
@@ -36,31 +40,50 @@ public class Move : MonoBehaviour
     public Animator ani;
 
 
-    public GameObject dish;
+    [SerializeField] GameObject dish;
+    [SerializeField] GameObject waterbowl;
     public GameObject ddPrefap;
     public GameObject hamster;
 
     [SerializeField] GameObject think_Icon;
     Think_Sprite thinkScript;
 
+
     [SerializeField] Sprite[] randomChangeSprite;
 
-    DishScript dishScript;
+    [SerializeField] DishScript dishScript;
+    [SerializeField] WaterBowlScript waterbowlScript;
     private void Start()
     {
         StartCoroutine("RandomMoving");
         StartCoroutine("DDtime");
 
-        dish = GameObject.Find("dish1");
+        dish = GameObject.Find("dish");
+        waterbowl = GameObject.Find("waterbowl");
+
 
         thinkScript = think_Icon.GetComponent<Think_Sprite>();
         dishScript = dish.GetComponent<DishScript>();
+        waterbowlScript = waterbowl.GetComponent<WaterBowlScript>();
     }
     public IEnumerator RandomMoving()
     {
         randomNum = Random.Range(1, 11);
         randomTime = Random.Range(3, 5);
-        if(hunger < hungerToFeed && dishScript.isFull == true)
+        if (thirsty < thirstyToDrink && waterbowlScript.waterGauge > 0)
+        {
+            iamThirsty = true;
+            ani.SetBool("isStop", false);
+            if (hamster.transform.position.x > dish.transform.position.x)
+            {
+                isLeft = true;
+            }
+            else
+            {
+                isLeft = false;
+            }
+        }
+        else if(hunger < hungerToFeed && dishScript.isFull == true)
         {
             iamHungry = true;
             ani.SetBool("isStop", false);
@@ -148,7 +171,15 @@ public class Move : MonoBehaviour
         yield return new WaitForSeconds(eatingTime);
         Debug.Log("먹이 먹음");
     }
-    
+    IEnumerator DrinkWater()
+    {
+        waterbowlScript.waterGauge -= 1;
+        thirsty += watercalorie;
+        if (thirsty > 100) thirsty = 100;
+        yield return new WaitForSeconds(eatingTime);
+    }
+
+
 
 
 
@@ -180,10 +211,27 @@ public class Move : MonoBehaviour
     {
 
         hunger -= Time.deltaTime * 0.3f;
+        thirsty -= Time.deltaTime * 0.3f;
 
 
+        //물통으로 이동
+        if (iamThirsty == true && waterbowlScript.waterGauge > 0)
+        {
+
+            hamster.transform.position = Vector3.MoveTowards(transform.position, waterbowl.transform.position, Time.deltaTime * 1);
+
+            Debug.Log("물통으로 이동");
+
+            if (transform.position == waterbowl.transform.position)
+            {
+                Debug.Log("물통에 닿음");
+                iamHungry = false;
+
+                StartCoroutine("DrinkWater");
+            }
+        }
         //먹이로 이동
-        if (iamHungry == true && dishScript.isFull == true)
+        else if (iamHungry == true && dishScript.isFull == true)
         {
 
             hamster.transform.position = Vector3.MoveTowards(transform.position, dish.transform.position, Time.deltaTime * 1);

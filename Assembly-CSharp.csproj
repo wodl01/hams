@@ -68,6 +68,7 @@
     <Compile Include="Assets\Move.cs" />
     <Compile Include="Assets\SpawnCoin.cs" />
     <Compile Include="Assets\Think_Sprite.cs" />
+    <Compile Include="Assets\WaterBowlScript.cs" />
     <Compile Include="Assets\dongScript.cs" />
     <Compile Include="Assets\imformScript.cs" />
     <None Include="Assets\Font\vvd.fnt" />

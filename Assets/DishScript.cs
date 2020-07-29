@@ -9,10 +9,6 @@ public class DishScript : MonoBehaviour
 
     public bool isFull;
     
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()

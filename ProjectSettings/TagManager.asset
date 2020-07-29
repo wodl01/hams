@@ -8,6 +8,7 @@ TagManager:
   - DD
   - Dish
   - Manager
+  - WaterBowl
   layers:
   - Default
   - TransparentFX

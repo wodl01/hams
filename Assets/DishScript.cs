@@ -5,7 +5,8 @@ using UnityEngine;
 public class DishScript : MonoBehaviour
 {
     public GameObject feed;
-    public GameObject Sign;
+    public GameObject sign;
+
 
     public bool isFull;
     
@@ -16,13 +17,13 @@ public class DishScript : MonoBehaviour
         if (isFull == false)
         {
             feed.SetActive(false);
-            Sign.SetActive(true);
+            sign.SetActive(true);
             //isFull = true;// 테스트용
         }
         if (isFull == true)
         {
             feed.SetActive(true);
-            Sign.SetActive(false);
+            sign.SetActive(false);
 
         }
     }

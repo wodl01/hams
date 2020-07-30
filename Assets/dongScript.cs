@@ -105,6 +105,7 @@ public class dongScript : MonoBehaviour
     }
     void WaterBowl()
     {
+        Debug.Log("물통에 마우스가 닿음");
         if(waterBowlScript.waterGauge == 0)
         {
             waterBowlScript.waterGauge = 4;

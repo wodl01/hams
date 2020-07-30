@@ -5,10 +5,15 @@ using UnityEngine;
 public class Move : MonoBehaviour
 {
     public bool randomNumCanActive;
+    public bool hamsterIsMovingToFood;
     public bool barrierUp;
     public bool barrierDawn;
     public bool barrierLeft;
     public bool barrierRight;
+
+
+    bool voidUpdateOnce1 = true;
+    bool voidUpdateOnce2 = true;
 
 
     public float speed;
@@ -42,6 +47,8 @@ public class Move : MonoBehaviour
 
     [SerializeField] GameObject dish;
     [SerializeField] GameObject waterbowl;
+    [SerializeField] GameObject eatingPos;
+    [SerializeField] GameObject drinkingPos;
     public GameObject ddPrefap;
     public GameObject hamster;
 
@@ -60,6 +67,8 @@ public class Move : MonoBehaviour
 
         dish = GameObject.Find("dish");
         waterbowl = GameObject.Find("waterbowl");
+        eatingPos = GameObject.Find("EatingPos");
+        drinkingPos = GameObject.Find("DrinkingPos");
 
 
         thinkScript = think_Icon.GetComponent<Think_Sprite>();
@@ -70,36 +79,18 @@ public class Move : MonoBehaviour
     {
         randomNum = Random.Range(1, 11);
         randomTime = Random.Range(3, 5);
-        if (thirsty < thirstyToDrink && waterbowlScript.waterGauge > 0)
+
+        if (thirsty < thirstyToDrink)//목마를때
         {
             iamThirsty = true;
-            ani.SetBool("isStop", false);
-            if (hamster.transform.position.x > dish.transform.position.x)
-            {
-                isLeft = true;
-            }
-            else
-            {
-                isLeft = false;
-            }
         }
-        else if(hunger < hungerToFeed && dishScript.isFull == true)
+        if(hunger < hungerToFeed)//배고플때
         {
             iamHungry = true;
-            ani.SetBool("isStop", false);
-            if (hamster.transform.position.x > dish.transform.position.x)
-            {
-                isLeft = true;
-            }
-            else
-            {
-                isLeft = false;
-            }
         }
 
-        
 
-        if (randomNum == 10 && randomNumCanActive == true)
+        if (randomNum == 10 && randomNumCanActive == true && hamsterIsMovingToFood == false)
         {
             randomTime = 5;
             ani.SetBool(" Interaction1Start", true);
@@ -109,11 +100,15 @@ public class Move : MonoBehaviour
 
         }
         yield return new WaitForSeconds(randomTime);
-        
+
+        voidUpdateOnce1 = true;
+        voidUpdateOnce2 = true;
 
         StartCoroutine("RandomMoving");
 
     }
+
+
 
 
     public IEnumerator StopMove()
@@ -162,22 +157,25 @@ public class Move : MonoBehaviour
 
 
 
-
-    IEnumerator EatFood()
-    {
-        dishScript.isFull = false;
-        hunger += foodcalorie;
-        if (hunger > 100) hunger = 100;
-        yield return new WaitForSeconds(eatingTime);
-        Debug.Log("먹이 먹음");
-    }
     IEnumerator DrinkWater()
     {
         waterbowlScript.waterGauge -= 1;
         thirsty += watercalorie;
         if (thirsty > 100) thirsty = 100;
         yield return new WaitForSeconds(eatingTime);
+        voidUpdateOnce1 = true;
+        Debug.Log("물 마심");
     }
+    IEnumerator EatFood()
+    {
+        dishScript.isFull = false;
+        hunger += foodcalorie;
+        if (hunger > 100) hunger = 100;
+        yield return new WaitForSeconds(eatingTime);
+
+        Debug.Log("먹이 먹음");
+    }
+
 
 
 
@@ -195,7 +193,7 @@ public class Move : MonoBehaviour
         DD();
         StartCoroutine("DDtime");
     }
-    //새로 방벽에 닿았을때 움직이는걸 만들고 그떄까지는 randomnum이 실행하는 업데이트 함수를 안움직이게 그냥 막아버리고 벽에닿고 다움직이면 그때 그냥 풀어준다
+    
 
 
 
@@ -213,20 +211,34 @@ public class Move : MonoBehaviour
         hunger -= Time.deltaTime * 0.3f;
         thirsty -= Time.deltaTime * 0.3f;
 
-
+        
 
         //물통으로 이동
         if (iamThirsty == true && waterbowlScript.waterGauge > 0)
         {
-
-            hamster.transform.position = Vector3.MoveTowards(transform.position, waterbowl.transform.position, Time.deltaTime * 1);
-
+            hamsterIsMovingToFood = true;
+            
+            if (hamster.transform.position.x > drinkingPos.transform.position.x)
+            {
+                isLeft = true;
+            }
+            else
+            {
+                isLeft = false;
+            }
+            ani.SetBool("isStop", false);
+            
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            hamster.transform.position = Vector3.MoveTowards(transform.position, drinkingPos.transform.position, Time.deltaTime * 1);
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             Debug.Log("물통으로 이동");
 
-            if (transform.position == waterbowl.transform.position)
+            if (transform.position == drinkingPos.transform.position && voidUpdateOnce1 == true)//물통에 닿음
             {
+                voidUpdateOnce1 = false;
                 Debug.Log("물통에 닿음");
-                iamHungry = false;
+
+                iamThirsty = false;
 
                 StartCoroutine("DrinkWater");
             }
@@ -234,21 +246,37 @@ public class Move : MonoBehaviour
         //먹이로 이동
         else if (iamHungry == true && dishScript.isFull == true)
         {
+            hamsterIsMovingToFood = true;
+            
+            if (hamster.transform.position.x > eatingPos.transform.position.x)
+            {
+                isLeft = true;
+            }
+            else
+            {
+                isLeft = false;
+            }
 
-            hamster.transform.position = Vector3.MoveTowards(transform.position, dish.transform.position, Time.deltaTime * 1);
-
+            ani.SetBool("isStop", false);
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            hamster.transform.position = Vector3.MoveTowards(transform.position, eatingPos.transform.position, Time.deltaTime * 1);
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             Debug.Log("먹이로 이동");
 
-            if (transform.position == dish.transform.position)
+            if (transform.position == eatingPos.transform.position && voidUpdateOnce2 == true)//먹이에 닿음
             {
+                voidUpdateOnce2 = false;
                 Debug.Log("먹이에 닿음");
+
                 iamHungry = false;
-  
+ 
                 StartCoroutine("EatFood");
             }
         }
         else
         {
+            hamsterIsMovingToFood = false;
+
             if (barrierNum == 0)
             {
                 ani.SetBool("isStop", true);
@@ -283,68 +311,71 @@ public class Move : MonoBehaviour
 
             /////////////////////////////////////////////////////////////////////////////////////
            
-
-            if (randomNum == 1 && randomNumCanActive == true)//Idle
+            if(randomNumCanActive == true && hamsterIsMovingToFood == false)
             {
-                transform.position += (new Vector3(0, 0));
-                ani.SetBool("isStop", true);
-                Debug.Log("가만히");
-            }
-            if (randomNum == 2 && randomNumCanActive == true)//Up
-            {
-                transform.position += (new Vector3(0, speed));
-                ani.SetBool("isStop", false);
-                Debug.Log("위");
-            }
-            if (randomNum == 3 && randomNumCanActive == true)//Dawn
-            {
-                transform.position += (new Vector3(0, -speed));
-                ani.SetBool("isStop", false);
-                Debug.Log("아래");
-            }
-            if (randomNum == 4 && randomNumCanActive == true)//Right
-            {
-                transform.position += (new Vector3(speed, 0));
-                ani.SetBool("isStop", false);
-                isLeft = false;
-                Debug.Log("오른쪽");
-            }
-            if (randomNum == 5 && randomNumCanActive == true)//Left
-            {
-                transform.position += (new Vector3(-speed, 0));
-                ani.SetBool("isStop", false);
-                isLeft = true;
-                Debug.Log("왼쪽");
-            }
-            if (randomNum == 6 && randomNumCanActive == true)//Up.Left
-            {
-                transform.position += (new Vector3(-speed, speed));
-                ani.SetBool("isStop", false);
-                isLeft = true;
-                Debug.Log("위,왼쪽");
-            }
-            if (randomNum == 7 && randomNumCanActive == true)//Up.Right
-            {
-                transform.position += (new Vector3(speed, speed));
-                ani.SetBool("isStop", false);
-                isLeft = false;
-                Debug.Log("위,오른쪽");
-            }
-            if (randomNum == 8 && randomNumCanActive == true)//Dawn.Left
-            {
-                transform.position += (new Vector3(-speed, -speed));
-                ani.SetBool("isStop", false);
-                isLeft = true;
-                Debug.Log("아래,왼쪽");
-            }
-            if (randomNum == 9 && randomNumCanActive == true)//Dawn.Right
-            {
-                transform.position += (new Vector3(speed, -speed));
-                ani.SetBool("isStop", false);
-                isLeft = false;
-                Debug.Log("아래,오른쪽");
+                if (randomNum == 1)//Idle
+                {
+                    transform.position += (new Vector3(0, 0));
+                    ani.SetBool("isStop", true);
+                    Debug.Log("가만히");
+                }
+                if (randomNum == 2)//Up
+                {
+                    transform.position += (new Vector3(0, speed));
+                    ani.SetBool("isStop", false);
+                    Debug.Log("위");
+                }
+                if (randomNum == 3)//Dawn
+                {
+                    transform.position += (new Vector3(0, -speed));
+                    ani.SetBool("isStop", false);
+                    Debug.Log("아래");
+                }
+                if (randomNum == 4)//Right
+                {
+                    transform.position += (new Vector3(speed, 0));
+                    ani.SetBool("isStop", false);
+                    isLeft = false;
+                    Debug.Log("오른쪽");
+                }
+                if (randomNum == 5)//Left
+                {
+                    transform.position += (new Vector3(-speed, 0));
+                    ani.SetBool("isStop", false);
+                    isLeft = true;
+                    Debug.Log("왼쪽");
+                }
+                if (randomNum == 6)//Up.Left
+                {
+                    transform.position += (new Vector3(-speed, speed));
+                    ani.SetBool("isStop", false);
+                    isLeft = true;
+                    Debug.Log("위,왼쪽");
+                }
+                if (randomNum == 7)//Up.Right
+                {
+                    transform.position += (new Vector3(speed, speed));
+                    ani.SetBool("isStop", false);
+                    isLeft = false;
+                    Debug.Log("위,오른쪽");
+                }
+                if (randomNum == 8)//Dawn.Left
+                {
+                    transform.position += (new Vector3(-speed, -speed));
+                    ani.SetBool("isStop", false);
+                    isLeft = true;
+                    Debug.Log("아래,왼쪽");
+                }
+                if (randomNum == 9)//Dawn.Right
+                {
+                    transform.position += (new Vector3(speed, -speed));
+                    ani.SetBool("isStop", false);
+                    isLeft = false;
+                    Debug.Log("아래,오른쪽");
+                }
             }
         }
+            
 
         //햄스터 크기 반전
         if (isLeft == true)

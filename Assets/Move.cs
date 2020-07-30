@@ -214,6 +214,7 @@ public class Move : MonoBehaviour
         thirsty -= Time.deltaTime * 0.3f;
 
 
+
         //물통으로 이동
         if (iamThirsty == true && waterbowlScript.waterGauge > 0)
         {

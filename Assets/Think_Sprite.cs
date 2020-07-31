@@ -118,7 +118,7 @@ public class Think_Sprite : MonoBehaviour
         }
         else
         {
-            Debug.Log("333333");
+        //    Debug.Log("333333");
             if (voidUpdateOnce)
             {
                 Debug.Log("3333334");

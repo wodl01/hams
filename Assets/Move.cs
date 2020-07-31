@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
+    public int id;
+    public bool iHave;
+
     public bool randomNumCanActive;
     public bool hamsterIsMovingToFood;
     public bool barrierUp;
@@ -27,6 +30,8 @@ public class Move : MonoBehaviour
     public bool iamHungry;
     public bool iamThirsty;
 
+    public SpriteRenderer hamsterSprite; 
+
     [SerializeField] bool dishIsClosedByHamSter;
 
 
@@ -44,36 +49,30 @@ public class Move : MonoBehaviour
 
     public Animator ani;
 
-
-    [SerializeField] GameObject dish;
-    [SerializeField] GameObject waterbowl;
     [SerializeField] GameObject eatingPos;
     [SerializeField] GameObject drinkingPos;
+
     public GameObject ddPrefap;
     public GameObject hamster;
 
-    [SerializeField] GameObject think_Icon;
-    Think_Sprite thinkScript;
 
+    public Think_Sprite thinkScript;
+    public DishScript dishScript;
+    public WaterBowlScript waterbowlScript;
 
     [SerializeField] Sprite[] randomChangeSprite;
 
-    [SerializeField] DishScript dishScript;
-    [SerializeField] WaterBowlScript waterbowlScript;
+
+
+
+    public HamsterUi_Manager Uimanager;
     private void Start()
     {
         StartCoroutine("RandomMoving");
         StartCoroutine("DDtime");
 
-        dish = GameObject.Find("dish");
-        waterbowl = GameObject.Find("waterbowl");
-        eatingPos = GameObject.Find("EatingPos");
-        drinkingPos = GameObject.Find("DrinkingPos");
-
-
-        thinkScript = think_Icon.GetComponent<Think_Sprite>();
-        dishScript = dish.GetComponent<DishScript>();
-        waterbowlScript = waterbowl.GetComponent<WaterBowlScript>();
+        iHave = true;
+        
     }
     public IEnumerator RandomMoving()
     {
@@ -207,6 +206,8 @@ public class Move : MonoBehaviour
     }
     void Update()
     {
+        Uimanager.hamster1_Hunger = hunger;
+        Uimanager.hamster_Sprite.color = hamsterSprite.color;
 
         hunger -= Time.deltaTime * 0.3f;
         thirsty -= Time.deltaTime * 0.3f;
@@ -231,12 +232,12 @@ public class Move : MonoBehaviour
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             hamster.transform.position = Vector3.MoveTowards(transform.position, drinkingPos.transform.position, Time.deltaTime * 1);
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            Debug.Log("물통으로 이동");
+            //Debug.Log("물통으로 이동");
 
             if (transform.position == drinkingPos.transform.position && voidUpdateOnce1 == true)//물통에 닿음
             {
                 voidUpdateOnce1 = false;
-                Debug.Log("물통에 닿음");
+            //    Debug.Log("물통에 닿음");
 
                 iamThirsty = false;
 
@@ -261,12 +262,12 @@ public class Move : MonoBehaviour
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             hamster.transform.position = Vector3.MoveTowards(transform.position, eatingPos.transform.position, Time.deltaTime * 1);
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            Debug.Log("먹이로 이동");
+            //Debug.Log("먹이로 이동");
 
             if (transform.position == eatingPos.transform.position && voidUpdateOnce2 == true)//먹이에 닿음
             {
                 voidUpdateOnce2 = false;
-                Debug.Log("먹이에 닿음");
+            //    Debug.Log("먹이에 닿음");
 
                 iamHungry = false;
  
@@ -317,61 +318,61 @@ public class Move : MonoBehaviour
                 {
                     transform.position += (new Vector3(0, 0));
                     ani.SetBool("isStop", true);
-                    Debug.Log("가만히");
+                //    Debug.Log("가만히");
                 }
                 if (randomNum == 2)//Up
                 {
                     transform.position += (new Vector3(0, speed));
                     ani.SetBool("isStop", false);
-                    Debug.Log("위");
+                //    Debug.Log("위");
                 }
                 if (randomNum == 3)//Dawn
                 {
                     transform.position += (new Vector3(0, -speed));
                     ani.SetBool("isStop", false);
-                    Debug.Log("아래");
+                 //   Debug.Log("아래");
                 }
                 if (randomNum == 4)//Right
                 {
                     transform.position += (new Vector3(speed, 0));
                     ani.SetBool("isStop", false);
                     isLeft = false;
-                    Debug.Log("오른쪽");
+                //    Debug.Log("오른쪽");
                 }
                 if (randomNum == 5)//Left
                 {
                     transform.position += (new Vector3(-speed, 0));
                     ani.SetBool("isStop", false);
                     isLeft = true;
-                    Debug.Log("왼쪽");
+                //    Debug.Log("왼쪽");
                 }
                 if (randomNum == 6)//Up.Left
                 {
                     transform.position += (new Vector3(-speed, speed));
                     ani.SetBool("isStop", false);
                     isLeft = true;
-                    Debug.Log("위,왼쪽");
+                //    Debug.Log("위,왼쪽");
                 }
                 if (randomNum == 7)//Up.Right
                 {
                     transform.position += (new Vector3(speed, speed));
                     ani.SetBool("isStop", false);
                     isLeft = false;
-                    Debug.Log("위,오른쪽");
+                 //   Debug.Log("위,오른쪽");
                 }
                 if (randomNum == 8)//Dawn.Left
                 {
                     transform.position += (new Vector3(-speed, -speed));
                     ani.SetBool("isStop", false);
                     isLeft = true;
-                    Debug.Log("아래,왼쪽");
+                  //  Debug.Log("아래,왼쪽");
                 }
                 if (randomNum == 9)//Dawn.Right
                 {
                     transform.position += (new Vector3(speed, -speed));
                     ani.SetBool("isStop", false);
                     isLeft = false;
-                    Debug.Log("아래,오른쪽");
+                  //  Debug.Log("아래,오른쪽");
                 }
             }
         }

@@ -65,10 +65,13 @@
     <Compile Include="Assets\Barrer.cs" />
     <Compile Include="Assets\CoinScript.cs" />
     <Compile Include="Assets\DishScript.cs" />
+    <Compile Include="Assets\HamsterUi_Manager.cs" />
     <Compile Include="Assets\Heart_Imote_Sprite.cs" />
+    <Compile Include="Assets\LetterSpacing.cs" />
     <Compile Include="Assets\Move.cs" />
     <Compile Include="Assets\SpawnCoin.cs" />
     <Compile Include="Assets\Think_Sprite.cs" />
+    <Compile Include="Assets\Ui_ChangeManager.cs" />
     <Compile Include="Assets\WaterBowlScript.cs" />
     <Compile Include="Assets\dongScript.cs" />
     <Compile Include="Assets\imformScript.cs" />

@@ -43,8 +43,6 @@ public class Move : MonoBehaviour
 
 
 
-    public float inputHereNowScale;
-
     public bool isLeft;
 
     public Animator ani;
@@ -61,7 +59,7 @@ public class Move : MonoBehaviour
     public WaterBowlScript waterbowlScript;
 
     [SerializeField] Sprite[] randomChangeSprite;
-
+    public Sprite hamster_Thumbnail;
 
 
 
@@ -206,8 +204,10 @@ public class Move : MonoBehaviour
     }
     void Update()
     {
-        Uimanager.hamster1_Hunger = hunger;
+        Uimanager.hamster_Hunger = hunger;
+        Uimanager.hamster_Thirsty = thirsty;
         Uimanager.hamster_Sprite.color = hamsterSprite.color;
+        Uimanager.hamsterThumbnail = hamster_Thumbnail;
 
         hunger -= Time.deltaTime * 0.3f;
         thirsty -= Time.deltaTime * 0.3f;
@@ -381,11 +381,11 @@ public class Move : MonoBehaviour
         //햄스터 크기 반전
         if (isLeft == true)
         {
-            transform.localScale = new Vector3(inputHereNowScale, inputHereNowScale);
+            transform.localScale = new Vector3(1, 1);
         }
         if (isLeft == false)
         {
-            transform.localScale = new Vector3(-inputHereNowScale, inputHereNowScale);
+            transform.localScale = new Vector3(-1, 1);
         }
     }
 }

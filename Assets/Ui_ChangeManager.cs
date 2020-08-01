@@ -5,8 +5,12 @@ using UnityEngine;
 public class Ui_ChangeManager : MonoBehaviour
 {
     public Move[] code;
- 
 
+    public bool forWard;
+    public bool backWard;
+
+    public bool forWardOk;
+    public bool backWardOk;
 
     public GameObject[] imformation;
 
@@ -17,66 +21,164 @@ public class Ui_ChangeManager : MonoBehaviour
 
     private void Start()
     {
-        TurnOnHamster();
-   //     maxStageNum += 1;
+
+
     }
     public void PlusOnce()
     {
         stage += 1;
-        AllFalse();
+        forWard = true;
     }
+
     public void MinusOnce()
     {
         stage -= 1;
-        AllFalse();
+        backWard = true;
     }
-    public void AllFalse() 
-    {
-        for (int i = 0; i < imformation.Length; i++)
-        {
-            imformation[i].SetActive(false);
-        }
-        if (stage > imformation.Length)
-        {
-            stage = 1;
-        }
-        TurnOnHamster();
-    }
-    public void TurnOnHamster()
-    {
-        if (stage == 1 && code[0].iHave == true)
-        {
-            imformation[0].SetActive(true);
-
-            Debug.Log("11111");
-            Debug.Log("첫번쨰 스테이지" + stage);
-        }
-        else if(code[0].iHave == false)
-        {
-            stage++;
-            Debug.Log("스테이지 추가" + stage);
-        }
 
 
-        if (stage == 2 && code[1].iHave == true)
-        {
-            imformation[1].SetActive(true);
-            Debug.Log("두번쨰 스테이지" + stage);
-        }
-        else if (code[1].iHave == false)
-        {
-            stage++;
-            Debug.Log("스테이지 추가" + stage);
-        }
-
-     
-
-
-    }
 
     private void Update()
     {
- 
+        if (stage > imformation.Length)//앞으로
+        {
+            stage = 1;
+        }
 
+        if(stage == 0)
+        {
+            stage = imformation.Length;
+        }
+
+
+        if (forWard)//앞으로
+        {
+
+            if (stage == 1 && code[0].iHave == true)
+            {
+                for (int i = 0; i < imformation.Length; i++)
+                {
+                    imformation[i].SetActive(false);
+                }
+                imformation[0].SetActive(true);
+                forWardOk = true;
+                Debug.Log("11111");
+
+                Debug.Log("첫번쨰 스테이지" + stage);
+            }
+            else if (stage == 1 && code[0].iHave == false)
+            {
+                stage++;
+                Debug.Log("스테이지 추가" + stage);
+            }
+
+
+            if (stage == 2 && code[1].iHave == true)
+            {
+                for (int i = 0; i < imformation.Length; i++)
+                {
+                    imformation[i].SetActive(false);
+                }
+                imformation[1].SetActive(true);
+                forWardOk = true;
+                Debug.Log("두번쨰 스테이지" + stage);
+            }
+            else if (stage == 2 && code[1].iHave == false)
+            {
+                stage++;
+                Debug.Log("스테이지 추가" + stage);
+            }
+
+
+            if (stage == 3 && code[2].iHave == true)
+            {
+                for (int i = 0; i < imformation.Length; i++)
+                {
+                    imformation[i].SetActive(false);
+                }
+                imformation[2].SetActive(true);
+                forWardOk = true;
+                Debug.Log("두번쨰 스테이지" + stage);
+            }
+            else if (stage == 3 && code[2].iHave == false)
+            {
+                stage++;
+                Debug.Log("스테이지 추가" + stage);
+            }
+
+            if (forWardOk)
+            {
+                forWard = false;
+                forWardOk = false;
+            }
+            
+
+
+
+        }
+
+
+
+        if (backWard)//뒤로
+        {
+            if (stage == 3 && code[2].iHave == true)
+            {
+                for (int i = 0; i < imformation.Length; i++)
+                {
+                    imformation[i].SetActive(false);
+                }
+                imformation[2].SetActive(true);
+                backWardOk = true;
+                Debug.Log("두번쨰 스테이지" + stage);
+            }
+            else if (stage == 3 && code[2].iHave == false)
+            {
+                stage--;
+                Debug.Log("스테이지 추가" + stage);
+            }
+
+
+            if (stage == 2 && code[1].iHave == true)
+            {
+                for (int i = 0; i < imformation.Length; i++)
+                {
+                    imformation[i].SetActive(false);
+                }
+                imformation[1].SetActive(true);
+                backWardOk = true;
+                Debug.Log("두번쨰 스테이지" + stage);
+            }
+            else if (stage == 2 && code[1].iHave == false)
+            {
+                stage--;
+                Debug.Log("스테이지 추가" + stage);
+            }
+
+
+            if (stage == 1 && code[0].iHave == true)//앞으로
+            {
+                for (int i = 0; i < imformation.Length; i++)
+                {
+                    imformation[i].SetActive(false);
+                }
+                imformation[0].SetActive(true);
+                backWardOk = true;
+                Debug.Log("11111");
+                Debug.Log("첫번쨰 스테이지" + stage);
+            }
+            else if (stage == 1 && code[0].iHave == false)
+            {
+                stage = imformation.Length;
+            }
+
+            if (backWardOk)
+            {
+                backWard = false;
+                backWardOk = false;
+            }
+            
+
+
+        }
     }
 }

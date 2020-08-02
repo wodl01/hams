@@ -7,6 +7,10 @@ public class Move : MonoBehaviour
     public int id;
     public bool iHave;
 
+    public int ddGoldRate;
+
+    public int percent;
+
     public bool randomNumCanActive;
     public bool hamsterIsMovingToFood;
     public bool barrierUp;
@@ -180,9 +184,26 @@ public class Move : MonoBehaviour
 
     void DD()
     {
-        
+        bool isNormal;
+        bool isGold;
+
+        percent = Random.Range(0, 100);
+        if (percent <= ddGoldRate) isGold = true;
+        else isNormal = true;
+
         Instantiate(ddPrefap, gameObject.transform.position, Quaternion.identity);
-        ddPrefap.GetComponent<SpriteRenderer>().sprite = randomChangeSprite[Random.Range(0, randomChangeSprite.Length)];
+        if (isNormal = true)
+        {
+            ddPrefap.GetComponent<SpriteRenderer>().sprite = randomChangeSprite[Random.Range(0, 4)];
+        }
+
+        if (isGold = true)
+        {
+            ddPrefap.GetComponent<SpriteRenderer>().sprite = randomChangeSprite[Random.Range(4, 6)];
+        }
+         
+        isNormal = false;
+        isGold = false;
     }
     IEnumerator DDtime()
     {

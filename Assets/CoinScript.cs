@@ -11,8 +11,7 @@ public class CoinScript : MonoBehaviour
     [SerializeField] int money;
     [SerializeField] TextMesh textMesh;
     [SerializeField] dongScript GM;
-    [SerializeField] SpriteRenderer spr;
-    [SerializeField] Sprite sprRef;
+
 
     private void Start()
     {
@@ -25,8 +24,6 @@ public class CoinScript : MonoBehaviour
     }
     private void Update()
     {
-
-
 
         TimeToDelete -= Time.deltaTime;
         if(TimeToDelete < 0)

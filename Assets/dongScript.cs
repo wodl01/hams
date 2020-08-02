@@ -9,17 +9,13 @@ public class dongScript : MonoBehaviour
 
     public GameObject CoinPrefap;
 
-    GameObject imform;
-    [SerializeField] imformScript imformscript;
 
-    GameObject dish;
-    [SerializeField] DishScript dishscript;
 
-    GameObject waterbowl;
-    [SerializeField] WaterBowlScript waterBowlScript;
+    public DishScript dishscript;
 
-    public int ddGoldRate = 20;
-    public int ddNormalRate = 80;
+    public WaterBowlScript waterBowlScript;
+
+
 
     public int ddGold;
     public int ddNormal;
@@ -30,12 +26,7 @@ public class dongScript : MonoBehaviour
 
     private void Start()
     {
-        imform = GameObject.Find("Imform");
-        imformscript = imform.GetComponent<imformScript>();
-        dish = GameObject.Find("dish");
-        dishscript = dish.GetComponent<DishScript>();
-        waterbowl = GameObject.Find("waterbowl");
-        waterBowlScript = waterbowl.GetComponent<WaterBowlScript>();
+
     }
 
 
@@ -54,9 +45,7 @@ public class dongScript : MonoBehaviour
                 {
                     DdongEvent(hit);
                 }
-                
             }
-
         }
         if (Input.GetMouseButtonDown(0))
         {
@@ -88,11 +77,9 @@ public class dongScript : MonoBehaviour
 
     void DdongEvent(RaycastHit2D hit)
     {
-        imformscript.Coin += 3;
+        
         Destroy(hit.transform.gameObject);
         Instantiate(CoinPrefap, hit.transform.position, Quaternion.identity);
-        
-
     }
     void Dish()
     {
@@ -100,6 +87,7 @@ public class dongScript : MonoBehaviour
         {
             Debug.Log("dwdw");
             dishscript.isFull = true;
+
         }
         
     }

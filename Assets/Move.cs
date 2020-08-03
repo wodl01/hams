@@ -8,6 +8,8 @@ public class Move : MonoBehaviour
     public bool iHave;
 
     public int ddGoldRate;
+    public int ddValue;//1
+    public float dD_CoolTime;
 
     public int percent;
 
@@ -22,7 +24,7 @@ public class Move : MonoBehaviour
     bool voidUpdateOnce1 = true;
     bool voidUpdateOnce2 = true;
 
-
+    public int hamsterLv;//1
     public float speed;
     public float hunger;
     public int hungerToFeed;
@@ -38,14 +40,11 @@ public class Move : MonoBehaviour
 
     [SerializeField] bool dishIsClosedByHamSter;
 
-
     public int barrierNum;
     public int randomNum;
     public float randomTime;
-    public float dD_CoolTime;
+
     [SerializeField] float eatingTime;
-
-
 
     public bool isLeft;
 
@@ -55,12 +54,15 @@ public class Move : MonoBehaviour
     [SerializeField] GameObject drinkingPos;
 
     public GameObject ddPrefap;
+    public GameObject goldenDDPrefap;
     public GameObject hamster;
 
 
     public Think_Sprite thinkScript;
     public DishScript dishScript;
     public WaterBowlScript waterbowlScript;
+    public DDMoneyScript GDDMoneyScript;
+    public DDMoneyScript NDDMoneyScript;
 
     [SerializeField] Sprite[] randomChangeSprite;
     public Sprite hamster_Thumbnail;
@@ -184,25 +186,39 @@ public class Move : MonoBehaviour
 
     void DD()
     {
-        bool isNormal;
-        bool isGold;
+
+        bool isGold = false;
 
         percent = Random.Range(0, 100);
         if (percent <= ddGoldRate) isGold = true;
-        else isNormal = true;
 
-        Instantiate(ddPrefap, gameObject.transform.position, Quaternion.identity);
-        if (isNormal = true)
+
+
+        if (isGold == false)//일반일떄
         {
+            //형태변형
             ddPrefap.GetComponent<SpriteRenderer>().sprite = randomChangeSprite[Random.Range(0, 4)];
+            //똥가치 설정
+            NDDMoneyScript.hamsterLvMoney = ddValue;
+            //일반생성
+            Instantiate(ddPrefap, gameObject.transform.position, Quaternion.identity);
+
+
         }
 
-        if (isGold = true)
+        else//황금일때
         {
-            ddPrefap.GetComponent<SpriteRenderer>().sprite = randomChangeSprite[Random.Range(4, 6)];
+            //형태변경
+            goldenDDPrefap.GetComponent<SpriteRenderer>().sprite = randomChangeSprite[4];
+            //똥가치 설정
+            GDDMoneyScript.hamsterLvMoney = ddValue;
+            //황금생성
+            Instantiate(goldenDDPrefap, gameObject.transform.position, Quaternion.identity);
+
+
         }
-         
-        isNormal = false;
+
+
         isGold = false;
     }
     IEnumerator DDtime()

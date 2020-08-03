@@ -247,8 +247,6 @@ MonoBehaviour:
     type: 3}
   dishscript: {fileID: 841262586}
   waterBowlScript: {fileID: 832301632}
-  ddGold: 60
-  ddNormal: 30
   score: 0
   scoreText: {fileID: 1139104975}
 --- !u!4 &25234059
@@ -3335,7 +3333,7 @@ PrefabInstance:
     - target: {fileID: 1368508427968491124, guid: b6925dbd4fa982948aebe09a112d57e3,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1368508427968491125, guid: b6925dbd4fa982948aebe09a112d57e3,
         type: 3}
@@ -3720,7 +3718,7 @@ PrefabInstance:
     - target: {fileID: 1368508427968491124, guid: b6925dbd4fa982948aebe09a112d57e3,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1368508427968491125, guid: b6925dbd4fa982948aebe09a112d57e3,
         type: 3}
@@ -7455,6 +7453,45 @@ PrefabInstance:
       propertyPath: randomChangeSprite.Array.data[4]
       value: 
       objectReference: {fileID: 21300000, guid: 2e4a93f889ac84a4b9a184dac6da3fd8,
+        type: 3}
+    - target: {fileID: 1368508428580914452, guid: b2f816a19889e344ba721f08542f8dbf,
+        type: 3}
+      propertyPath: ddPrefap
+      value: 
+      objectReference: {fileID: 5397444336073475650, guid: 29823e76ade9edc43a549d715fa6389d,
+        type: 3}
+    - target: {fileID: 1368508428580914452, guid: b2f816a19889e344ba721f08542f8dbf,
+        type: 3}
+      propertyPath: goldenDDPrefap
+      value: 
+      objectReference: {fileID: 5397444336073475650, guid: bb1f8e7dc0ad1d440953493e1618cc7d,
+        type: 3}
+    - target: {fileID: 1368508428580914452, guid: b2f816a19889e344ba721f08542f8dbf,
+        type: 3}
+      propertyPath: ddValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368508428580914452, guid: b2f816a19889e344ba721f08542f8dbf,
+        type: 3}
+      propertyPath: ddGoldRate
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368508428580914452, guid: b2f816a19889e344ba721f08542f8dbf,
+        type: 3}
+      propertyPath: dD_CoolTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368508428580914452, guid: b2f816a19889e344ba721f08542f8dbf,
+        type: 3}
+      propertyPath: GDDMoneyScript
+      value: 
+      objectReference: {fileID: 5397444336073475651, guid: bb1f8e7dc0ad1d440953493e1618cc7d,
+        type: 3}
+    - target: {fileID: 1368508428580914452, guid: b2f816a19889e344ba721f08542f8dbf,
+        type: 3}
+      propertyPath: NDDMoneyScript
+      value: 
+      objectReference: {fileID: 5397444336073475651, guid: 29823e76ade9edc43a549d715fa6389d,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2f816a19889e344ba721f08542f8dbf, type: 3}

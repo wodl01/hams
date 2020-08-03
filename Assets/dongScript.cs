@@ -11,24 +11,21 @@ public class dongScript : MonoBehaviour
 
 
 
+
     public DishScript dishscript;
 
     public WaterBowlScript waterBowlScript;
 
-
-
-    public int ddGold;
-    public int ddNormal;
-
+    
 
     public int score;
     public Text scoreText;
+
 
     private void Start()
     {
 
     }
-
 
     void Update()
     {
@@ -41,7 +38,7 @@ public class dongScript : MonoBehaviour
             Vector3 cameraPos = maincamera.transform.position;
             if (hit.collider != null)
             {
-                if (hit.collider.tag == "DD")
+                if (hit.collider.tag == "DD" || hit.collider.tag == "GoldenDD")
                 {
                     DdongEvent(hit);
                 }
@@ -77,9 +74,22 @@ public class dongScript : MonoBehaviour
 
     void DdongEvent(RaycastHit2D hit)
     {
+        Debug.Log("djdjoeoeo11111111");
+        GameObject go = hit.collider.gameObject;
+    
+        DDMoneyScript dDMoney = go.GetComponent<DDMoneyScript>();
+        BoxCollider2D box = go.GetComponent<BoxCollider2D>();
+        SpriteRenderer sprite = go.GetComponent<SpriteRenderer>();
+
+
+
+        box.enabled = false;
+        sprite.enabled = false;
+        dDMoney.coinTextOB.SetActive(true);
+
+        score += dDMoney.finalDDMoney;
         
-        Destroy(hit.transform.gameObject);
-        Instantiate(CoinPrefap, hit.transform.position, Quaternion.identity);
+
     }
     void Dish()
     {

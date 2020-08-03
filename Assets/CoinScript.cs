@@ -8,18 +8,16 @@ public class CoinScript : MonoBehaviour
 
     public float TimeToDelete;
 
-    [SerializeField] int money;
-    [SerializeField] TextMesh textMesh;
-    [SerializeField] dongScript GM;
+
+    public GameObject parent;
 
 
     private void Start()
     {
-        GameObject GO = GameObject.FindGameObjectWithTag("Manager");
-        GM = GO.GetComponent<dongScript>();
-        money = GM.ddNormal + Random.Range(-5, 5);
-        textMesh.text = "+" + "<color=#000000>" + money + "</color>" + "@";
-        GM.score += money;
+
+
+
+
 
     }
     private void Update()
@@ -28,7 +26,7 @@ public class CoinScript : MonoBehaviour
         TimeToDelete -= Time.deltaTime;
         if(TimeToDelete < 0)
         {
-            Destroy(gameObject);
+            Destroy(parent);
         }
 
 

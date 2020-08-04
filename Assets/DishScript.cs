@@ -6,12 +6,16 @@ public class DishScript : MonoBehaviour
 {
     public GameObject feed;
     public GameObject sign;
-
+    public GameObject coinEffect;
 
     public bool isFull;
-    
-
-    // Update is called once per frame
+    public int feedValue;
+    public TextMesh text;
+    public void MinusCoin()
+    {
+        text.text = "-" + "<color=#000000>" + feedValue + "</color>" + "@";
+        coinEffect.SetActive(true);
+    }
     void Update()
     {
         if (isFull == false)

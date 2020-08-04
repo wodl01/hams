@@ -12,14 +12,6 @@ public class CoinScript : MonoBehaviour
     public GameObject parent;
 
 
-    private void Start()
-    {
-
-
-
-
-
-    }
     private void Update()
     {
 

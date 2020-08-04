@@ -66,6 +66,7 @@
     <Compile Include="Assets\ButtenUiManagerScript.cs" />
     <Compile Include="Assets\CoinScript.cs" />
     <Compile Include="Assets\DDMoneyScript.cs" />
+    <Compile Include="Assets\DishCoinEffect.cs" />
     <Compile Include="Assets\DishScript.cs" />
     <Compile Include="Assets\HamsterUi_Manager.cs" />
     <Compile Include="Assets\Heart_Imote_Sprite.cs" />

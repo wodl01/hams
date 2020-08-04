@@ -21,8 +21,6 @@ public class DDMoneyScript : MonoBehaviour
     private void Start()
     {
 
-
-
         if(gameObject.tag == "DD")
         {
             goldenBonus = 1;

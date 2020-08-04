@@ -29,7 +29,7 @@ public class dongScript : MonoBehaviour
 
     void Update()
     {
-        scoreText.text = "@"+ "    " + "<color=#000000>" + score + "</color>" ;
+        scoreText.text =  "    " + "<color=#000000>" + score + "</color>" + "@";
 
         if (Input.GetMouseButton(0))
         {
@@ -96,10 +96,17 @@ public class dongScript : MonoBehaviour
         if(dishscript.isFull == false)
         {
             Debug.Log("dwdw");
-            dishscript.isFull = true;
+            if(score >= dishscript.feedValue)
+            {
+                score -= dishscript.feedValue;
+                dishscript.MinusCoin();
+                dishscript.isFull = true;
+            }
+            else
+            {
 
+            }
         }
-        
     }
     void WaterBowl()
     {

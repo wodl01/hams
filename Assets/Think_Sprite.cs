@@ -25,35 +25,18 @@ public class Think_Sprite : MonoBehaviour
     [SerializeField] bool voidUpdateOnce;
 
     public Animator animator;
-
-    public GameObject hamster;
+    
     [SerializeField]Move hamsterScript;
 
-    [SerializeField] GameObject dish;
     [SerializeField] DishScript dishScript;
-    [SerializeField] GameObject waterbowl;
     [SerializeField] WaterBowlScript waterBowlScript;
 
-    public GameObject think_Image_OB;
     [SerializeField] SpriteRenderer think_sprite;
-    [SerializeField] Sprite think_Image1;
-    [SerializeField] Sprite think_Image2;
-    [SerializeField] Sprite think_Image3;
-    [SerializeField] Sprite think_Image4;
-    [SerializeField] Sprite think_Image5;
+    [SerializeField] Sprite[] think_Image;
+
 
     private void Start()
     {
-        hamsterScript = hamster.GetComponent<Move>();
-
-        dish = GameObject.Find("dish");
-        dishScript = dish.GetComponent<DishScript>();
-        waterbowl = GameObject.Find("waterbowl");
-        waterBowlScript = waterbowl.GetComponent<WaterBowlScript>();
-        
-
-        think_sprite = think_Image_OB.GetComponent<SpriteRenderer>();
-
         StartCoroutine("ImageChange");
     }
 
@@ -62,7 +45,7 @@ public class Think_Sprite : MonoBehaviour
 
         if (hamsterScript.iamThirsty == true)
         {
-            think_sprite.sprite = think_Image1;
+            think_sprite.sprite = think_Image[0];
             yield return new WaitForSeconds(changingTime);
 
         }
@@ -70,7 +53,7 @@ public class Think_Sprite : MonoBehaviour
         if (hamsterScript.iamHungry == true)
         {
 
-            think_sprite.sprite = think_Image2;
+            think_sprite.sprite = think_Image[1];
             yield return new WaitForSeconds(changingTime);
 
         }
@@ -118,7 +101,6 @@ public class Think_Sprite : MonoBehaviour
         }
         else
         {
-        //    Debug.Log("333333");
             if (voidUpdateOnce)
             {
                 Debug.Log("3333334");

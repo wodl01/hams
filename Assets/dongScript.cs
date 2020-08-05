@@ -9,23 +9,20 @@ public class dongScript : MonoBehaviour
 
     public GameObject CoinPrefap;
 
+    public GameObject warningPreFap;
 
 
+    [SerializeField] DishScript dishscript;
 
-    public DishScript dishscript;
+    [SerializeField] WaterBowlScript waterBowlScript;
 
-    public WaterBowlScript waterBowlScript;
+    [SerializeField] WarningScript warning;
 
     
 
     public int score;
     public Text scoreText;
 
-
-    private void Start()
-    {
-
-    }
 
     void Update()
     {
@@ -104,7 +101,8 @@ public class dongScript : MonoBehaviour
             }
             else
             {
-
+                warning.InputWord = "코인이 부족합니다.";
+                Instantiate(warningPreFap, new Vector3(0, 0, 0), Quaternion.identity);
             }
         }
     }

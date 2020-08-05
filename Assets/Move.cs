@@ -5,6 +5,7 @@ using UnityEngine;
 public class Move : MonoBehaviour
 {
     public int id;
+    public string name;
     public bool iHave;
 
     public int ddGoldRate;
@@ -241,10 +242,12 @@ public class Move : MonoBehaviour
     }
     void Update()
     {
+        Uimanager.hamster_Name = name;
         Uimanager.hamster_Hunger = hunger;
         Uimanager.hamster_Thirsty = thirsty;
         Uimanager.hamster_Sprite.color = hamsterSprite.color;
         Uimanager.hamsterThumbnail = hamster_Thumbnail;
+        
 
         hunger -= Time.deltaTime * 0.3f;
         thirsty -= Time.deltaTime * 0.3f;

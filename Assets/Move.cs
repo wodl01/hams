@@ -247,6 +247,7 @@ public class Move : MonoBehaviour
         Uimanager.hamster_Thirsty = thirsty;
         Uimanager.hamster_Sprite.color = hamsterSprite.color;
         Uimanager.hamsterThumbnail = hamster_Thumbnail;
+        Uimanager.hamster_Lv = hamsterLv;
         
 
         hunger -= Time.deltaTime * 0.3f;

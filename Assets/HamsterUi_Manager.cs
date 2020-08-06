@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class HamsterUi_Manager : MonoBehaviour
 {
+    public int hamster_Lv;
     public string hamster_Name;
     public int hamster_Id;
     public float hamster_Hunger;
@@ -19,6 +20,7 @@ public class HamsterUi_Manager : MonoBehaviour
 
     void Update()
     {
+        ui_text[2].text = "Lv." + hamster_Lv.ToString();
         ui_text[3].text = hamster_Name;
         ui_text[5].text = hamster_Hunger.ToString("N0") + "%";
         ui_text[6].text = hamster_Thirsty.ToString("N0") + "%";

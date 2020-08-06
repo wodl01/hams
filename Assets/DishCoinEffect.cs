@@ -28,7 +28,6 @@ public class DishCoinEffect : MonoBehaviour
         TimeToReset -= Time.deltaTime;
         if (TimeToReset < 0 && once == true)
         {
-            Debug.Log("이예ㅖㅖㅖ");
             once = false;
             Reset1();
         }

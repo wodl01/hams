@@ -71,7 +71,6 @@ public class dongScript : MonoBehaviour
 
     void DdongEvent(RaycastHit2D hit)
     {
-        Debug.Log("djdjoeoeo11111111");
         GameObject go = hit.collider.gameObject;
     
         DDMoneyScript dDMoney = go.GetComponent<DDMoneyScript>();

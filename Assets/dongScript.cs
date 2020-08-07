@@ -7,7 +7,7 @@ public class dongScript : MonoBehaviour
 {
     public Camera maincamera;
 
-    public GameObject CoinPrefap;
+
 
     public GameObject warningPreFap;
 
@@ -22,11 +22,13 @@ public class dongScript : MonoBehaviour
 
     public int score;
     public Text scoreText;
+    public Text scoreTextInShop;
 
 
     void Update()
     {
-        scoreText.text =  "    " + "<color=#000000>" + score + "</color>" + "@";
+        scoreText.text = "    " + "<color=#000000>" + score + "</color>" + "@";
+        scoreTextInShop.text = "    " + "<color=#000000>" + score + "</color>" + "@";
 
         if (Input.GetMouseButton(0))
         {

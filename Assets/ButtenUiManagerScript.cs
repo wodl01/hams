@@ -4,33 +4,49 @@ using UnityEngine;
 
 public class ButtenUiManagerScript : MonoBehaviour
 {
-    [SerializeField] Ui_ChangeManager Manager;
+    [SerializeField] Ui_ChangeManager UiChange_Manager;
     [SerializeField] GameObject myHamsterUi;
 
     [SerializeField] GameObject[] shop_Ui;
     [SerializeField] Canvas[] shopCanvas;
 
+    [SerializeField] dongScript manager;
+
+    public bool canActive;
+
     public void Xbutten()
     {
-        Manager.stage = 1;
+        manager.canActive_My = true;
+        UiChange_Manager.stage = 1;
         myHamsterUi.SetActive(false);
     }
     public void MyButtenOnClick()
     {
-        myHamsterUi.SetActive(true);
-        Manager.forWard = true;
+        if (canActive)
+        {
+            manager.canActive_My = false;
+            myHamsterUi.SetActive(true);
+            UiChange_Manager.forWard = true;
+        }
+        
     }
 
     public void ShopButtenOnClick()
     {
-        shop_Ui[0].SetActive(true);
-        shop_Ui[1].SetActive(true);
-        shop_Ui[2].SetActive(true);
-        shop_Ui[3].SetActive(true);
-        shop_Ui[4].SetActive(true);
+        if (canActive)
+        {
+            manager.canActive_Shop = false;
+            shop_Ui[0].SetActive(true);
+            shop_Ui[1].SetActive(true);
+            shop_Ui[2].SetActive(true);
+            shop_Ui[3].SetActive(true);
+            shop_Ui[4].SetActive(true);
+        }
+        
     }
     public void Shop_XButten()
     {
+        manager.canActive_Shop = true;
         shop_Ui[0].SetActive(false);
         shop_Ui[1].SetActive(false);
         shop_Ui[2].SetActive(false);

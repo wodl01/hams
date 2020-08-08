@@ -6,7 +6,9 @@ public class Move : MonoBehaviour
 {
     public int id;
     public string name;
+    public bool isNamed;
     public bool iHave;
+
 
     public int ddGoldRate;
     public int ddValue;//1
@@ -57,6 +59,7 @@ public class Move : MonoBehaviour
     public GameObject ddPrefap;
     public GameObject goldenDDPrefap;
     public GameObject hamster;
+    public GameObject hamsterNameUi;
 
 
     public Think_Sprite thinkScript;
@@ -64,6 +67,8 @@ public class Move : MonoBehaviour
     public WaterBowlScript waterbowlScript;
     public DDMoneyScript GDDMoneyScript;
     public DDMoneyScript NDDMoneyScript;
+    public dongScript manager;
+    public ButtenUiManagerScript buttenUiManager;
 
     [SerializeField] Sprite[] randomChangeSprite;
     public Sprite hamster_Thumbnail;
@@ -253,7 +258,13 @@ public class Move : MonoBehaviour
         hunger -= Time.deltaTime * 0.3f;
         thirsty -= Time.deltaTime * 0.3f;
 
-        
+        if(isNamed == false)
+        {
+            buttenUiManager.canActive = false;
+            manager.canActive_Name = false;
+            hamsterNameUi.SetActive(true);
+        }
+
 
         //물통으로 이동
         if (iamThirsty == true && waterbowlScript.waterGauge > 0)

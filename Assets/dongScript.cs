@@ -18,11 +18,14 @@ public class dongScript : MonoBehaviour
 
     [SerializeField] WarningScript warning;
 
-    
+    public bool canActive_My;
+    public bool canActive_Name;
+    public bool canActive_Shop;
 
     public int score;
     public Text scoreText;
     public Text scoreTextInShop;
+
 
 
     void Update()
@@ -30,45 +33,50 @@ public class dongScript : MonoBehaviour
         scoreText.text = "    " + "<color=#000000>" + score + "</color>" + "@";
         scoreTextInShop.text = "    " + "<color=#000000>" + score + "</color>" + "@";
 
-        if (Input.GetMouseButton(0))
+
+        if (canActive_My && canActive_Name && canActive_Shop)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
-            Vector3 cameraPos = maincamera.transform.position;
-            if (hit.collider != null)
+            if (Input.GetMouseButton(0))
             {
-                if (hit.collider.tag == "DD" || hit.collider.tag == "GoldenDD")
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
+                Vector3 cameraPos = maincamera.transform.position;
+                if (hit.collider != null)
                 {
-                    DdongEvent(hit);
+                    if (hit.collider.tag == "DD" || hit.collider.tag == "GoldenDD")
+                    {
+                        DdongEvent(hit);
+                    }
+                }
+            }
+            if (Input.GetMouseButtonDown(0))
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
+                Vector3 cameraPos = maincamera.transform.position;
+                if (hit.collider != null)
+                {
+                    if (hit.collider.tag == "Dish")
+                    {
+                        Dish();
+                    }
+                }
+            }
+            if (Input.GetMouseButtonDown(0))
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
+                Vector3 cameraPos = maincamera.transform.position;
+                if (hit.collider != null)
+                {
+                    if (hit.collider.tag == "WaterBowl")
+                    {
+                        WaterBowl();
+                    }
                 }
             }
         }
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
-            Vector3 cameraPos = maincamera.transform.position;
-            if (hit.collider != null)
-            {
-                if (hit.collider.tag == "Dish")
-                {
-                    Dish();
-                }
-            }
-        }
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
-            Vector3 cameraPos = maincamera.transform.position;
-            if (hit.collider != null)
-            {
-                if (hit.collider.tag == "WaterBowl")
-                {
-                    WaterBowl();
-                }
-            }
-        }
+        
     }
 
     void DdongEvent(RaycastHit2D hit)

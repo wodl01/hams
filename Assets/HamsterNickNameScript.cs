@@ -11,10 +11,13 @@ public class HamsterNickNameScript : MonoBehaviour
     [SerializeField] Text hamsterNamingName;
     [SerializeField] GameObject warningPrefap;
     [SerializeField] WarningScript warning;
+    [SerializeField] ButtenUiManagerScript buttenUiManager;
 
     [SerializeField] Text areYouSureHamsterName;
     [SerializeField] GameObject areYouSure;
     [SerializeField] GameObject parents;
+
+    [SerializeField] dongScript manager;
 
     private bool IsNickNameCurrectExact()//닉네임 확인
     {
@@ -37,12 +40,17 @@ public class HamsterNickNameScript : MonoBehaviour
     }
     public void Sure()
     {
+        Debug.Log("dddddddddddd");
+        hamsterScript.isNamed = true;
+        buttenUiManager.canActive = true;
         hamsterScript.name = hamsterNamingName.text;
         parents.SetActive(false);
+        manager.canActive_Name = true;
 
     }
     public void No()
     {
+
         areYouSure.SetActive(false);
     }
 }

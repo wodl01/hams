@@ -65,6 +65,7 @@
     <Compile Include="Assets\Barrer.cs" />
     <Compile Include="Assets\ButtenUiManagerScript.cs" />
     <Compile Include="Assets\Buy_Script.cs" />
+    <Compile Include="Assets\Choice_Script.cs" />
     <Compile Include="Assets\CoinScript.cs" />
     <Compile Include="Assets\DDMoneyScript.cs" />
     <Compile Include="Assets\DishCoinEffect.cs" />

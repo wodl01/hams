@@ -22,6 +22,8 @@ public class Move : MonoBehaviour
     public bool barrierDawn;
     public bool barrierLeft;
     public bool barrierRight;
+    [SerializeField] bool eatingFood;
+    [SerializeField] bool eatingWater;
 
 
     bool voidUpdateOnce1 = true;
@@ -99,7 +101,7 @@ public class Move : MonoBehaviour
         }
 
 
-        if (randomNum == 10 && randomNumCanActive == true && hamsterIsMovingToFood == false)
+        if (randomNum == 10 && randomNumCanActive == true && hamsterIsMovingToFood == false && eatingFood == false && eatingWater == false)
         {
             randomTime = 5;
             ani.SetBool(" Interaction1Start", true);
@@ -171,7 +173,9 @@ public class Move : MonoBehaviour
         waterbowlScript.waterGauge -= 1;
         thirsty += watercalorie;
         if (thirsty > 100) thirsty = 100;
+        //애니메이션
         yield return new WaitForSeconds(eatingTime);
+        eatingWater = false;
         voidUpdateOnce1 = true;
         Debug.Log("물 마심");
     }
@@ -180,7 +184,9 @@ public class Move : MonoBehaviour
         dishScript.isFull = false;
         hunger += foodcalorie;
         if (hunger > 100) hunger = 100;
+        //애니메이션
         yield return new WaitForSeconds(eatingTime);
+        eatingFood = false;
 
         Debug.Log("먹이 먹음");
     }
@@ -231,7 +237,7 @@ public class Move : MonoBehaviour
     {
         yield return new WaitForSeconds(dD_CoolTime);
         DD();
-        StartCoroutine("DDtime");
+        StartCoroutine(DDtime());
     }
     
 
@@ -267,7 +273,7 @@ public class Move : MonoBehaviour
 
 
         //물통으로 이동
-        if (iamThirsty == true && waterbowlScript.waterGauge > 0)
+        if (iamThirsty == true && waterbowlScript.waterGauge > 0 && eatingFood == false)
         {
             hamsterIsMovingToFood = true;
             
@@ -293,11 +299,11 @@ public class Move : MonoBehaviour
 
                 iamThirsty = false;
 
-                StartCoroutine("DrinkWater");
+                StartCoroutine(DrinkWater());
             }
         }
         //먹이로 이동
-        else if (iamHungry == true && dishScript.isFull == true)
+        else if (iamHungry == true && dishScript.isFull == true && eatingWater == false)
         {
             hamsterIsMovingToFood = true;
             
@@ -322,8 +328,9 @@ public class Move : MonoBehaviour
             //    Debug.Log("먹이에 닿음");
 
                 iamHungry = false;
- 
-                StartCoroutine("EatFood");
+
+                eatingFood = true;
+                StartCoroutine(EatFood());
             }
         }
         else
@@ -364,7 +371,7 @@ public class Move : MonoBehaviour
 
             /////////////////////////////////////////////////////////////////////////////////////
            
-            if(randomNumCanActive == true && hamsterIsMovingToFood == false)
+            if(randomNumCanActive == true && hamsterIsMovingToFood == false && eatingFood == false && eatingWater == false)
             {
                 if (randomNum == 1)//Idle
                 {

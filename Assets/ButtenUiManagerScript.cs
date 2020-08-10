@@ -13,6 +13,7 @@ public class ButtenUiManagerScript : MonoBehaviour
     [SerializeField] dongScript manager;
 
     public bool canActive;
+    public bool shop_CanActive;
 
     public void Xbutten()
     {
@@ -46,45 +47,65 @@ public class ButtenUiManagerScript : MonoBehaviour
     }
     public void Shop_XButten()
     {
-        manager.canActive_Shop = true;
-        shop_Ui[0].SetActive(false);
-        shop_Ui[1].SetActive(false);
-        shop_Ui[2].SetActive(false);
-        shop_Ui[3].SetActive(false);
-        shop_Ui[4].SetActive(false);
-        Shop_DishOnClick();
+        if (shop_CanActive)
+        {
+            manager.canActive_Shop = true;
+            shop_Ui[0].SetActive(false);
+            shop_Ui[1].SetActive(false);
+            shop_Ui[2].SetActive(false);
+            shop_Ui[3].SetActive(false);
+            shop_Ui[4].SetActive(false);
+            Shop_DishOnClick();
+        }
+        
     }
 
     public void Shop_DishOnClick()
     {
-        shopCanvas[0].sortingOrder = 105;
-        shopCanvas[1].sortingOrder = 104;
-        shopCanvas[2].sortingOrder = 103;
-        shopCanvas[3].sortingOrder = 102;
-        Debug.Log("클릭됨");
+        if (shop_CanActive)
+        {
+            shopCanvas[0].sortingOrder = 105;
+            shopCanvas[1].sortingOrder = 104;
+            shopCanvas[2].sortingOrder = 103;
+            shopCanvas[3].sortingOrder = 102;
+            Debug.Log("클릭됨");
+        }
+        
     }
     public void Shop_WaterBowlOnClick()
     {
-        shopCanvas[0].sortingOrder = 104;
-        shopCanvas[1].sortingOrder = 105;
-        shopCanvas[2].sortingOrder = 103;
-        shopCanvas[3].sortingOrder = 102;
+        if (shop_CanActive)
+        {
+            shopCanvas[0].sortingOrder = 104;
+            shopCanvas[1].sortingOrder = 105;
+            shopCanvas[2].sortingOrder = 103;
+            shopCanvas[3].sortingOrder = 102;
+        }
+        
         Debug.Log("클릭됨");
     }
     public void Shop_SandOnClick()
     {
-        shopCanvas[0].sortingOrder = 103;
-        shopCanvas[1].sortingOrder = 104;
-        shopCanvas[2].sortingOrder = 105;
-        shopCanvas[3].sortingOrder = 102;
+        if (shop_CanActive)
+        {
+            shopCanvas[0].sortingOrder = 103;
+            shopCanvas[1].sortingOrder = 104;
+            shopCanvas[2].sortingOrder = 105;
+            shopCanvas[3].sortingOrder = 102;
+        }
+        
         Debug.Log("클릭됨");
     }
     public void Shop_RurrerOnClick()
     {
-        shopCanvas[0].sortingOrder = 102;
-        shopCanvas[1].sortingOrder = 103;
-        shopCanvas[2].sortingOrder = 104;
-        shopCanvas[3].sortingOrder = 105;
+        if (shop_CanActive)
+        {
+            shopCanvas[0].sortingOrder = 102;
+            shopCanvas[1].sortingOrder = 103;
+            shopCanvas[2].sortingOrder = 104;
+            shopCanvas[3].sortingOrder = 105;
+        }
+        
         Debug.Log("클릭됨");
     }
 }

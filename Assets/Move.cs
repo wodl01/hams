@@ -295,7 +295,8 @@ public class Move : MonoBehaviour
             if (transform.position == drinkingPos.transform.position && voidUpdateOnce1 == true)//물통에 닿음
             {
                 voidUpdateOnce1 = false;
-            //    Debug.Log("물통에 닿음");
+                //    Debug.Log("물통에 닿음")
+                eatingWater = true;
 
                 iamThirsty = false;
 
@@ -325,11 +326,11 @@ public class Move : MonoBehaviour
             if (transform.position == eatingPos.transform.position && voidUpdateOnce2 == true)//먹이에 닿음
             {
                 voidUpdateOnce2 = false;
-            //    Debug.Log("먹이에 닿음");
-
+                //    Debug.Log("먹이에 닿음");
+                eatingFood = true;
                 iamHungry = false;
 
-                eatingFood = true;
+
                 StartCoroutine(EatFood());
             }
         }

@@ -5,14 +5,15 @@ using UnityEngine.UI;
 
 public class Buy_Script : MonoBehaviour
 {
-    [SerializeField] bool isGet;
-    [SerializeField] bool isChoice;
 
     [SerializeField] Text inputMoneyText;
+    [SerializeField] Text input_Ask_ItemName_Text;
 
     [SerializeField] int itemPrice;
+    [SerializeField] string itemName;
 
     [SerializeField] dongScript manager;
+    [SerializeField] ButtenUiManagerScript buttenManager;
 
     [SerializeField] GameObject warningOB;
     [SerializeField] WarningScript warningScript;
@@ -22,18 +23,16 @@ public class Buy_Script : MonoBehaviour
 
     [SerializeField] GameObject beforeBuyingOB;
     [SerializeField] GameObject afterBuyingOB;
+    [SerializeField] GameObject askOneMore;
 
     public void BuyingItem()
     {
         if(manager.score >= itemPrice)
         {
             //success
-            manager.score -= itemPrice;
-            isGet = true;
-            beforeBuyingOB.SetActive(false);
-            afterBuyingOB.SetActive(true);
-            warningScript2.InputWord = "구매완료!";
-            Instantiate(imoteOB, new Vector3(0, 0, 0), Quaternion.identity);
+            buttenManager.shop_CanActive = false;
+            input_Ask_ItemName_Text.text = '"' + itemName + '"';
+            askOneMore.SetActive(true);
 
         }
         else
@@ -42,13 +41,22 @@ public class Buy_Script : MonoBehaviour
             Instantiate(warningOB, new Vector3(0, 0, 0), Quaternion.identity);
         }
     }
-    public void ChoiceItem()
+    public void Yes()
     {
-        if (isGet)
-        {
-
-        }
+        manager.score -= itemPrice;
+        beforeBuyingOB.SetActive(false);
+        afterBuyingOB.SetActive(true);
+        askOneMore.SetActive(false);
+        warningScript2.InputWord = "구매완료!";
+        Instantiate(imoteOB, new Vector3(0, 0, 0), Quaternion.identity);
+        buttenManager.shop_CanActive = true;
     }
+    public void No()
+    {
+        askOneMore.SetActive(false);
+        buttenManager.shop_CanActive = true;
+    }
+
     private void Update()
     {
         inputMoneyText.text = "" + "<color=#000000>" + itemPrice + "</color>" + "@";

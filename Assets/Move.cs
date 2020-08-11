@@ -89,6 +89,7 @@ public class Move : MonoBehaviour
     public IEnumerator RandomMoving()
     {
         randomNum = Random.Range(1, 11);
+        randomNum = 10;
         randomTime = Random.Range(3, 5);
 
         if (thirsty < thirstyToDrink)//목마를때

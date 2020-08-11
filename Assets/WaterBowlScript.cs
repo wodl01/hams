@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WaterBowlScript : MonoBehaviour
 {
-    public GameObject water;
     [SerializeField] SpriteRenderer bringWaterSprite;
     [SerializeField] Sprite water4;
     [SerializeField] Sprite water3;
@@ -18,7 +17,7 @@ public class WaterBowlScript : MonoBehaviour
 
     private void Start()
     {
-        bringWaterSprite = water.GetComponent<SpriteRenderer>();
+
     }
     void Update()
     {

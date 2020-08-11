@@ -4009,7 +4009,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputMoneyText: {fileID: 100624203}
-  input_Ask_ItemName_Text: {fileID: 1256173910}
+  input_Ask_ItemName_Text: {fileID: 81080221}
   itemPrice: 3500
   itemName: "\uCD08\uCF54 \uB6AB\uC5B4\uBEE5"
   manager: {fileID: 25234058}
@@ -12326,7 +12326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputMoneyText: {fileID: 190715400}
-  input_Ask_ItemName_Text: {fileID: 1256173910}
+  input_Ask_ItemName_Text: {fileID: 1518441305}
   itemPrice: 13500
   itemName: "\uBCD1\uC544\uB9AC\uC9D1"
   manager: {fileID: 25234058}
@@ -12649,15 +12649,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ca2d903d46020446b8152896b860aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  water: {fileID: 203673681}
-  bringWaterSprite: {fileID: 0}
+  bringWaterSprite: {fileID: 203673683}
   water4: {fileID: 21300000, guid: 6b194ba79c7bf0c47a0d2b5e10e81c55, type: 3}
   water3: {fileID: 21300000, guid: 3570cbdde0da65646b1a547382b33f14, type: 3}
   water2: {fileID: 21300000, guid: 7da160a75f27f614f9cb897c20ba8961, type: 3}
   water1: {fileID: 21300000, guid: 9a7f93a2321e97a4aa1d85882dfe5345, type: 3}
   waterNone: {fileID: 0}
   sign: {fileID: 1998696237}
-  waterGauge: 4
+  waterGauge: 0
 --- !u!61 &832301633
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12836,7 +12835,7 @@ MonoBehaviour:
   feed: {fileID: 1968519874}
   sign: {fileID: 830546276}
   coinEffect: {fileID: 1195067194}
-  isFull: 1
+  isFull: 0
   feedValue: 0
   text: {fileID: 1195067197}
 --- !u!212 &841262587
@@ -13025,7 +13024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputMoneyText: {fileID: 308076522}
-  input_Ask_ItemName_Text: {fileID: 1256173910}
+  input_Ask_ItemName_Text: {fileID: 1840325628}
   itemPrice: 5000
   itemName: "\uCEE8\uD14C\uC774\uB108"
   manager: {fileID: 25234058}
@@ -15146,7 +15145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputMoneyText: {fileID: 1849861853}
-  input_Ask_ItemName_Text: {fileID: 1256173910}
+  input_Ask_ItemName_Text: {fileID: 2123281568}
   itemPrice: 15000
   itemName: "\uBE59\uC218\uCEF5"
   manager: {fileID: 25234058}
@@ -17220,7 +17219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputMoneyText: {fileID: 866828902}
-  input_Ask_ItemName_Text: {fileID: 1256173910}
+  input_Ask_ItemName_Text: {fileID: 1888839810}
   itemPrice: 20000
   itemName: "\uAC1C\uAD6C\uB9AC\uBC25"
   manager: {fileID: 25234058}
@@ -33415,6 +33414,11 @@ PrefabInstance:
       propertyPath: waterBowlScript
       value: 
       objectReference: {fileID: 832301632}
+    - target: {fileID: 1368508427959884011, guid: b2f816a19889e344ba721f08542f8dbf,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1368508427968491124, guid: b2f816a19889e344ba721f08542f8dbf,
         type: 3}
       propertyPath: m_Name
@@ -33520,6 +33524,11 @@ PrefabInstance:
       propertyPath: eatingTime
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1368508428580914452, guid: b2f816a19889e344ba721f08542f8dbf,
+        type: 3}
+      propertyPath: isNamed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1368508428580914454, guid: b2f816a19889e344ba721f08542f8dbf,
         type: 3}
       propertyPath: m_Color.r
@@ -33534,6 +33543,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 0.83766466
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368508428704826951, guid: b2f816a19889e344ba721f08542f8dbf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3814698879866781651, guid: b2f816a19889e344ba721f08542f8dbf,
         type: 3}

@@ -16,11 +16,8 @@ public class Think_Sprite : MonoBehaviour
     public GameObject heart;
     public GameObject heart_spawn;
 
-    public bool HamsterIsMid;
     public bool HamsterIsBottom;//-0.37 0.25
-    //-3.3 8.3
-
-    //-6.1 7.58
+    public bool hamsterIsBottomRight;
 
     [SerializeField] bool voidUpdateOnce;
 
@@ -73,23 +70,45 @@ public class Think_Sprite : MonoBehaviour
     {
         voidUpdateOnce = true;
     }
+
+    public void lllll()
+    {
+
+    }
+
     private void Update()
     {
 
-        
 
-        if(HamsterIsBottom == true)
-        {
+
+        if(HamsterIsBottom == true && hamster_pos.transform.position.x >= -1.7)
+        {//움직일때
+            Debug.Log("111");
             left = -0.37f;
             up = 0.25f;
         }
-        if(HamsterIsBottom == false)
+        if (HamsterIsBottom == true && hamster_pos.transform.position.x < -1.7)
         {
-            left = -0.19f;
+            Debug.Log("222");
+            left = 0.18f;
+            up = 0.25f;
+            //gameObject.transform.Translate(2f, 0, 0);
+        }
+        if(HamsterIsBottom == false && hamster_pos.transform.position.x < -1.7)
+        {
+            Debug.Log("333");
+            left = 0.19f;
+            up = 0.46f;
+            //gameObject.transform.Translate(2f, 0, 0);
+        }
+        if(HamsterIsBottom == false && hamster_pos.transform.position.x >= -1.7)
+        {//서있을때
+            Debug.Log("444");
+            left = -0.03f;
             up = 0.46f;
         }
 
-        if(hamsterScript.iamHungry == true && dishScript.isFull == false)
+        if (hamsterScript.iamHungry == true && dishScript.isFull == false)
         {
             animator.SetBool("Active", true);
 

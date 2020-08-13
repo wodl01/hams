@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtenUiManagerScript : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class ButtenUiManagerScript : MonoBehaviour
 
     [SerializeField] dongScript manager;
 
+    [SerializeField] Text shopMenuText;
     public bool canActive;
     public bool shop_CanActive;
 
@@ -37,13 +39,50 @@ public class ButtenUiManagerScript : MonoBehaviour
         if (canActive)
         {
             manager.canActive_Shop = false;
+
+            shopMenuText.text = "가구&소품";
+
             shop_Ui[0].SetActive(true);
             shop_Ui[1].SetActive(true);
             shop_Ui[2].SetActive(true);
             shop_Ui[3].SetActive(true);
             shop_Ui[4].SetActive(true);
+            shop_Ui[5].SetActive(false);
+            shop_Ui[6].SetActive(false);
         }
         
+    }
+    public void Shop_First_Page()
+    {
+        if (shop_CanActive)
+        {
+            manager.canActive_Shop = false;
+
+            shopMenuText.text = "가구&소품";
+
+            shop_Ui[1].SetActive(true);
+            shop_Ui[2].SetActive(true);
+            shop_Ui[3].SetActive(true);
+            shop_Ui[4].SetActive(true);
+            shop_Ui[5].SetActive(false);
+            shop_Ui[6].SetActive(false);
+        }
+    }
+    public void Shop_Second_Page()
+    {
+        if (shop_CanActive)
+        {
+            manager.canActive_Shop = false;
+
+            shopMenuText.text = "배경";
+
+            shop_Ui[1].SetActive(false);
+            shop_Ui[2].SetActive(false);
+            shop_Ui[3].SetActive(false);
+            shop_Ui[4].SetActive(false);
+            shop_Ui[5].SetActive(true);
+            shop_Ui[6].SetActive(true);
+        }
     }
     public void Shop_XButten()
     {
@@ -55,6 +94,8 @@ public class ButtenUiManagerScript : MonoBehaviour
             shop_Ui[2].SetActive(false);
             shop_Ui[3].SetActive(false);
             shop_Ui[4].SetActive(false);
+            shop_Ui[5].SetActive(false);
+            shop_Ui[6].SetActive(false);
             Shop_DishOnClick();
         }
         

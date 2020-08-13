@@ -76,6 +76,7 @@
     <Compile Include="Assets\Heart_Imote_Sprite.cs" />
     <Compile Include="Assets\LetterSpacing.cs" />
     <Compile Include="Assets\Move.cs" />
+    <Compile Include="Assets\ShopManager.cs" />
     <Compile Include="Assets\TextMesh_Layer.cs" />
     <Compile Include="Assets\Think_Sprite.cs" />
     <Compile Include="Assets\Ui_ChangeManager.cs" />

@@ -149,4 +149,20 @@ public class ButtenUiManagerScript : MonoBehaviour
         
         Debug.Log("클릭됨");
     }
+    public void Shop_BeddingOnClick()
+    {
+        if (shop_CanActive)
+        {
+            shopCanvas[4].sortingOrder = 103;
+            shopCanvas[5].sortingOrder = 102;
+        }
+    }
+    public void Shop_WallPaperOnClick()
+    {
+        if (shop_CanActive)
+        {
+            shopCanvas[4].sortingOrder = 102;
+            shopCanvas[5].sortingOrder = 103;
+        }
+    }
 }

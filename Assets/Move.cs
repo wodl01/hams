@@ -30,6 +30,8 @@ public class Move : MonoBehaviour
     bool voidUpdateOnce2 = true;
 
     public int hamsterLv;//1
+    public float hamsterIntimacy;
+    public int hamsterStressValue;
     public float speed;
     public float hunger;
     public int hungerToFeed;
@@ -258,7 +260,9 @@ public class Move : MonoBehaviour
         Uimanager.hamster_Thirsty = thirsty;
         Uimanager.hamster_Sprite.color = hamsterSprite.color;
         Uimanager.hamsterThumbnail = hamster_Thumbnail;
+        Uimanager.hamster_Intimacy = hamsterIntimacy;
         Uimanager.hamster_Lv = hamsterLv;
+        Uimanager.hamster_StressValue = hamsterStressValue;
         
 
         hunger -= Time.deltaTime * 0.3f;
@@ -269,6 +273,14 @@ public class Move : MonoBehaviour
             buttenUiManager.canActive = false;
             manager.canActive_Name = false;
             hamsterNameUi.SetActive(true);
+        }
+        if(hamsterIntimacy > 100)
+        {
+            hamsterIntimacy = 100;
+        }
+        else if(hamsterIntimacy < 0)
+        {
+            hamsterIntimacy = 0;
         }
 
 

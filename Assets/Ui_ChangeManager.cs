@@ -18,12 +18,6 @@ public class Ui_ChangeManager : MonoBehaviour
     public int stage;
 
    // [SerializeField] int maxStageNum;
-
-    private void Start()
-    {
-
-
-    }
     public void PlusOnce()
     {
         stage += 1;
@@ -62,14 +56,14 @@ public class Ui_ChangeManager : MonoBehaviour
                 }
                 imformation[0].SetActive(true);
                 forWardOk = true;
-                Debug.Log("11111");
 
-                Debug.Log("첫번쨰 스테이지" + stage);
+
+
             }
             else if (stage == 1 && code[0].iHave == false)
             {
                 stage++;
-                Debug.Log("스테이지 추가" + stage);
+
             }
 
 
@@ -81,12 +75,12 @@ public class Ui_ChangeManager : MonoBehaviour
                 }
                 imformation[1].SetActive(true);
                 forWardOk = true;
-                Debug.Log("두번쨰 스테이지" + stage);
+
             }
             else if (stage == 2 && code[1].iHave == false)
             {
                 stage++;
-                Debug.Log("스테이지 추가" + stage);
+
             }
 
 
@@ -98,12 +92,12 @@ public class Ui_ChangeManager : MonoBehaviour
                 }
                 imformation[2].SetActive(true);
                 forWardOk = true;
-                Debug.Log("두번쨰 스테이지" + stage);
+
             }
             else if (stage == 3 && code[2].iHave == false)
             {
                 stage++;
-                Debug.Log("스테이지 추가" + stage);
+
             }
 
             if (forWardOk)
@@ -129,12 +123,12 @@ public class Ui_ChangeManager : MonoBehaviour
                 }
                 imformation[2].SetActive(true);
                 backWardOk = true;
-                Debug.Log("두번쨰 스테이지" + stage);
+
             }
             else if (stage == 3 && code[2].iHave == false)
             {
                 stage--;
-                Debug.Log("스테이지 추가" + stage);
+
             }
 
 
@@ -146,12 +140,12 @@ public class Ui_ChangeManager : MonoBehaviour
                 }
                 imformation[1].SetActive(true);
                 backWardOk = true;
-                Debug.Log("두번쨰 스테이지" + stage);
+
             }
             else if (stage == 2 && code[1].iHave == false)
             {
                 stage--;
-                Debug.Log("스테이지 추가" + stage);
+
             }
 
 
@@ -163,8 +157,8 @@ public class Ui_ChangeManager : MonoBehaviour
                 }
                 imformation[0].SetActive(true);
                 backWardOk = true;
-                Debug.Log("11111");
-                Debug.Log("첫번쨰 스테이지" + stage);
+
+
             }
             else if (stage == 1 && code[0].iHave == false)
             {

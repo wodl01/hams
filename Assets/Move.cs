@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    public int id;
     public string name;
     public bool isNamed;
     public bool iHave;

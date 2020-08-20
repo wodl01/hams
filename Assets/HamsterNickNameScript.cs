@@ -40,7 +40,6 @@ public class HamsterNickNameScript : MonoBehaviour
     }
     public void Sure()
     {
-        Debug.Log("dddddddddddd");
         hamsterScript.isNamed = true;
         buttenUiManager.canActive = true;
         hamsterScript.name = hamsterNamingName.text;

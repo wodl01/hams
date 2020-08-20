@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e4c1a8a14c0f34b962de6009a02de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UpForce: 0.004
+  UpForce: 0.008
   TimeToDelete: 1
   parent: {fileID: 5397444336073475650}
 --- !u!114 &6504435454688735769

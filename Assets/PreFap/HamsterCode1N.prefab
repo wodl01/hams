@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e4c1a8a14c0f34b962de6009a02de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UpForce: 0.004
+  UpForce: 0.008
   TimeToDelete: 1
   parent: {fileID: 5397444336073475650}
 --- !u!114 &3694104384643468911
@@ -197,7 +197,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b3bc01cd64641764f9ae78e2d7da86b9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0b83bb59aeae1e84aafe90a8587f6c20, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

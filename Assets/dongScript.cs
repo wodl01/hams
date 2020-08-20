@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class dongScript : MonoBehaviour
 {
     public Camera maincamera;
+    Vector3 mousePos;
+    [SerializeField] float maxDistance;
 
-
+    [SerializeField] GameObject doubleClickOB;
 
     public GameObject warningPreFap;
 
@@ -26,7 +28,9 @@ public class dongScript : MonoBehaviour
     public Text scoreText;
     public Text scoreTextInShop;
 
-
+    private void Start()
+    {
+    }
 
     void Update()
     {
@@ -76,9 +80,18 @@ public class dongScript : MonoBehaviour
                 }
             }
         }
-        
     }
 
+    private void FixedUpdate()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            mousePos = Input.mousePosition;
+            mousePos = maincamera.ScreenToWorldPoint(mousePos);
+
+            Instantiate(doubleClickOB, mousePos, Quaternion.identity);
+        }
+    }
     void DdongEvent(RaycastHit2D hit)
     {
         GameObject go = hit.collider.gameObject;

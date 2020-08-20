@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 5397444336073475663}
   m_Layer: 0
   m_Name: HamsterCode1G
-  m_TagString: GoldenDD
+  m_TagString: DD
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -248,10 +248,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ani: {fileID: 5397444336073475663}
   finalDDMoney: 0
-  hamsterLvMoney: 0
+  hamsterLvMoney: 10
   destroyActive: 0
   once: 0
-  goldenBonus: 0
+  goldenBonus: 2
   coinTextOB: {fileID: 4502340265234811138}
   box: {fileID: 5397444336073475660}
   sprite: {fileID: 5397444336073475661}

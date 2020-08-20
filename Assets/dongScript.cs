@@ -7,7 +7,12 @@ public class dongScript : MonoBehaviour
 {
     public Camera maincamera;
     Vector3 mousePos;
-    [SerializeField] float maxDistance;
+    [SerializeField] float time;
+    [SerializeField] int click;
+    [SerializeField]Vector3 pos1;
+    [SerializeField]Vector3 pos2;
+    [SerializeField]Vector3 pos3;
+    [SerializeField]Vector3 pos4;
 
     [SerializeField] GameObject doubleClickOB;
 
@@ -28,14 +33,27 @@ public class dongScript : MonoBehaviour
     public Text scoreText;
     public Text scoreTextInShop;
 
-    private void Start()
-    {
-    }
 
     void Update()
     {
         scoreText.text = "    " + "<color=#000000>" + score + "</color>" + "@";
         scoreTextInShop.text = "    " + "<color=#000000>" + score + "</color>" + "@";
+        if (Input.GetMouseButtonDown(0) && time <= 0)
+        {
+            mousePos = Input.mousePosition;
+            mousePos = maincamera.ScreenToWorldPoint(mousePos);
+
+
+
+            time = 0.2f;
+            Debug.Log("1click");
+            
+        }
+        else if(Input.GetMouseButtonDown(0) && time > 0)
+        {
+            //Instantiate(doubleClickOB, new Vector3(mousePos.x, mousePos.y, 0), Quaternion.identity);
+            Debug.Log("2click");
+        }
 
 
         if (canActive_My && canActive_Name && canActive_Shop)
@@ -47,7 +65,7 @@ public class dongScript : MonoBehaviour
                 Vector3 cameraPos = maincamera.transform.position;
                 if (hit.collider != null)
                 {
-                    if (hit.collider.tag == "DD" || hit.collider.tag == "GoldenDD")
+                    if (hit.collider.tag == "DD")
                     {
                         DdongEvent(hit);
                     }
@@ -65,6 +83,7 @@ public class dongScript : MonoBehaviour
                         Dish();
                     }
                 }
+
             }
             if (Input.GetMouseButtonDown(0))
             {
@@ -80,17 +99,11 @@ public class dongScript : MonoBehaviour
                 }
             }
         }
-    }
-
-    private void FixedUpdate()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            mousePos = Input.mousePosition;
-            mousePos = maincamera.ScreenToWorldPoint(mousePos);
-
-            Instantiate(doubleClickOB, mousePos, Quaternion.identity);
-        }
+        time -= Time.deltaTime;
+        Debug.DrawRay(pos1, pos2, Color.red);
+        Debug.DrawRay(pos2, pos4, Color.red);
+        Debug.DrawRay(pos4, pos3, Color.red);
+        Debug.DrawRay(pos3, pos1, Color.red);
     }
     void DdongEvent(RaycastHit2D hit)
     {

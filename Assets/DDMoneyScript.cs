@@ -20,15 +20,6 @@ public class DDMoneyScript : MonoBehaviour
     [SerializeField] TextMesh text;
     private void Start()
     {
-
-        if(gameObject.tag == "DD")
-        {
-            goldenBonus = 1;
-        }
-        else
-        {
-            goldenBonus = 2;
-        }
         finalDDMoney = hamsterLvMoney * goldenBonus;
         text.text = "+" + "<color=#000000>" + finalDDMoney + "</color>" + "@";
 

@@ -83,27 +83,27 @@ public class Think_Sprite : MonoBehaviour
 
         if(HamsterIsBottom == true && hamster_pos.transform.position.x >= -1.7)
         {//움직일때
-            Debug.Log("111");
+
             left = -0.37f;
             up = 0.25f;
         }
         if (HamsterIsBottom == true && hamster_pos.transform.position.x < -1.7)
         {
-            Debug.Log("222");
+
             left = 0.18f;
             up = 0.25f;
             //gameObject.transform.Translate(2f, 0, 0);
         }
         if(HamsterIsBottom == false && hamster_pos.transform.position.x < -1.7)
         {
-            Debug.Log("333");
+
             left = 0.19f;
             up = 0.46f;
             //gameObject.transform.Translate(2f, 0, 0);
         }
         if(HamsterIsBottom == false && hamster_pos.transform.position.x >= -1.7)
         {//서있을때
-            Debug.Log("444");
+
             left = -0.03f;
             up = 0.46f;
         }

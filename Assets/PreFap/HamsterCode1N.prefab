@@ -251,7 +251,7 @@ MonoBehaviour:
   hamsterLvMoney: 10
   destroyActive: 0
   once: 0
-  goldenBonus: 0
+  goldenBonus: 1
   coinTextOB: {fileID: 3675392645033850551}
   box: {fileID: 5397444336073475660}
   sprite: {fileID: 5397444336073475661}

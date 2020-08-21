@@ -8,11 +8,9 @@ public class dongScript : MonoBehaviour
     public Camera maincamera;
     Vector3 mousePos;
     [SerializeField] float time;
+    float doubleClick_Cool_Time;
+    [SerializeField] float coolTime;
     [SerializeField] int click;
-    [SerializeField]Vector3 pos1;
-    [SerializeField]Vector3 pos2;
-    [SerializeField]Vector3 pos3;
-    [SerializeField]Vector3 pos4;
 
     [SerializeField] GameObject doubleClickOB;
 
@@ -24,6 +22,8 @@ public class dongScript : MonoBehaviour
     [SerializeField] WaterBowlScript waterBowlScript;
 
     [SerializeField] WarningScript warning;
+
+    [SerializeField] Hamster_Follow_Script followScript;
 
     public bool canActive_My;
     public bool canActive_Name;
@@ -38,22 +38,7 @@ public class dongScript : MonoBehaviour
     {
         scoreText.text = "    " + "<color=#000000>" + score + "</color>" + "@";
         scoreTextInShop.text = "    " + "<color=#000000>" + score + "</color>" + "@";
-        if (Input.GetMouseButtonDown(0) && time <= 0)
-        {
-            mousePos = Input.mousePosition;
-            mousePos = maincamera.ScreenToWorldPoint(mousePos);
-
-
-
-            time = 0.2f;
-            Debug.Log("1click");
-            
-        }
-        else if(Input.GetMouseButtonDown(0) && time > 0)
-        {
-            //Instantiate(doubleClickOB, new Vector3(mousePos.x, mousePos.y, 0), Quaternion.identity);
-            Debug.Log("2click");
-        }
+        
 
 
         if (canActive_My && canActive_Name && canActive_Shop)
@@ -63,6 +48,8 @@ public class dongScript : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
                 Vector3 cameraPos = maincamera.transform.position;
+
+                Debug.Log(hit.collider.tag);
                 if (hit.collider != null)
                 {
                     if (hit.collider.tag == "DD")
@@ -76,34 +63,51 @@ public class dongScript : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
                 Vector3 cameraPos = maincamera.transform.position;
+                Debug.Log(hit.collider.tag);
+
                 if (hit.collider != null)
                 {
                     if (hit.collider.tag == "Dish")
                     {
                         Dish();
                     }
-                }
-
-            }
-            if (Input.GetMouseButtonDown(0))
-            {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
-                Vector3 cameraPos = maincamera.transform.position;
-                if (hit.collider != null)
-                {
                     if (hit.collider.tag == "WaterBowl")
                     {
                         WaterBowl();
                     }
                 }
+
+            }
+
+
+            if (Input.GetMouseButtonDown(0) && time <= 0)
+            {
+                mousePos = Input.mousePosition;
+                mousePos = maincamera.ScreenToWorldPoint(mousePos);
+
+
+
+                time = 0.2f;
+                Debug.Log("1click");
+
+            }
+            else if (Input.GetMouseButtonDown(0) && time > 0 && doubleClick_Cool_Time < 0)
+            {
+                //Instantiate(doubleClickOB, new Vector3(mousePos.x, mousePos.y, 0), Quaternion.identity);
+                Debug.Log("2click");
+                doubleClickOB.SetActive(true);
+                followScript.Check();
+
+                doubleClickOB.transform.position = mousePos + new Vector3(0, 0, 10);
+
+                doubleClick_Cool_Time = coolTime;
             }
         }
+    }
+    private void FixedUpdate()
+    {
         time -= Time.deltaTime;
-        Debug.DrawRay(pos1, pos2, Color.red);
-        Debug.DrawRay(pos2, pos4, Color.red);
-        Debug.DrawRay(pos4, pos3, Color.red);
-        Debug.DrawRay(pos3, pos1, Color.red);
+        doubleClick_Cool_Time -= Time.deltaTime;
     }
     void DdongEvent(RaycastHit2D hit)
     {

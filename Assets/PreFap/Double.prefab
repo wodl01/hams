@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -6208923032235169284}
   m_Layer: 0
   m_Name: Double
-  m_TagString: Untagged
+  m_TagString: Follow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,3 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cad4f9ebd28392499e6f62d43beb7c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointer: {fileID: 6441060734035910943}
+  hamsters:
+  - {fileID: 1368508427968491124, guid: b2f816a19889e344ba721f08542f8dbf, type: 3}
+  hamsterScript: {fileID: 0}

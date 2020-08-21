@@ -426,8 +426,8 @@ MonoBehaviour:
   imote_Icon: {fileID: 1368508428704826951}
   heart: {fileID: 432467993882978204, guid: edcfb42dcbd79564c89e4d7ec8f96a34, type: 3}
   heart_spawn: {fileID: 1368508427949507905}
-  HamsterIsMid: 0
   HamsterIsBottom: 0
+  hamsterIsBottomRight: 0
   voidUpdateOnce: 0
   animator: {fileID: 1368508427959884010}
   hamsterScript: {fileID: 1368508428580914452}
@@ -553,7 +553,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.15, y: 1.15}
+  m_Size: {x: 2.3, y: 2.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -590,7 +590,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcac30967af295447b7d428fcf92e5d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 1
   name: 
   isNamed: 0
   iHave: 1
@@ -607,6 +606,8 @@ MonoBehaviour:
   eatingFood: 0
   eatingWater: 0
   hamsterLv: 0
+  hamsterIntimacy: 0
+  hamsterStressValue: 0
   speed: 0.001
   hunger: 100
   hungerToFeed: 98
@@ -614,7 +615,7 @@ MonoBehaviour:
   thirstyToDrink: 98
   foodcalorie: 40
   watercalorie: 40
-  isGoingtoDish: 0
+  isGoingtoPointer: 0
   iamHungry: 0
   iamThirsty: 0
   hamsterSprite: {fileID: 1368508428580914454}
@@ -668,7 +669,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.15, y: 1.15}
-    newSize: {x: 1.15, y: 1.15}
+    newSize: {x: 2.3, y: 2.3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

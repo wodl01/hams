@@ -154,23 +154,15 @@ MonoBehaviour:
   imote_Icon: {fileID: 1368508428704826951}
   heart: {fileID: 432467993882978204, guid: edcfb42dcbd79564c89e4d7ec8f96a34, type: 3}
   heart_spawn: {fileID: 1368508427949507905}
-  HamsterIsMid: 0
   HamsterIsBottom: 0
+  hamsterIsBottomRight: 0
   voidUpdateOnce: 0
   animator: {fileID: 1368508427959884010}
-  hamster: {fileID: 1368508428580914457}
   hamsterScript: {fileID: 0}
-  dish: {fileID: 0}
   dishScript: {fileID: 0}
-  waterbowl: {fileID: 0}
   waterBowlScript: {fileID: 0}
-  think_Image_OB: {fileID: 1368508428704826951}
   think_sprite: {fileID: 0}
-  think_Image1: {fileID: 21300000, guid: 3d4e4500c22460c41bfa93fde5c01705, type: 3}
-  think_Image2: {fileID: 21300000, guid: 339117802e53d9f4797adbdec581926e, type: 3}
-  think_Image3: {fileID: 21300000, guid: b420e8a319e7aee4ebbb0abff70c99f9, type: 3}
-  think_Image4: {fileID: 0}
-  think_Image5: {fileID: 21300000, guid: baaf68047ed39c940bc9be110aa1b2c6, type: 3}
+  think_Image: []
 --- !u!1 &1368508427968491124
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,7 +173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1368508427968491125}
   m_Layer: 0
-  m_Name: Hamsterbundle
+  m_Name: Hamsterbundle 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -283,7 +275,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.15, y: 1.15}
+  m_Size: {x: 2.3, y: 2.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -320,12 +312,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcac30967af295447b7d428fcf92e5d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: 
+  isNamed: 0
+  iHave: 0
+  ddGoldRate: 0
+  ddValue: 0
+  dD_CoolTime: 15
+  percent: 0
   randomNumCanActive: 1
   hamsterIsMovingToFood: 0
   barrierUp: 0
   barrierDawn: 0
   barrierLeft: 0
   barrierRight: 0
+  eatingFood: 0
+  eatingWater: 0
+  hamsterLv: 0
+  hamsterIntimacy: 0
+  hamsterStressValue: 0
   speed: 0.001
   hunger: 100
   hungerToFeed: 98
@@ -333,35 +337,37 @@ MonoBehaviour:
   thirstyToDrink: 98
   foodcalorie: 40
   watercalorie: 40
-  isGoingtoDish: 0
+  isGoingtoPointer: 0
   iamHungry: 0
   iamThirsty: 0
+  hamsterSprite: {fileID: 0}
   dishIsClosedByHamSter: 0
   barrierNum: 0
   randomNum: 0
   randomTime: 0
-  dD_CoolTime: 15
   eatingTime: 0
-  inputHereNowScale: 1
   isLeft: 0
   ani: {fileID: 1368508428580914453}
-  myHamsterSpriteInformation: {fileID: 0}
-  dish: {fileID: 0}
-  waterbowl: {fileID: 0}
   eatingPos: {fileID: 0}
   drinkingPos: {fileID: 0}
   ddPrefap: {fileID: 1510544124977502264, guid: 29823e76ade9edc43a549d715fa6389d,
     type: 3}
+  goldenDDPrefap: {fileID: 0}
   hamster: {fileID: 1368508428580914457}
-  think_Icon: {fileID: 1368508427959884015}
+  hamsterNameUi: {fileID: 0}
+  thinkScript: {fileID: 0}
+  dishScript: {fileID: 0}
+  waterbowlScript: {fileID: 0}
+  GDDMoneyScript: {fileID: 0}
+  NDDMoneyScript: {fileID: 0}
+  manager: {fileID: 0}
+  buttenUiManager: {fileID: 0}
   randomChangeSprite:
   - {fileID: 21300000, guid: f0ff4a87ad0d0274990f4060592c8132, type: 3}
   - {fileID: 21300000, guid: b3bc01cd64641764f9ae78e2d7da86b9, type: 3}
   - {fileID: 21300000, guid: 0b83bb59aeae1e84aafe90a8587f6c20, type: 3}
   - {fileID: 21300000, guid: 5c2009ef98f105d47905e31d22c0e784, type: 3}
-  dishScript: {fileID: 0}
-  waterbowlScript: {fileID: 0}
-  UiGameManager: {fileID: 0}
+  hamster_Thumbnail: {fileID: 0}
   Uimanager: {fileID: 0}
 --- !u!61 &1368508428580914459
 BoxCollider2D:
@@ -381,7 +387,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.15, y: 1.15}
-    newSize: {x: 1.15, y: 1.15}
+    newSize: {x: 2.3, y: 2.3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

@@ -501,7 +501,6 @@ MonoBehaviour:
   maincamera: {fileID: 519420031}
   time: 0
   coolTime: 10
-  click: 0
   doubleClickOB: {fileID: 6441060735502743857}
   warningPreFap: {fileID: 959241511111642953, guid: c6cbb10eb697c7742a3a07734950dd62,
     type: 3}
@@ -13962,7 +13961,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -99, y: -775}
+  m_AnchoredPosition: {x: -91.37501, y: -775}
   m_SizeDelta: {x: 179.7, y: 77.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &425619282
@@ -18373,7 +18372,6 @@ GameObject:
   m_Component:
   - component: {fileID: 551979192}
   - component: {fileID: 551979191}
-  - component: {fileID: 551979193}
   m_Layer: 0
   m_Name: background
   m_TagString: BackGround
@@ -18446,32 +18444,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &551979193
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 551979190}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.4, y: 9.6}
-    newSize: {x: 5.4, y: 9.6}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 5.4, y: 9.6}
-  m_EdgeRadius: 0
 --- !u!1 &554411131
 GameObject:
   m_ObjectHideFlags: 0
@@ -50387,7 +50359,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -222, y: -328}
+  m_AnchoredPosition: {x: -256.61, y: -328.00006}
   m_SizeDelta: {x: 142, y: 77.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1451269274
@@ -50435,7 +50407,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uD589\uBCF5"
+  m_Text: 100%
 --- !u!222 &1451269276
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -64964,7 +64936,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ca953f9665303724792abe551b86c4d2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e0cfac2de7e040148842fcf10cbfbc3a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -74297,12 +74269,12 @@ PrefabInstance:
     - target: {fileID: 1368508427959884008, guid: b2f816a19889e344ba721f08542f8dbf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.296
       objectReference: {fileID: 0}
     - target: {fileID: 1368508427959884008, guid: b2f816a19889e344ba721f08542f8dbf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.447
       objectReference: {fileID: 0}
     - target: {fileID: 1368508427959884009, guid: b2f816a19889e344ba721f08542f8dbf,
         type: 3}
@@ -74319,10 +74291,20 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1368508427959884015, guid: b2f816a19889e344ba721f08542f8dbf,
+        type: 3}
+      propertyPath: m_TagString
+      value: HamSter
+      objectReference: {fileID: 0}
     - target: {fileID: 1368508427968491124, guid: b2f816a19889e344ba721f08542f8dbf,
         type: 3}
       propertyPath: m_Name
       value: Hamsterbundle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368508427968491124, guid: b2f816a19889e344ba721f08542f8dbf,
+        type: 3}
+      propertyPath: m_TagString
+      value: HamSter
       objectReference: {fileID: 0}
     - target: {fileID: 1368508427968491125, guid: b2f816a19889e344ba721f08542f8dbf,
         type: 3}
@@ -74438,6 +74420,16 @@ PrefabInstance:
         type: 3}
       propertyPath: iHave
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368508428580914452, guid: b2f816a19889e344ba721f08542f8dbf,
+        type: 3}
+      propertyPath: tiredValue
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368508428580914452, guid: b2f816a19889e344ba721f08542f8dbf,
+        type: 3}
+      propertyPath: timeToSleep
+      value: 4.05
       objectReference: {fileID: 0}
     - target: {fileID: 1368508428580914454, guid: b2f816a19889e344ba721f08542f8dbf,
         type: 3}
@@ -74589,6 +74581,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8334169359455799842, guid: b2f816a19889e344ba721f08542f8dbf,
+        type: 3}
+      propertyPath: m_TagString
+      value: HamSter
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2f816a19889e344ba721f08542f8dbf, type: 3}
 --- !u!114 &3014449006086959572
@@ -74607,6 +74604,7 @@ MonoBehaviour:
   hamsters:
   - {fileID: 966709930}
   hamsterScript: {fileID: 0}
+  deleteTime: 0
 --- !u!1 &6441060735502743857
 GameObject:
   m_ObjectHideFlags: 0

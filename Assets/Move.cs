@@ -38,6 +38,10 @@ public class Move : MonoBehaviour
     public int thirstyToDrink;
     public int foodcalorie;
     public int watercalorie;
+    public float tiredValue;
+    public float timeToSleep;
+    public bool isSleep;
+
     public bool isGoingtoPointer;
     public bool iamHungry;
     public bool iamThirsty;
@@ -92,17 +96,22 @@ public class Move : MonoBehaviour
         randomNum = Random.Range(1, 11);
         randomTime = Random.Range(3, 5);
 
-        if (thirsty < thirstyToDrink)//목마를때
+        if (tiredValue <= timeToSleep && !eatingFood && !eatingWater && randomNumCanActive && !hamsterIsMovingToFood)
+        {
+            isSleep = true;
+        }
+
+        if (thirsty < thirstyToDrink && !isSleep)//목마를때
         {
             iamThirsty = true;
         }
-        if(hunger < hungerToFeed)//배고플때
+        if(hunger < hungerToFeed && !isSleep)//배고플때
         {
             iamHungry = true;
         }
 
 
-        if (randomNum == 10 && randomNumCanActive == true && hamsterIsMovingToFood == false && eatingFood == false && eatingWater == false && isGoingtoPointer == false)
+        if (randomNum == 10 && randomNumCanActive && !hamsterIsMovingToFood && !eatingFood && !eatingWater && !isGoingtoPointer)
         {
             randomTime = 5;
             ani.SetBool(" Interaction1Start", true);
@@ -238,7 +247,11 @@ public class Move : MonoBehaviour
     {
         yield return new WaitForSeconds(dD_CoolTime);
         DD();
-        StartCoroutine(DDtime());
+        if (!isSleep)
+        {
+            StartCoroutine(DDtime());
+        }
+        
     }
     
 
@@ -262,12 +275,21 @@ public class Move : MonoBehaviour
         Uimanager.hamster_Intimacy = hamsterIntimacy;
         Uimanager.hamster_Lv = hamsterLv;
         Uimanager.hamster_StressValue = hamsterStressValue;
-        
 
-        hunger -= Time.deltaTime * 0.3f;
-        thirsty -= Time.deltaTime * 0.3f;
+        if (!isSleep)
+        {
+            hunger -= Time.deltaTime * 0.3f;
+            thirsty -= Time.deltaTime * 0.3f;
+            tiredValue -= Time.deltaTime * 0.1f;
+        }
+        if (!hamsterIsMovingToFood && randomNumCanActive && isGoingtoPointer && !isSleep && !eatingFood && !eatingWater)
+        {
+            Transform pointerPos = GameObject.FindWithTag("Follow").transform;
+            hamster.transform.position = Vector3.MoveTowards(transform.position, pointerPos.position, Time.deltaTime * 1);
+        }
 
-        if(isNamed == false)
+
+        if (isNamed == false)
         {
             buttenUiManager.canActive = false;
             manager.canActive_Name = false;
@@ -281,10 +303,19 @@ public class Move : MonoBehaviour
         {
             hamsterIntimacy = 0;
         }
-
+        if(isSleep)
+        {
+            ani.SetBool("IsSleep", true);
+            tiredValue += Time.deltaTime * 0.4f;
+            if(tiredValue > 100)
+            {
+                isSleep = false;
+                ani.SetBool("IsSleep", false);
+            }
+        }
 
         //물통으로 이동
-        if (iamThirsty && waterbowlScript.waterGauge > 0 && !eatingFood && !isGoingtoPointer && randomNumCanActive)
+        if (iamThirsty && waterbowlScript.waterGauge > 0 && !eatingFood  && randomNumCanActive && !isSleep)
         {
             hamsterIsMovingToFood = true;
             Debug.Log("물통으로간다");
@@ -315,7 +346,7 @@ public class Move : MonoBehaviour
             }
         }
         //먹이로 이동
-        else if (iamHungry && dishScript.isFull && !eatingWater && !isGoingtoPointer && randomNumCanActive)
+        else if (iamHungry && dishScript.isFull && !eatingWater && randomNumCanActive && !isSleep)
         {
             hamsterIsMovingToFood = true;
             Debug.Log("먹이로간다");
@@ -345,11 +376,7 @@ public class Move : MonoBehaviour
                 StartCoroutine(EatFood());
             }
         }
-        else if (!hamsterIsMovingToFood && randomNumCanActive && isGoingtoPointer)
-        {
-            Transform pointerPos = GameObject.FindWithTag("Follow").transform;
-            hamster.transform.position = Vector3.MoveTowards(transform.position, pointerPos.position, Time.deltaTime * 1);
-        }
+        
 
 
         else
@@ -390,7 +417,7 @@ public class Move : MonoBehaviour
 
             /////////////////////////////////////////////////////////////////////////////////////
            
-            if(randomNumCanActive == true && hamsterIsMovingToFood == false && eatingFood == false && eatingWater == false && isGoingtoPointer == false)
+            if(randomNumCanActive && !hamsterIsMovingToFood && !eatingFood && !eatingWater && !isGoingtoPointer && !isSleep)
             {
                 if (randomNum == 1)//Idle
                 {

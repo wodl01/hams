@@ -6,12 +6,14 @@ public class Hamster_Follow_Script : MonoBehaviour
 {
     //[SerializeField] GameObject[] hamster;
     [SerializeField] Transform pointer;
-    public GameObject[] hamsters;
+    [SerializeField] GameObject[] hamsters;
     Vector3 positions;
     GameObject target;
     float tempX;
     float tempY;
     [SerializeField] Move hamsterScript;
+    public float deleteTime;
+
     public void Check()
     {
         tempX = 100;
@@ -37,17 +39,22 @@ public class Hamster_Follow_Script : MonoBehaviour
                 }
             }
         }
-        Debug.Log("dddddddddddddd");
         hamsterScript = target.GetComponent<Move>();
         hamsterScript.isGoingtoPointer = true;
     }
     private void FixedUpdate()
     {
+
         if(gameObject.transform.position == target.transform.position)
         {
             hamsterScript.isGoingtoPointer = false;
             gameObject.SetActive(false);
-
         }
+        if(deleteTime < 0)
+        {
+            hamsterScript.isGoingtoPointer = false;
+            gameObject.SetActive(false);
+        }
+        deleteTime -= Time.deltaTime;
     }
 }

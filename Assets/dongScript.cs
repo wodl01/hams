@@ -10,7 +10,6 @@ public class dongScript : MonoBehaviour
     [SerializeField] float time;
     float doubleClick_Cool_Time;
     [SerializeField] float coolTime;
-    [SerializeField] int click;
 
     [SerializeField] GameObject doubleClickOB;
 
@@ -49,7 +48,7 @@ public class dongScript : MonoBehaviour
                 RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
                 Vector3 cameraPos = maincamera.transform.position;
 
-                Debug.Log(hit.collider.tag);
+
                 if (hit.collider != null)
                 {
                     if (hit.collider.tag == "DD")
@@ -63,7 +62,7 @@ public class dongScript : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
                 Vector3 cameraPos = maincamera.transform.position;
-                Debug.Log(hit.collider.tag);
+
 
                 if (hit.collider != null)
                 {
@@ -93,6 +92,7 @@ public class dongScript : MonoBehaviour
             }
             else if (Input.GetMouseButtonDown(0) && time > 0 && doubleClick_Cool_Time < 0)
             {
+                //더블클릭
                 //Instantiate(doubleClickOB, new Vector3(mousePos.x, mousePos.y, 0), Quaternion.identity);
                 Debug.Log("2click");
                 doubleClickOB.SetActive(true);
@@ -101,6 +101,7 @@ public class dongScript : MonoBehaviour
                 doubleClickOB.transform.position = mousePos + new Vector3(0, 0, 10);
 
                 doubleClick_Cool_Time = coolTime;
+                followScript.deleteTime = 5;
             }
         }
     }

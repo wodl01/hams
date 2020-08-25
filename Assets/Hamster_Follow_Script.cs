@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class Hamster_Follow_Script : MonoBehaviour
 {
@@ -11,7 +12,11 @@ public class Hamster_Follow_Script : MonoBehaviour
     GameObject target;
     float tempX;
     float tempY;
-    [SerializeField] Move hamsterScript;
+    public Move hamsterScript;
+    [SerializeField] AIPath hamster_Ai_Script;
+    [SerializeField] AIDestinationSetter hamster_Ai_Script2;
+
+
     public float deleteTime;
 
     public void Check()
@@ -40,21 +45,37 @@ public class Hamster_Follow_Script : MonoBehaviour
             }
         }
         hamsterScript = target.GetComponent<Move>();
+        hamster_Ai_Script = target.GetComponent<AIPath>();
+        hamster_Ai_Script2 = target.GetComponent<AIDestinationSetter>();
+
+
         hamsterScript.isGoingtoPointer = true;
+
+
     }
     private void FixedUpdate()
     {
+        
+        if(gameObject.transform.position == target.transform.position)//닿았을때
+        {
+            hamsterScript.isGoingtoPointer = false;
+            hamster_Ai_Script2.target = null;
+            hamster_Ai_Script.canMove = false;
 
-        if(gameObject.transform.position == target.transform.position)
-        {
-            hamsterScript.isGoingtoPointer = false;
             gameObject.SetActive(false);
         }
-        if(deleteTime < 0)
+        if(deleteTime < 0)//시간이 오래 지났을때
         {
             hamsterScript.isGoingtoPointer = false;
+                        hamster_Ai_Script2.target = null;
+            hamster_Ai_Script.canMove = false;
+
             gameObject.SetActive(false);
         }
+        /*if (gameObject.activeSelf)
+        {
+            Debug.Log("켜짐");
+        }*/
         deleteTime -= Time.deltaTime;
     }
 }

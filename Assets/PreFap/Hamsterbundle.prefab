@@ -486,7 +486,6 @@ GameObject:
   - component: {fileID: 1368508428580914453}
   - component: {fileID: 1368508428580914452}
   - component: {fileID: 1368508428580914459}
-  - component: {fileID: 1368508428580914458}
   m_Layer: 0
   m_Name: Hamster
   m_TagString: HamSter
@@ -615,6 +614,9 @@ MonoBehaviour:
   thirstyToDrink: 98
   foodcalorie: 40
   watercalorie: 40
+  tiredValue: 0
+  timeToSleep: 0
+  isSleep: 0
   isGoingtoPointer: 0
   iamHungry: 0
   iamThirsty: 0
@@ -643,6 +645,8 @@ MonoBehaviour:
     type: 3}
   manager: {fileID: 0}
   buttenUiManager: {fileID: 0}
+  aiScript: {fileID: 0}
+  ai: {fileID: 0}
   randomChangeSprite:
   - {fileID: 21300000, guid: f0ff4a87ad0d0274990f4060592c8132, type: 3}
   - {fileID: 21300000, guid: b3bc01cd64641764f9ae78e2d7da86b9, type: 3}
@@ -677,27 +681,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8520628, y: 0.104830265}
   m_EdgeRadius: 0
---- !u!50 &1368508428580914458
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1368508428580914457}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &1368508428704826951
 GameObject:
   m_ObjectHideFlags: 0

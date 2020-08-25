@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class Move : MonoBehaviour
 {
@@ -62,6 +63,7 @@ public class Move : MonoBehaviour
 
     [SerializeField] GameObject eatingPos;
     [SerializeField] GameObject drinkingPos;
+    [SerializeField] GameObject pointPos;
 
     public GameObject ddPrefap;
     public GameObject goldenDDPrefap;
@@ -76,6 +78,8 @@ public class Move : MonoBehaviour
     public DDMoneyScript NDDMoneyScript;
     public dongScript manager;
     public ButtenUiManagerScript buttenUiManager;
+    [SerializeField] AIDestinationSetter aiScript;
+    [SerializeField] AIPath aiPath;
 
     [SerializeField] Sprite[] randomChangeSprite;
     public Sprite hamster_Thumbnail;
@@ -184,6 +188,8 @@ public class Move : MonoBehaviour
         thirsty += watercalorie;
         if (thirsty > 100) thirsty = 100;
         //애니메이션
+
+        
         yield return new WaitForSeconds(eatingTime);
         eatingWater = false;
         voidUpdateOnce1 = true;
@@ -195,6 +201,8 @@ public class Move : MonoBehaviour
         hunger += foodcalorie;
         if (hunger > 100) hunger = 100;
         //애니메이션
+
+        
         yield return new WaitForSeconds(eatingTime);
         eatingFood = false;
 
@@ -253,8 +261,44 @@ public class Move : MonoBehaviour
         }
         
     }
-    
 
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if(other.tag == "DrinkingPos" && voidUpdateOnce1 == true && hamsterIsMovingToFood && iamThirsty)
+        {
+            voidUpdateOnce1 = false;
+            Debug.Log("물마심");
+            gameObject.transform.position = drinkingPos.transform.position;
+            aiPath.canMove = false;
+            //aiScript.target = null;
+            hamsterIsMovingToFood = false;
+
+            //    Debug.Log("물통에 닿음")
+            eatingWater = true;
+
+            iamThirsty = false;
+
+            StartCoroutine(DrinkWater());
+            
+        }
+        if (other.tag == "EatingPos" && voidUpdateOnce1 == true && hamsterIsMovingToFood && iamHungry)
+        {
+            voidUpdateOnce1 = false;
+            Debug.Log("물마심");
+            gameObject.transform.position = eatingPos.transform.position;
+            aiPath.canMove = false;
+            //aiScript.target = null;
+            hamsterIsMovingToFood = false;
+
+            //    Debug.Log("물통에 닿음")
+            eatingFood = true;
+
+            iamHungry = false;
+
+            StartCoroutine(EatFood());
+
+        }
+    }
 
 
     void ThinkIconUp()
@@ -282,11 +326,25 @@ public class Move : MonoBehaviour
             thirsty -= Time.deltaTime * 0.3f;
             tiredValue -= Time.deltaTime * 0.1f;
         }
+
+        //포인터로 이동
         if (!hamsterIsMovingToFood && randomNumCanActive && isGoingtoPointer && !isSleep && !eatingFood && !eatingWater)
         {
-            Transform pointerPos = GameObject.FindWithTag("Follow").transform;
-            hamster.transform.position = Vector3.MoveTowards(transform.position, pointerPos.position, Time.deltaTime * 1);
+
+            aiScript.target = pointPos.transform;
+            aiPath.canMove = true;
+            if (aiPath.desiredVelocity.x >= 0.01f)
+            {
+                isLeft = false;
+            }
+            else if (aiPath.desiredVelocity.x <= -0.01f)
+            {
+                isLeft = true;
+            }
+            //hamster.transform.position = Vector3.MoveTowards(transform.position, pointerPos.position, Time.deltaTime * 1);
         }
+
+
 
 
         if (isNamed == false)
@@ -319,23 +377,28 @@ public class Move : MonoBehaviour
         {
             hamsterIsMovingToFood = true;
             Debug.Log("물통으로간다");
-            if (hamster.transform.position.x > drinkingPos.transform.position.x)
-            {
-                isLeft = true;
-            }
-            else
+            if (aiPath.desiredVelocity.x >= 0.01f)
             {
                 isLeft = false;
             }
+            else if (aiPath.desiredVelocity.x <= -0.01f)
+            {
+                isLeft = true;
+            }
+
             ani.SetBool("isStop", false);
-            
+            aiScript.target = drinkingPos.transform;
+            aiPath.canMove = true;
+
+
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            hamster.transform.position = Vector3.MoveTowards(transform.position, drinkingPos.transform.position, Time.deltaTime * 1);
+            //hamster.transform.position = Vector3.MoveTowards(transform.position, drinkingPos.transform.position, Time.deltaTime * 1);
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             //Debug.Log("물통으로 이동");
-
+            /*
             if (transform.position == drinkingPos.transform.position && voidUpdateOnce1 == true)//물통에 닿음
             {
+                hamsterIsMovingToFood = false;
                 voidUpdateOnce1 = false;
                 //    Debug.Log("물통에 닿음")
                 eatingWater = true;
@@ -343,30 +406,32 @@ public class Move : MonoBehaviour
                 iamThirsty = false;
 
                 StartCoroutine(DrinkWater());
-            }
+            }*/
         }
         //먹이로 이동
         else if (iamHungry && dishScript.isFull && !eatingWater && randomNumCanActive && !isSleep)
         {
             hamsterIsMovingToFood = true;
             Debug.Log("먹이로간다");
-            if (hamster.transform.position.x > eatingPos.transform.position.x)
-            {
-                isLeft = true;
-            }
-            else
+            if (aiPath.desiredVelocity.x >= 0.01f)
             {
                 isLeft = false;
             }
-
+            else if(aiPath.desiredVelocity.x <= -0.01f)
+            {
+                isLeft = true;
+            }
+            aiScript.target = eatingPos.transform;
+            aiPath.canMove = true;
             ani.SetBool("isStop", false);
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            hamster.transform.position = Vector3.MoveTowards(transform.position, eatingPos.transform.position, Time.deltaTime * 1);
+            //hamster.transform.position = Vector3.MoveTowards(transform.position, eatingPos.transform.position, Time.deltaTime * 1);
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             //Debug.Log("먹이로 이동");
-
+            /*
             if (transform.position == eatingPos.transform.position && voidUpdateOnce2)//먹이에 닿음
             {
+                hamsterIsMovingToFood = false;
                 voidUpdateOnce2 = false;
                 //    Debug.Log("먹이에 닿음");
                 eatingFood = true;
@@ -374,14 +439,14 @@ public class Move : MonoBehaviour
 
 
                 StartCoroutine(EatFood());
-            }
+            }*/
         }
         
 
 
         else
         {
-            hamsterIsMovingToFood = false;
+            
 
             if (barrierNum == 0)
             {

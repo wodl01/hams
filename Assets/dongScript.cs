@@ -24,6 +24,8 @@ public class dongScript : MonoBehaviour
 
     [SerializeField] Hamster_Follow_Script followScript;
 
+    [SerializeField] Move[] hamsterScript;
+
     public bool canActive_My;
     public bool canActive_Name;
     public bool canActive_Shop;
@@ -90,7 +92,7 @@ public class dongScript : MonoBehaviour
                 Debug.Log("1click");
 
             }
-            else if (Input.GetMouseButtonDown(0) && time > 0 && doubleClick_Cool_Time < 0)
+            else if (Input.GetMouseButtonDown(0) && time > 0 && doubleClick_Cool_Time < 0 )
             {
                 //더블클릭
                 //Instantiate(doubleClickOB, new Vector3(mousePos.x, mousePos.y, 0), Quaternion.identity);
@@ -99,7 +101,11 @@ public class dongScript : MonoBehaviour
                 followScript.Check();
 
                 doubleClickOB.transform.position = mousePos + new Vector3(0, 0, 10);
-
+                if (doubleClickOB.transform.position.y > 1.13)
+                {
+                    doubleClickOB.SetActive(false);
+                    followScript.hamsterScript.isGoingtoPointer = false;
+                }
                 doubleClick_Cool_Time = coolTime;
                 followScript.deleteTime = 5;
             }

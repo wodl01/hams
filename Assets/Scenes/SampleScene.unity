@@ -10442,6 +10442,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 300387356}
   m_CullTransparentMesh: 0
+--- !u!1 &301828620
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 301828621}
+  - component: {fileID: 301828622}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: HamsterPos
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &301828621
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301828620}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 966709936}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &301828622
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301828620}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.05, y: 0.05}
+  m_EdgeRadius: 0
 --- !u!1 &304485855
 GameObject:
   m_ObjectHideFlags: 0
@@ -32229,7 +32286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  drawGizmos: 1
+  drawGizmos: 0
   detailedGizmos: 0
   startEndModifier:
     addPoints: 0
@@ -32258,6 +32315,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   target: {fileID: 0}
+--- !u!4 &966709936 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1368508428580914455, guid: b2f816a19889e344ba721f08542f8dbf,
+    type: 3}
+  m_PrefabInstance: {fileID: 1368508428439135916}
+  m_PrefabAsset: {fileID: 0}
 --- !u!50 &966709937
 Rigidbody2D:
   serializedVersion: 4
@@ -32272,39 +32335,13 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &966709938
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 966709930}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.15, y: 1.15}
-    newSize: {x: 2.3, y: 2.3}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.05, y: 0.05}
-  m_EdgeRadius: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &967798674
 GameObject:
   m_ObjectHideFlags: 0
@@ -44093,7 +44130,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -59441,7 +59478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAABIIewxSpk1ZgIAAA8FAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE2TojAQ/StWzqsFrOC4t111nD3MRw27NRcukTSSMiRUEkadKf/7dgII63gxvO7Xef264ZNwaWrIrdJbzdmjYkB+TIg7k2+TIfgAJ7pXMuUf0Oe8cWZLl0R9ziu1XCEeOppRFVjN859yL1xygGAjeaF0tWF7WCljDcIFFQYwpJV1bInQ54Sc8G+6dJQznqKFO33gaRlMLnjMQVrQQ2qfOI1mQbDEX5feZjcyF7SqgTnpAymeLVzqchF27GT23SPJ3NMkNtkxglnkSuZKCG46kcSea29CWpegwbnAOMWevbBwdpcgUgLfl9a1MKY/F4UB2+nW9LzmGt1r65JfqrW0oubQin2nonE3RXHihbVFH7/Ep6EPF1pVD/29YeDusCXPD6/0nFNjR56P4fVIu/fsSMWB7gS8lSCf1FarRjIMWt04amMgWg+P19ZWJeSHAW+l3oBN/XVy/YBdDxff/WkleLXz5s9bIBXKO+73AjSO5zcK9ltjuhKIOhV/Dfyh+/F6dYF7ro3FUNeldPJ2qtEulWy8Z66bxq6UluDhTnQNkgp7fsEy9naEN7HRtTeRe+pepO7yLta/HzcUDw/5QXATelHH67BMqY6PYMrnxgouYRDtAk/o00pJ2W7Y2JOelja6oPmItm84+3+1yCJKkiCe3+VhtIxgsZwCZfEiSKIwjhndhTHxu8cl9knFSyu0swenJofiEves/75MtprWftuZpsct/6jUyHIuC5XmGkA+txWuwkHjJfhqsg3jaFAK1nLp500+MyJUfgCWXQtlvtPNyWqaDVUyUvN3ZR2SkZX/oGTkQi7/AFBLAwQUAAAICAAASCHs+EvyC20AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNVRUEovSizIKAaKGII4pZkpIHa0krmRmZmBqYlFsqGRpVGquaVuamKKqbmBmZGhqWlKYpKhqVIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAASCHsMUqZNWYCAAAPBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAASCHs+EvyC20AAAB4AAAACQAkAAAAAAAAAAAAAACzAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAGsDAAAAAA==
+    dataString: UEsDBBQAAAgIAABIIeypT6ykZAIAABAFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VMFy2jAQ/RVG58LYLjahtxYI6YEkE9LJxRdhrbEGWfJIcoBk+PeuZBu7ZMoF+e2+1du3a38SLk0FmVV6rTnbKAbkx4i4M/k26oMPcKJ7Jbf8A7qcN85s4ZKoz3mhlivEQ0czqgSrefZT7oVLDhCsJc+VLldsDwtlrEE4p8IAhrSyji0R+hyRE/6N545yxlM0c6cPPM2D0QWPGUgLuk/tEsfRJAjm+GvTm+xaZoKWFTAnvSfFk5lLnc/Clp1MvnskmXqaxCZbRjCJXMlMCcFNK5LYc+VN2FYFaHAuME6xZy8snNwliBTA94V1LQzpT3luwLa6NT0vuUb3mrrkl2osLak5NGLfqajdTVGceGFN0c2X+Dj04Vyr8qG7NwzcHbbg2eGFnjNq7MDzIbwcaPeeHak40J2AtwLko1prVUuGQatrR60NRMv+8draooDs0OON1Buwrr5Orhuw6+Hiuz8tBC933vxpA2yF8o77vQCN4/mNgv3WmLYEok7FHwOvdD9crzZwz7WxGGq7lE7eTtXapZKV98x1U9uF0hL0sEIFkgp7fsY69naGN7H/s+6pe5Pa29tY94LcUDzc5wfBTehZHa/TMoU6bsAUT7UVXEJvtQs8olELJWWzYsOWOtq21jnNBrR9zdm/u0VmUZIE8fQuC6N5BLP5GCiLZ0EShXHM6C6MiV8+LrFPKp4boa09ODbZF5e4aN0HZrTWtPLrzjQ9rvlHqUyfyWWutpkGkE9Nhatw0HgJvptsxTgatAVrufQDJ58pESo7AEuvhVLf6epkNU37Kimp+LuyDknJwn9RUnIhl79QSwMEFAAACAgAAEgh7PhL8gttAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTVUVBKL0osyCgGihiCOKWZKSB2tJK5kZmZgamJRbKhkaVRqrmlbmpiiqm5gZmRoalpSmKSoalSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAEgh7KlPrKRkAgAAEAUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAEgh7PhL8gttAAAAeAAAAAkAJAAAAAAAAAAAAAAAsQIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAABpAwAAAAA=
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -62594,7 +62631,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -74743,7 +74780,7 @@ PrefabInstance:
     - target: {fileID: 1368508428580914452, guid: b2f816a19889e344ba721f08542f8dbf,
         type: 3}
       propertyPath: speed
-      value: 0.003
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: 1368508428580914452, guid: b2f816a19889e344ba721f08542f8dbf,
         type: 3}
@@ -74780,6 +74817,11 @@ PrefabInstance:
       propertyPath: aiPath
       value: 
       objectReference: {fileID: 966709931}
+    - target: {fileID: 1368508428580914452, guid: b2f816a19889e344ba721f08542f8dbf,
+        type: 3}
+      propertyPath: rigid
+      value: 
+      objectReference: {fileID: 966709937}
     - target: {fileID: 1368508428580914454, guid: b2f816a19889e344ba721f08542f8dbf,
         type: 3}
       propertyPath: m_Color.r

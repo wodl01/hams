@@ -85,6 +85,7 @@
     <Compile Include="Assets\WaterBowlScript.cs" />
     <Compile Include="Assets\dongScript.cs" />
     <Compile Include="Assets\imformScript.cs" />
+    <Compile Include="Assets\test.cs" />
     <None Include="Assets\Font\vvd.fnt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/Administrator/Desktop/hams/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

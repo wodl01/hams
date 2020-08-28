@@ -63,6 +63,7 @@ public class Hamster_Follow_Script : MonoBehaviour
             hamster_Ai_Script.canMove = false;
 
             gameObject.SetActive(false);
+            Debug.Log("포인트에 닿음");
         }
         if(deleteTime < 0)//시간이 오래 지났을때
         {

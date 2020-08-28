@@ -47,7 +47,8 @@ public class Move : MonoBehaviour
     public bool iamHungry;
     public bool iamThirsty;
 
-    public SpriteRenderer hamsterSprite; 
+    public SpriteRenderer hamsterSprite;
+    [SerializeField] Rigidbody2D rigid;
 
     [SerializeField] bool dishIsClosedByHamSter;
 
@@ -264,13 +265,14 @@ public class Move : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if(other.tag == "DrinkingPos" && voidUpdateOnce1 == true && hamsterIsMovingToFood && iamThirsty)
+        if(other.tag == "DrinkingPos" && voidUpdateOnce1 == true && hamsterIsMovingToFood && iamThirsty && waterbowlScript.waterGauge > 0)
         {
             voidUpdateOnce1 = false;
             Debug.Log("물마심");
             gameObject.transform.position = drinkingPos.transform.position;
             aiPath.canMove = false;
-            //aiScript.target = null;
+            
+
             hamsterIsMovingToFood = false;
 
             //    Debug.Log("물통에 닿음")
@@ -281,7 +283,7 @@ public class Move : MonoBehaviour
             StartCoroutine(DrinkWater());
             
         }
-        if (other.tag == "EatingPos" && voidUpdateOnce1 == true && hamsterIsMovingToFood && iamHungry)
+        if (other.tag == "EatingPos" && voidUpdateOnce1 == true && hamsterIsMovingToFood && iamHungry && dishScript.isFull)
         {
             voidUpdateOnce1 = false;
             Debug.Log("물마심");
@@ -341,7 +343,7 @@ public class Move : MonoBehaviour
             {
                 isLeft = true;
             }
-            //hamster.transform.position = Vector3.MoveTowards(transform.position, pointerPos.position, Time.deltaTime * 1);
+            
         }
 
 
@@ -455,23 +457,27 @@ public class Move : MonoBehaviour
 
             if (barrierNum == 1)
             {
-                transform.position += (new Vector3(0, -speed));//아래
+                //transform.position += (new Vector3(0, -speed));//아래
+                rigid.AddForce(new Vector3(0, -speed, 0));
                 ani.SetBool("isStop", false);
             }
             if (barrierNum == 2)
             {
-                transform.position += (new Vector3(0, speed));//위
+                //transform.position += (new Vector3(0, speed));//위
+                rigid.AddForce(new Vector3(0, speed, 0));
                 ani.SetBool("isStop", false);
             }
             if (barrierNum == 3)
             {
-                transform.position += (new Vector3(-speed, 0));//왼쪽
+                //transform.position += (new Vector3(-speed, 0));//왼쪽
+                rigid.AddForce(new Vector3(-speed, 0, 0));
                 ani.SetBool("isStop", false);
                 isLeft = true;
             }
             if (barrierNum == 4)
             {
-                transform.position += (new Vector3(speed, 0));//오른쪽
+                //transform.position += (new Vector3(speed, 0));//오른쪽
+                rigid.AddForce(new Vector3(speed, 0, 0));
                 ani.SetBool("isStop", false);
                 isLeft = false;
             }
@@ -481,30 +487,40 @@ public class Move : MonoBehaviour
 
 
             /////////////////////////////////////////////////////////////////////////////////////
-           
-            if(randomNumCanActive && !hamsterIsMovingToFood && !eatingFood && !eatingWater && !isGoingtoPointer && !isSleep)
+
+            if (Input.GetKey(KeyCode.Q))
+            {
+                Debug.Log("간다");
+                rigid.AddForce(transform.forward * 12);
+            }
+            if (randomNumCanActive && !hamsterIsMovingToFood && !eatingFood && !eatingWater && !isGoingtoPointer && !isSleep)
             {
                 if (randomNum == 1)//Idle
                 {
                     transform.position += (new Vector3(0, 0));
+                    
+                    
                     ani.SetBool("isStop", true);
                 //    Debug.Log("가만히");
                 }
                 if (randomNum == 2)//Up
                 {
                     transform.position += (new Vector3(0, speed));
+                    
                     ani.SetBool("isStop", false);
                 //    Debug.Log("위");
                 }
                 if (randomNum == 3)//Dawn
                 {
                     transform.position += (new Vector3(0, -speed));
+                    
                     ani.SetBool("isStop", false);
                  //   Debug.Log("아래");
                 }
                 if (randomNum == 4)//Right
                 {
                     transform.position += (new Vector3(speed, 0));
+                    
                     ani.SetBool("isStop", false);
                     isLeft = false;
                 //    Debug.Log("오른쪽");
@@ -512,6 +528,7 @@ public class Move : MonoBehaviour
                 if (randomNum == 5)//Left
                 {
                     transform.position += (new Vector3(-speed, 0));
+                    
                     ani.SetBool("isStop", false);
                     isLeft = true;
                 //    Debug.Log("왼쪽");
@@ -519,6 +536,7 @@ public class Move : MonoBehaviour
                 if (randomNum == 6)//Up.Left
                 {
                     transform.position += (new Vector3(-speed, speed));
+                    
                     ani.SetBool("isStop", false);
                     isLeft = true;
                 //    Debug.Log("위,왼쪽");
@@ -526,6 +544,7 @@ public class Move : MonoBehaviour
                 if (randomNum == 7)//Up.Right
                 {
                     transform.position += (new Vector3(speed, speed));
+                    
                     ani.SetBool("isStop", false);
                     isLeft = false;
                  //   Debug.Log("위,오른쪽");
@@ -533,6 +552,7 @@ public class Move : MonoBehaviour
                 if (randomNum == 8)//Dawn.Left
                 {
                     transform.position += (new Vector3(-speed, -speed));
+                   
                     ani.SetBool("isStop", false);
                     isLeft = true;
                   //  Debug.Log("아래,왼쪽");
@@ -540,6 +560,7 @@ public class Move : MonoBehaviour
                 if (randomNum == 9)//Dawn.Right
                 {
                     transform.position += (new Vector3(speed, -speed));
+                    
                     ani.SetBool("isStop", false);
                     isLeft = false;
                   //  Debug.Log("아래,오른쪽");
@@ -552,10 +573,12 @@ public class Move : MonoBehaviour
         if (isLeft == true)
         {
             transform.localScale = new Vector3(1, 1);
+            //hamsterSprite.flipX = false;
         }
         if (isLeft == false)
         {
             transform.localScale = new Vector3(-1, 1);
+            //hamsterSprite.flipX = true;
         }
     }
 }

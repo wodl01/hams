@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Pathfinding;
 
 public class dongScript : MonoBehaviour
 {
@@ -44,6 +45,11 @@ public class dongScript : MonoBehaviour
 
         if (canActive_My && canActive_Name && canActive_Shop)
         {
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                AstarPath.active.Scan();
+            }
+
             if (Input.GetMouseButton(0))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

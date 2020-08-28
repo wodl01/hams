@@ -14,6 +14,7 @@ TagManager:
   - Ui
   - EatingPos
   - DrinkingPos
+  - HamsterPos
   layers:
   - Default
   - TransparentFX

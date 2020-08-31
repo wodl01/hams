@@ -12,6 +12,8 @@ public class Barrer : MonoBehaviour
     public bool Left;
     public bool Right;
 
+    [SerializeField] bool isProp;
+
     public BoxCollider2D box;
 
     
@@ -43,6 +45,8 @@ public class Barrer : MonoBehaviour
         if (other.tag == "HamSter")
         {
             Debug.Log("닿음1");
+
+            if (isProp) movScript.isPropBarrier = true;
 
             if (Up == true) movScript.barrierUp = true;
             if (Dawn == true) movScript.barrierDawn = true;

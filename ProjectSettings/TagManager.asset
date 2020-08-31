@@ -15,6 +15,7 @@ TagManager:
   - EatingPos
   - DrinkingPos
   - HamsterPos
+  - HamsterEatPoss
   layers:
   - Default
   - TransparentFX

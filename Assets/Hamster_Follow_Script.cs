@@ -53,18 +53,25 @@ public class Hamster_Follow_Script : MonoBehaviour
 
 
     }
-    private void FixedUpdate()
+
+    void OnTriggerEnter2D(Collider2D other)
     {
-        
-        if(gameObject.transform.position == target.transform.position)//닿았을때
+        if(other.tag == "HamsterEatPoss")
         {
+            Debug.Log("포인트에 닿음");
+            target.transform.position = gameObject.transform.position;
             hamsterScript.isGoingtoPointer = false;
             hamster_Ai_Script2.target = null;
             hamster_Ai_Script.canMove = false;
 
             gameObject.SetActive(false);
-            Debug.Log("포인트에 닿음");
+            
         }
+    }
+    private void FixedUpdate()
+    {
+        
+        
         if(deleteTime < 0)//시간이 오래 지났을때
         {
             hamsterScript.isGoingtoPointer = false;

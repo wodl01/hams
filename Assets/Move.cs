@@ -22,6 +22,8 @@ public class Move : MonoBehaviour
     public bool barrierDawn;
     public bool barrierLeft;
     public bool barrierRight;
+    public bool isPropBarrier;
+    [SerializeField] float barrierWaitTime;
     [SerializeField] bool eatingFood;
     [SerializeField] bool eatingWater;
 
@@ -139,10 +141,13 @@ public class Move : MonoBehaviour
 
     public IEnumerator StopMove()
     {
+        
         barrierNum = 0;
         randomNumCanActive = false;
+        if (isPropBarrier) barrierWaitTime = 0.5f;
+        else barrierWaitTime = 3;
         Debug.Log("방벽에 닿아 멈춤");
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(barrierWaitTime);
 
         
 
@@ -174,8 +179,9 @@ public class Move : MonoBehaviour
         barrierDawn = false;
         barrierLeft = false;
         barrierRight = false;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(barrierWaitTime);
         barrierNum = 5;
+        isPropBarrier = false;
         randomNumCanActive = true;
     }
 
@@ -275,7 +281,7 @@ public class Move : MonoBehaviour
 
             hamsterIsMovingToFood = false;
 
-            //    Debug.Log("물통에 닿음")
+            
             eatingWater = true;
 
             iamThirsty = false;
@@ -289,10 +295,8 @@ public class Move : MonoBehaviour
             Debug.Log("물마심");
             gameObject.transform.position = eatingPos.transform.position;
             aiPath.canMove = false;
-            //aiScript.target = null;
-            hamsterIsMovingToFood = false;
 
-            //    Debug.Log("물통에 닿음")
+            hamsterIsMovingToFood = false;
             eatingFood = true;
 
             iamHungry = false;
@@ -457,27 +461,27 @@ public class Move : MonoBehaviour
 
             if (barrierNum == 1)
             {
-                //transform.position += (new Vector3(0, -speed));//아래
-                rigid.AddForce(new Vector3(0, -speed, 0));
+                transform.position += (new Vector3(0, -speed));//아래
+                //rigid.AddForce(new Vector3(0, -speed, 0));
                 ani.SetBool("isStop", false);
             }
             if (barrierNum == 2)
             {
-                //transform.position += (new Vector3(0, speed));//위
-                rigid.AddForce(new Vector3(0, speed, 0));
+                transform.position += (new Vector3(0, speed));//위
+                //rigid.AddForce(new Vector3(0, speed, 0));
                 ani.SetBool("isStop", false);
             }
             if (barrierNum == 3)
             {
-                //transform.position += (new Vector3(-speed, 0));//왼쪽
-                rigid.AddForce(new Vector3(-speed, 0, 0));
+                transform.position += (new Vector3(-speed, 0));//왼쪽
+                //rigid.AddForce(new Vector3(-speed, 0, 0));
                 ani.SetBool("isStop", false);
                 isLeft = true;
             }
             if (barrierNum == 4)
             {
-                //transform.position += (new Vector3(speed, 0));//오른쪽
-                rigid.AddForce(new Vector3(speed, 0, 0));
+                transform.position += (new Vector3(speed, 0));//오른쪽
+                //rigid.AddForce(new Vector3(speed, 0, 0));
                 ani.SetBool("isStop", false);
                 isLeft = false;
             }

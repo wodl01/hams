@@ -27,9 +27,10 @@ public class DishChoiceScript : MonoBehaviour
     public void _1Item_1_Cellect()
     {
         butten[0].sprite = celectedButtenSprite;
-        dishShape.sprite = dishItem[0];
+        
         if(dish_Shop == true)
         {
+            dishShape.sprite = dishItem[0];
             feedShape.sprite = feedItem[0];
             feedShape2.sprite = feedItem2[0];
         }
@@ -38,9 +39,10 @@ public class DishChoiceScript : MonoBehaviour
     public void _1Item_2_Cellect()
     {
         butten[1].sprite = celectedButtenSprite;
-        dishShape.sprite = dishItem[1];
+        
         if (dish_Shop == true)
         {
+            dishShape.sprite = dishItem[1];
             feedShape.sprite = feedItem[1];
             feedShape2.sprite = feedItem2[1];
         }
@@ -48,9 +50,10 @@ public class DishChoiceScript : MonoBehaviour
     public void _1Item_3_Cellect()
     {
         butten[2].sprite = celectedButtenSprite;
-        dishShape.sprite = dishItem[2];
+        
         if (dish_Shop == true)
         {
+            dishShape.sprite = dishItem[2];
             feedShape.sprite = feedItem[2];
             feedShape2.sprite = feedItem2[2];
         }
@@ -58,9 +61,10 @@ public class DishChoiceScript : MonoBehaviour
     public void _1Item_4_Cellect()
     {
         butten[3].sprite = celectedButtenSprite;
-        dishShape.sprite = dishItem[3];
+        
         if (dish_Shop == true)
         {
+            dishShape.sprite = dishItem[3];
             feedShape.sprite = feedItem[3];
             feedShape2.sprite = feedItem2[3];
         }
@@ -68,9 +72,10 @@ public class DishChoiceScript : MonoBehaviour
     public void _1Item_5_Cellect()
     {
         butten[4].sprite = celectedButtenSprite;
-        dishShape.sprite = dishItem[4];
+        
         if (dish_Shop == true)
         {
+            dishShape.sprite = dishItem[4];
             feedShape.sprite = feedItem[4];
             feedShape2.sprite = feedItem2[4];
         }
@@ -78,9 +83,10 @@ public class DishChoiceScript : MonoBehaviour
     public void _1Item_6_Cellect()
     {
         butten[5].sprite = celectedButtenSprite;
-        dishShape.sprite = dishItem[5];
+        
         if (dish_Shop == true)
         {
+            dishShape.sprite = dishItem[5];
             feedShape.sprite = feedItem[5];
             feedShape2.sprite = feedItem2[5];
         }
@@ -88,9 +94,10 @@ public class DishChoiceScript : MonoBehaviour
     public void _1Item_7_Cellect()
     {
         butten[6].sprite = celectedButtenSprite;
-        dishShape.sprite = dishItem[6];
+        
         if (dish_Shop == true)
         {
+            dishShape.sprite = dishItem[6];
             feedShape.sprite = feedItem[6];
             feedShape2.sprite = feedItem2[6];
         }
@@ -98,9 +105,10 @@ public class DishChoiceScript : MonoBehaviour
     public void _1Item_8_Cellect()
     {
         butten[7].sprite = celectedButtenSprite;
-        dishShape.sprite = dishItem[7];
+        
         if (dish_Shop == true)
         {
+            dishShape.sprite = dishItem[7];
             feedShape.sprite = feedItem[7];
             feedShape2.sprite = feedItem2[7];
         }
@@ -108,6 +116,8 @@ public class DishChoiceScript : MonoBehaviour
 
 
     ///////////////////////////////////////////////////////////
+    
+    /*
     public void _2Item_1_Canceled()
     {
         butten[0].sprite = notCelectedButtenSprite;
@@ -131,5 +141,5 @@ public class DishChoiceScript : MonoBehaviour
     public void _2Item_6_Canceled()
     {
         butten[5].sprite = notCelectedButtenSprite;
-    }
+    }*/
 }

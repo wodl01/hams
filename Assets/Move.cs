@@ -52,10 +52,10 @@ public class Move : MonoBehaviour
     public bool isGoingtoPointer;
     public bool iamHungry;
     public bool iamThirsty;
-    bool isClean;
+    [SerializeField]bool isClean;
 
     public SpriteRenderer hamsterSprite;
-    [SerializeField] Rigidbody2D rigid;
+
 
     [SerializeField] bool dishIsClosedByHamSter;
 
@@ -69,6 +69,10 @@ public class Move : MonoBehaviour
 
     public Animator ani;
 
+    [SerializeField] Transform bathingPos;
+
+    [SerializeField] GameObject bath;
+
     [SerializeField] GameObject eatingPos;
     [SerializeField] GameObject drinkingPos;
     [SerializeField] GameObject pointPos;
@@ -76,7 +80,6 @@ public class Move : MonoBehaviour
 
     public GameObject ddPrefap;
     public GameObject goldenDDPrefap;
-    public GameObject hamster;
     public GameObject hamsterNameUi;
 
 
@@ -124,8 +127,8 @@ public class Move : MonoBehaviour
         }
         if(cleanTime < 0 && !isSleep)
         {
-            int a = Random.Range(1, 9);
-            if(a == 5)
+            int a = Random.Range(1, 4);//1~3
+            if(a == 1)
             {
                 isClean = false;
             }
@@ -235,7 +238,14 @@ public class Move : MonoBehaviour
     }
     IEnumerator Bathing()
     {
+        Debug.Log("dldoeoelwlwos");
+        isClean = true;
+        cleanTime = 60;
+        gameObject.transform.position = bathingPos.position;
+        ani.SetBool("IsBath", true);
+        yield return new WaitForSeconds(5);
 
+        bathing = false;
     }
 
 
@@ -256,7 +266,7 @@ public class Move : MonoBehaviour
         if (isGold == false)//일반일떄
         {
             //형태변형
-            ddPrefap.GetComponent<SpriteRenderer>().sprite = randomChangeSprite[Random.Range(0, 4)];
+            
             //똥가치 설정
             NDDMoneyScript.hamsterLvMoney = ddValue;
             //일반생성
@@ -264,11 +274,10 @@ public class Move : MonoBehaviour
 
 
         }
-
         else//황금일때
         {
             //형태변경
-            goldenDDPrefap.GetComponent<SpriteRenderer>().sprite = randomChangeSprite[4];
+            
             //똥가치 설정
             GDDMoneyScript.hamsterLvMoney = ddValue;
             //황금생성
@@ -334,11 +343,9 @@ public class Move : MonoBehaviour
             aiPath.canMove = false;
 
             hamsterIsMovingToFood = false;
-            eatingFood = true;
-
             bathing = true;
 
-            StartCoroutine(EatFood());
+            StartCoroutine(Bathing());
 
         }
     }
@@ -374,7 +381,7 @@ public class Move : MonoBehaviour
 
 
         //포인터로 이동
-        if (!hamsterIsMovingToFood && randomNumCanActive && isGoingtoPointer && !isSleep && !eatingFood && !eatingWater)
+        if (!hamsterIsMovingToFood && randomNumCanActive && isGoingtoPointer && !isSleep && !eatingFood && !eatingWater && !bathing)
         {
 
             aiScript.target = pointPos.transform;
@@ -475,52 +482,54 @@ public class Move : MonoBehaviour
 
         else
         {
+            if(hamsterIsMovingToFood || isGoingtoPointer)
+            {
+                if(eatingFood || eatingWater || bathing)
+                {
+                    if (barrierNum == 0)
+                    {
+                        ani.SetBool("isStop", true);
+                    }
+
+                    if (barrierNum == 1)
+                    {
+                        transform.position += (new Vector3(0, -speed));//아래
+                                                                       //rigid.AddForce(new Vector3(0, -speed, 0));
+                        ani.SetBool("isStop", false);
+                    }
+                    if (barrierNum == 2)
+                    {
+                        transform.position += (new Vector3(0, speed));//위
+                                                                      //rigid.AddForce(new Vector3(0, speed, 0));
+                        ani.SetBool("isStop", false);
+                    }
+                    if (barrierNum == 3)
+                    {
+                        transform.position += (new Vector3(-speed, 0));//왼쪽
+                                                                       //rigid.AddForce(new Vector3(-speed, 0, 0));
+                        ani.SetBool("isStop", false);
+                        isLeft = true;
+                    }
+                    if (barrierNum == 4)
+                    {
+                        transform.position += (new Vector3(speed, 0));//오른쪽
+                                                                      //rigid.AddForce(new Vector3(speed, 0, 0));
+                        ani.SetBool("isStop", false);
+                        isLeft = false;
+                    }
+                }
+            }
+
             
 
-            if (barrierNum == 0)
-            {
-                ani.SetBool("isStop", true);
-            }
-
-            if (barrierNum == 1)
-            {
-                transform.position += (new Vector3(0, -speed));//아래
-                //rigid.AddForce(new Vector3(0, -speed, 0));
-                ani.SetBool("isStop", false);
-            }
-            if (barrierNum == 2)
-            {
-                transform.position += (new Vector3(0, speed));//위
-                //rigid.AddForce(new Vector3(0, speed, 0));
-                ani.SetBool("isStop", false);
-            }
-            if (barrierNum == 3)
-            {
-                transform.position += (new Vector3(-speed, 0));//왼쪽
-                //rigid.AddForce(new Vector3(-speed, 0, 0));
-                ani.SetBool("isStop", false);
-                isLeft = true;
-            }
-            if (barrierNum == 4)
-            {
-                transform.position += (new Vector3(speed, 0));//오른쪽
-                //rigid.AddForce(new Vector3(speed, 0, 0));
-                ani.SetBool("isStop", false);
-                isLeft = false;
-            }
-
             /////////////////////////////////////////////////////////////////////////////////////
 
 
 
             /////////////////////////////////////////////////////////////////////////////////////
 
-            if (Input.GetKey(KeyCode.Q))
-            {
-                Debug.Log("간다");
-                rigid.AddForce(transform.forward * 12);
-            }
-            if (randomNumCanActive && !hamsterIsMovingToFood && !eatingFood && !eatingWater && !isGoingtoPointer && !isSleep)
+
+            if (randomNumCanActive && !hamsterIsMovingToFood && !eatingFood && !eatingWater && !isGoingtoPointer && !isSleep && !bathing)
             {
                 if (randomNum == 1)//Idle
                 {

@@ -14,7 +14,6 @@ public class Barrer : MonoBehaviour
 
     [SerializeField] bool isProp;
 
-    public BoxCollider2D box;
 
     
 

@@ -9,6 +9,7 @@ public class Move : MonoBehaviour
     public bool isNamed;
     public bool iHave;
 
+    [SerializeField] bool canMove;
 
     public int ddGoldRate;
     public int ddValue;//1
@@ -17,7 +18,7 @@ public class Move : MonoBehaviour
     public int percent;
 
     public bool randomNumCanActive;
-    public bool hamsterIsMovingToFood;
+    public bool hamsterIsMovingToOB;
     public bool barrierUp;
     public bool barrierDawn;
     public bool barrierLeft;
@@ -112,7 +113,7 @@ public class Move : MonoBehaviour
         randomNum = Random.Range(1, 11);
         randomTime = Random.Range(3, 5);
 
-        if (tiredValue <= timeToSleep && !eatingFood && !eatingWater && randomNumCanActive && !hamsterIsMovingToFood)
+        if (tiredValue <= timeToSleep && !eatingFood && !eatingWater && randomNumCanActive && !hamsterIsMovingToOB)
         {
             isSleep = true;
         }
@@ -128,7 +129,7 @@ public class Move : MonoBehaviour
         if(cleanTime < 0 && !isSleep)
         {
             int a = Random.Range(1, 4);//1~3
-            if(a == 1)
+            if(a == 1 || a == 2 || a == 3)
             {
                 isClean = false;
             }
@@ -139,10 +140,11 @@ public class Move : MonoBehaviour
             
         }
 
-        if (randomNum == 10 && randomNumCanActive && !hamsterIsMovingToFood && !eatingFood && !eatingWater && !isGoingtoPointer && !isSleep)
+        if (randomNum == 10 && randomNumCanActive && !hamsterIsMovingToOB && !eatingFood && !eatingWater && !isGoingtoPointer && !isSleep)
         {
-            randomTime = 5;
+            randomTime = 5;            
             ani.SetBool(" Interaction1Start", true);
+            canMove = false;
             yield return new WaitForSeconds(randomTime);
             ani.SetBool(" Interaction1Start", false);
             randomTime = 0;
@@ -158,7 +160,10 @@ public class Move : MonoBehaviour
     }
 
 
-
+    public void CanMove()
+    {
+        canMove = true;
+    }
 
     public IEnumerator StopMove()
     {
@@ -242,9 +247,12 @@ public class Move : MonoBehaviour
         isClean = true;
         cleanTime = 60;
         gameObject.transform.position = bathingPos.position;
+        canMove = false;
         ani.SetBool("IsBath", true);
         yield return new WaitForSeconds(5);
-
+        gameObject.transform.position = bathPos.transform.position;
+        ani.SetBool("IsBath", false);
+        ani.SetBool("isStop", false);
         bathing = false;
     }
 
@@ -302,15 +310,15 @@ public class Move : MonoBehaviour
     
     private void OnTriggerStay2D(Collider2D other)
     {
-        if(other.tag == "DrinkingPos" && voidUpdateOnce1 == true && hamsterIsMovingToFood && iamThirsty && waterbowlScript.waterGauge > 0)
+        if(other.tag == "DrinkingPos" && voidUpdateOnce1 == true && hamsterIsMovingToOB && iamThirsty && waterbowlScript.waterGauge > 0)
         {
             voidUpdateOnce1 = false;
             Debug.Log("물마심");
             gameObject.transform.position = drinkingPos.transform.position;
             aiPath.canMove = false;
-            
 
-            hamsterIsMovingToFood = false;
+
+            hamsterIsMovingToOB = false;
 
             
             eatingWater = true;
@@ -320,14 +328,14 @@ public class Move : MonoBehaviour
             StartCoroutine(DrinkWater());
             
         }
-        if (other.tag == "EatingPos" && voidUpdateOnce1 == true && hamsterIsMovingToFood && iamHungry && dishScript.isFull)
+        if (other.tag == "EatingPos" && voidUpdateOnce1 == true && hamsterIsMovingToOB && iamHungry && dishScript.isFull)
         {
             voidUpdateOnce1 = false;
             Debug.Log("물마심");
             gameObject.transform.position = eatingPos.transform.position;
             aiPath.canMove = false;
 
-            hamsterIsMovingToFood = false;
+            hamsterIsMovingToOB = false;
             eatingFood = true;
 
             iamHungry = false;
@@ -335,14 +343,14 @@ public class Move : MonoBehaviour
             StartCoroutine(EatFood());
 
         }
-        if (other.tag == "BathPos" && voidUpdateOnce1 == true && hamsterIsMovingToFood && iamHungry && dishScript.isFull)
+        if (other.tag == "BathPos" && voidUpdateOnce1 == true && hamsterIsMovingToOB && !isClean)
         {
             voidUpdateOnce1 = false;
-            Debug.Log("물마심");
+            Debug.Log("목욕시간");
             gameObject.transform.position = bathPos.transform.position;
             aiPath.canMove = false;
 
-            hamsterIsMovingToFood = false;
+            hamsterIsMovingToOB = false;
             bathing = true;
 
             StartCoroutine(Bathing());
@@ -381,7 +389,7 @@ public class Move : MonoBehaviour
 
 
         //포인터로 이동
-        if (!hamsterIsMovingToFood && randomNumCanActive && isGoingtoPointer && !isSleep && !eatingFood && !eatingWater && !bathing)
+        if (!hamsterIsMovingToOB && randomNumCanActive && isGoingtoPointer && !isSleep && !eatingFood && !eatingWater && !bathing)
         {
 
             aiScript.target = pointPos.transform;
@@ -417,6 +425,7 @@ public class Move : MonoBehaviour
         if(isSleep)
         {
             ani.SetBool("IsSleep", true);
+            canMove = false;
             tiredValue += Time.deltaTime * 0.4f;
             if(tiredValue > 100)
             {
@@ -428,7 +437,7 @@ public class Move : MonoBehaviour
         //물통으로 이동
         if (iamThirsty && waterbowlScript.waterGauge > 0 && !eatingFood  && randomNumCanActive && !isSleep)
         {
-            hamsterIsMovingToFood = true;
+            hamsterIsMovingToOB = true;
             Debug.Log("물통으로간다");
             if (aiPath.desiredVelocity.x >= 0.01f)
             {
@@ -446,7 +455,7 @@ public class Move : MonoBehaviour
         //먹이로 이동
         else if (iamHungry && dishScript.isFull && !eatingWater && randomNumCanActive && !isSleep)
         {
-            hamsterIsMovingToFood = true;
+            hamsterIsMovingToOB = true;
             Debug.Log("먹이로간다");
             if (aiPath.desiredVelocity.x >= 0.01f)
             {
@@ -463,7 +472,7 @@ public class Move : MonoBehaviour
         }
         else if (!isClean && !eatingWater && randomNumCanActive && !isSleep)
         {
-            hamsterIsMovingToFood = true;
+            hamsterIsMovingToOB = true;
             Debug.Log("화장실에간다");
             if (aiPath.desiredVelocity.x >= 0.01f)
             {
@@ -482,9 +491,9 @@ public class Move : MonoBehaviour
 
         else
         {
-            if(hamsterIsMovingToFood || isGoingtoPointer)
+            if(!hamsterIsMovingToOB && !isGoingtoPointer)
             {
-                if(eatingFood || eatingWater || bathing)
+                if(!eatingFood && !eatingWater && !bathing)
                 {
                     if (barrierNum == 0)
                     {
@@ -494,26 +503,26 @@ public class Move : MonoBehaviour
                     if (barrierNum == 1)
                     {
                         transform.position += (new Vector3(0, -speed));//아래
-                                                                       //rigid.AddForce(new Vector3(0, -speed, 0));
+                                                                       
                         ani.SetBool("isStop", false);
                     }
                     if (barrierNum == 2)
                     {
                         transform.position += (new Vector3(0, speed));//위
-                                                                      //rigid.AddForce(new Vector3(0, speed, 0));
+                                                                      
                         ani.SetBool("isStop", false);
                     }
                     if (barrierNum == 3)
                     {
                         transform.position += (new Vector3(-speed, 0));//왼쪽
-                                                                       //rigid.AddForce(new Vector3(-speed, 0, 0));
+                                                                       
                         ani.SetBool("isStop", false);
                         isLeft = true;
                     }
                     if (barrierNum == 4)
                     {
                         transform.position += (new Vector3(speed, 0));//오른쪽
-                                                                      //rigid.AddForce(new Vector3(speed, 0, 0));
+                                                                      
                         ani.SetBool("isStop", false);
                         isLeft = false;
                     }
@@ -529,7 +538,7 @@ public class Move : MonoBehaviour
             /////////////////////////////////////////////////////////////////////////////////////
 
 
-            if (randomNumCanActive && !hamsterIsMovingToFood && !eatingFood && !eatingWater && !isGoingtoPointer && !isSleep && !bathing)
+            if (canMove && randomNumCanActive && !hamsterIsMovingToOB && !eatingFood && !eatingWater && !isGoingtoPointer && !isSleep && !bathing)
             {
                 if (randomNum == 1)//Idle
                 {

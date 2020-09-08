@@ -35,7 +35,12 @@ public class dongScript : MonoBehaviour
     public Text scoreText;
     public Text scoreTextInShop;
 
+    [SerializeField] Transform[] cage_transform;
 
+    public bool cage2;
+    public bool cage3;
+
+    [SerializeField] int cageNum;
     void Update()
     {
         scoreText.text = "    " + "<color=#000000>" + score + "</color>" + "@";
@@ -140,6 +145,51 @@ public class dongScript : MonoBehaviour
         
 
     }
+
+    public void Next()
+    {
+        if(cageNum == 1 && cage2 == true)
+        {
+            Debug.Log("케이지2");
+            cageNum = 2;
+            maincamera.transform.position = new Vector3(cage_transform[1].position.x , cage_transform[1].position.y , -10);
+        }
+        else if(cageNum == 2 && cage3 == true)
+        {
+            Debug.Log("케이지3");
+            cageNum = 3;
+            maincamera.transform.position = new Vector3(cage_transform[2].position.x, cage_transform[2].position.y, -10);
+        }
+        else if(cageNum == 3)
+        {
+            Debug.Log("케이지1");
+            cageNum = 1;
+            maincamera.transform.position = new Vector3(cage_transform[0].position.x, cage_transform[0].position.y, -10);
+        }
+    }
+
+    public void Back()
+    {
+        if(cageNum == 1 && cage3 == true)
+        {
+            Debug.Log("케이지3");
+            cageNum = 3;
+            maincamera.transform.position = new Vector3(cage_transform[2].position.x, cage_transform[2].position.y, -10);
+        }
+        else if(cageNum == 3 && cage2 == true)
+        {
+            Debug.Log("케이지2");
+            cageNum = 2;
+            maincamera.transform.position = new Vector3(cage_transform[1].position.x, cage_transform[1].position.y, -10);
+        }
+        else if(cageNum == 2)
+        {
+            Debug.Log("케이지1");
+            cageNum = 1;
+            maincamera.transform.position = new Vector3(cage_transform[0].position.x, cage_transform[0].position.y, -10);
+        }
+    }
+
     void Dish()
     {
         if(dishscript.isFull == false)

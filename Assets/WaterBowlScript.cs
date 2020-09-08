@@ -9,16 +9,11 @@ public class WaterBowlScript : MonoBehaviour
     [SerializeField] Sprite water3;
     [SerializeField] Sprite water2;
     [SerializeField] Sprite water1;
-    [SerializeField] Sprite waterNone;
+
     public GameObject sign;
 
 
     public int waterGauge = 4;
-
-    private void Start()
-    {
-
-    }
     void Update()
     {
         if (waterGauge == 4)
@@ -43,7 +38,7 @@ public class WaterBowlScript : MonoBehaviour
         }
         if (waterGauge == 0)
         {
-            bringWaterSprite.sprite = waterNone;
+            bringWaterSprite.sprite = null;
             sign.SetActive(true);
         }
     }

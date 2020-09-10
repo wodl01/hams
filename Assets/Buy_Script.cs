@@ -7,23 +7,32 @@ public class Buy_Script : MonoBehaviour
 {
 
     [SerializeField] Text inputMoneyText;
-    [SerializeField] Text input_Ask_ItemName_Text;
+
 
     [SerializeField] int itemPrice;
     [SerializeField] string itemName;
+    [SerializeField] Sprite itemShape;
 
     [SerializeField] dongScript manager;
     [SerializeField] ButtenUiManagerScript buttenManager;
+    [SerializeField] SelectScript select;
 
     [SerializeField] GameObject warningOB;
     [SerializeField] WarningScript warningScript;
 
-    [SerializeField] GameObject imoteOB;
-    [SerializeField] WarningScript warningScript2;
+
+
 
     [SerializeField] GameObject beforeBuyingOB;
     [SerializeField] GameObject afterBuyingOB;
     [SerializeField] GameObject askOneMore;
+
+    [SerializeField] askScript ask;
+
+    private void Start()
+    {
+        inputMoneyText.text = "" + "<color=#000000>" + itemPrice + "</color>" + "@";
+    }
 
     public void BuyingItem()
     {
@@ -31,8 +40,13 @@ public class Buy_Script : MonoBehaviour
         {
             //success
             buttenManager.shop_CanActive = false;
-            input_Ask_ItemName_Text.text = '"' + itemName + '"';
+            ask.itemName = itemName;
+
+
+            ask.itemPrice = itemPrice;
             askOneMore.SetActive(true);
+            ask.beforeButten = beforeBuyingOB;
+            ask.afterButten = afterBuyingOB;
 
         }
         else
@@ -41,24 +55,8 @@ public class Buy_Script : MonoBehaviour
             Instantiate(warningOB, new Vector3(0, 0, 0), Quaternion.identity);
         }
     }
-    public void Yes()
+    public void PassShape()
     {
-        manager.score -= itemPrice;
-        beforeBuyingOB.SetActive(false);
-        afterBuyingOB.SetActive(true);
-        askOneMore.SetActive(false);
-        warningScript2.InputWord = "구매완료!";
-        Instantiate(imoteOB, new Vector3(0, 0, 0), Quaternion.identity);
-        buttenManager.shop_CanActive = true;
-    }
-    public void No()
-    {
-        askOneMore.SetActive(false);
-        buttenManager.shop_CanActive = true;
-    }
-
-    private void Update()
-    {
-        inputMoneyText.text = "" + "<color=#000000>" + itemPrice + "</color>" + "@";
+        select.itemShape = itemShape;
     }
 }

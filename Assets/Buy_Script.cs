@@ -11,7 +11,11 @@ public class Buy_Script : MonoBehaviour
 
     [SerializeField] int itemPrice;
     [SerializeField] string itemName;
-    [SerializeField] Sprite itemShape;
+    [SerializeField] Sprite[] itemShape;
+
+
+
+
 
     [SerializeField] dongScript manager;
     [SerializeField] ButtenUiManagerScript buttenManager;
@@ -23,11 +27,23 @@ public class Buy_Script : MonoBehaviour
 
 
 
+
+
+
     [SerializeField] GameObject beforeBuyingOB;
     [SerializeField] GameObject afterBuyingOB;
     [SerializeField] GameObject askOneMore;
 
+    [SerializeField] GameObject selectOB;
+
     [SerializeField] askScript ask;
+
+    
+
+
+    public bool cage1;
+    public bool cage2;
+    public bool cage3;
 
     private void Start()
     {
@@ -55,8 +71,64 @@ public class Buy_Script : MonoBehaviour
             Instantiate(warningOB, new Vector3(0, 0, 0), Quaternion.identity);
         }
     }
-    public void PassShape()
+
+        
+
+
+    public void SelectSetActiveTrue()
     {
-        select.itemShape = itemShape;
+        select.buy_Script = this;
+
+        selectOB.SetActive(true);
+        ChangeButtemImage();
+    }
+
+    public void ChangeButtemImage()
+    {
+
+        if (cage1 == true)
+        {
+            select.cage1 = true;
+            for (int i = 0; i < itemShape.Length; i++)
+            {
+                select.cage1OB[i].sprite = itemShape[i];
+            }
+        }
+        else
+        {
+            select.cage1 = false;
+        }
+
+        if (cage2 == true)
+        {
+            select.cage2 = true;
+            for (int i = 0; i < itemShape.Length; i++)
+            {
+                select.cage2OB[i].sprite = itemShape[i];
+            }
+        }
+        else
+        {
+            select.cage2 = false;
+        }
+
+        if (cage3 == true)
+        {
+            select.cage3 = true;
+            for (int i = 0; i < itemShape.Length; i++)
+            {
+                select.cage3OB[i].sprite = itemShape[i];
+            }
+        }
+        else
+        {
+            select.cage3 = false;
+        }
+    }
+    
+
+    public void XButten()
+    {
+        selectOB.SetActive(false);
     }
 }

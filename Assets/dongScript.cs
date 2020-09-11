@@ -17,9 +17,9 @@ public class dongScript : MonoBehaviour
     public GameObject warningPreFap;
 
 
-    [SerializeField] DishScript dishscript;
+    [SerializeField] DishScript[] dishscript;
 
-    [SerializeField] WaterBowlScript waterBowlScript;
+    [SerializeField] WaterBowlScript[] waterBowlScript;
 
     [SerializeField] WarningScript warning;
 
@@ -81,11 +81,27 @@ public class dongScript : MonoBehaviour
                 {
                     if (hit.collider.tag == "Dish")
                     {
-                        Dish();
+                        DishCage1();
+                    }
+                    if (hit.collider.tag == "Dish2")
+                    {
+                        DishCage2();
+                    }
+                    if (hit.collider.tag == "Dish3")
+                    {
+                        DishCage3();
                     }
                     if (hit.collider.tag == "WaterBowl")
                     {
-                        WaterBowl();
+                        WaterBowlCage1();
+                    }
+                    if (hit.collider.tag == "WaterBowl2")
+                    {
+                        WaterBowlCage2();
+                    }
+                    if (hit.collider.tag == "WaterBowl3")
+                    {
+                        WaterBowlCage3();
                     }
                 }
 
@@ -190,16 +206,16 @@ public class dongScript : MonoBehaviour
         }
     }
 
-    void Dish()
+    void DishCage1()
     {
-        if(dishscript.isFull == false)
+        if(dishscript[0].isFull == false)
         {
             Debug.Log("dwdw");
-            if(score >= dishscript.feedValue)
+            if(score >= dishscript[0].feedValue)
             {
-                score -= dishscript.feedValue;
-                dishscript.MinusCoin();
-                dishscript.isFull = true;
+                score -= dishscript[0].feedValue;
+                dishscript[0].MinusCoin();
+                dishscript[0].isFull = true;
             }
             else
             {
@@ -208,14 +224,68 @@ public class dongScript : MonoBehaviour
             }
         }
     }
-    void WaterBowl()
+
+    void DishCage2()
     {
-        Debug.Log("물통에 마우스가 닿음");
-        if(waterBowlScript.waterGauge == 0)
+        if (dishscript[1].isFull == false)
         {
-            waterBowlScript.waterGauge = 4;
+            Debug.Log("dwdw");
+            if (score >= dishscript[1].feedValue)
+            {
+                score -= dishscript[1].feedValue;
+                dishscript[1].MinusCoin();
+                dishscript[1].isFull = true;
+            }
+            else
+            {
+                warning.InputWord = "코인이 부족합니다.";
+                Instantiate(warningPreFap, new Vector3(0, 0, 0), Quaternion.identity);
+            }
         }
     }
+    void DishCage3()
+    {
+        if (dishscript[2].isFull == false)
+        {
+            Debug.Log("dwdw");
+            if (score >= dishscript[2].feedValue)
+            {
+                score -= dishscript[2].feedValue;
+                dishscript[2].MinusCoin();
+                dishscript[2].isFull = true;
+            }
+            else
+            {
+                warning.InputWord = "코인이 부족합니다.";
+                Instantiate(warningPreFap, new Vector3(0, 0, 0), Quaternion.identity);
+            }
+        }
+    }
+    void WaterBowlCage1()
+    {
+        Debug.Log("물통에 마우스가 닿음");
+        if(waterBowlScript[0].waterGauge == 0)
+        {
+            waterBowlScript[0].waterGauge = 4;
+        }
+    }
+    void WaterBowlCage2()
+    {
+        Debug.Log("물통에 마우스가 닿음");
+        if (waterBowlScript[1].waterGauge == 0)
+        {
+            waterBowlScript[1].waterGauge = 4;
+        }
+    }
+    void WaterBowlCage3()
+    {
+        Debug.Log("물통에 마우스가 닿음");
+        if (waterBowlScript[2].waterGauge == 0)
+        {
+            waterBowlScript[2].waterGauge = 4;
+        }
+    }
+
 }
 
 

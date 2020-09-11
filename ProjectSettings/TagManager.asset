@@ -17,6 +17,10 @@ TagManager:
   - HamsterPos
   - HamsterEatPoss
   - BathPos
+  - Dish2
+  - Dish3
+  - WaterBowl2
+  - WaterBowl3
   layers:
   - Default
   - TransparentFX

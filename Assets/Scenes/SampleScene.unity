@@ -270,7 +270,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 617465431}
   itemPrice: 500
   itemName: "\uAE30\uBCF8\uBC25\uD1B5"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -281,7 +281,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 134608021}
   afterBuyingOB: {fileID: 284673605}
   askOneMore: {fileID: 1836681039}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!114 &12500758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,8 +507,14 @@ MonoBehaviour:
   doubleClickOB: {fileID: 6441060735502743857}
   warningPreFap: {fileID: 959241511111642953, guid: c6cbb10eb697c7742a3a07734950dd62,
     type: 3}
-  dishscript: {fileID: 841262586}
-  waterBowlScript: {fileID: 832301632}
+  dishscript:
+  - {fileID: 841262586}
+  - {fileID: 711040056}
+  - {fileID: 350398536}
+  waterBowlScript:
+  - {fileID: 832301632}
+  - {fileID: 280311732}
+  - {fileID: 1147777225}
   warning: {fileID: 5124308242583296042, guid: c6cbb10eb697c7742a3a07734950dd62, type: 3}
   followScript: {fileID: 3014449006086959572}
   hamsterScript: []
@@ -518,8 +528,8 @@ MonoBehaviour:
   - {fileID: 1133847312}
   - {fileID: 1913506935}
   - {fileID: 1134841435}
-  cage2: 0
-  cage3: 0
+  cage2: 1
+  cage3: 1
   cageNum: 1
 --- !u!4 &25234059
 Transform:
@@ -1133,7 +1143,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 1261666585}
   itemPrice: 20000
   itemName: "\uAC1C\uAD6C\uB9AC\uBC25"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -1144,7 +1154,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 784869071}
   afterBuyingOB: {fileID: 1600101330}
   askOneMore: {fileID: 660815757}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!224 &47498602
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2148,7 +2162,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 1464393351}
   itemPrice: 13500
   itemName: "\uBCD1\uC544\uB9AC\uC9D1"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -2159,7 +2173,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 1935414493}
   afterBuyingOB: {fileID: 2051270766}
   askOneMore: {fileID: 1173467705}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!114 &79295795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3799,7 +3817,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &130376888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7193,7 +7211,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1612748718}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99943924
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -9684,7 +9702,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 2092833763}
   itemPrice: 3500
   itemName: "\uCD08\uCF54 \uB6AB\uC5B4\uBEE5"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -9695,7 +9713,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 808727544}
   afterBuyingOB: {fileID: 209843178}
   askOneMore: {fileID: 1673697745}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!114 &279607673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9745,8 +9767,8 @@ GameObject:
   - component: {fileID: 280311732}
   - component: {fileID: 280311731}
   m_Layer: 0
-  m_Name: waterbowl_Cage1 (1)
-  m_TagString: WaterBowl
+  m_Name: waterbowl_Cage2
+  m_TagString: WaterBowl2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10660,9 +10682,9 @@ RectTransform:
   m_Father: {fileID: 550420542}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 108.5, y: -313.9}
   m_SizeDelta: {x: 217, y: 217}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &298470037
@@ -10716,10 +10738,12 @@ MonoBehaviour:
   inputMoneyText: {fileID: 100624203}
   itemPrice: 3500
   itemName: "\uCD08\uCF54 \uB6AB\uC5B4\uBEE5"
-  itemShape: {fileID: 0}
+  itemShape:
+  - {fileID: 21300000, guid: b6af79db3ac74394c99f63f6487e03a5, type: 3}
+  - {fileID: 21300000, guid: 1217643479cf82046abff54f307db16c, type: 3}
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
-  select: {fileID: 0}
+  select: {fileID: 930558206}
   warningOB: {fileID: 959241511111642953, guid: c6cbb10eb697c7742a3a07734950dd62,
     type: 3}
   warningScript: {fileID: 5124308242583296042, guid: c6cbb10eb697c7742a3a07734950dd62,
@@ -10727,7 +10751,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 1210760856}
   afterBuyingOB: {fileID: 670455924}
   askOneMore: {fileID: 1868543947}
+  selectOB: {fileID: 930558202}
   ask: {fileID: 1868543951}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!1 &300387356
 GameObject:
   m_ObjectHideFlags: 0
@@ -11719,7 +11747,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 615488080}
   itemPrice: 13500
   itemName: "\uBCD1\uC544\uB9AC\uC9D1"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -11730,7 +11758,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 1363450063}
   afterBuyingOB: {fileID: 425147954}
   askOneMore: {fileID: 1587178787}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!114 &329287960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11881,9 +11913,9 @@ RectTransform:
   m_Father: {fileID: 550420542}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 108.5, y: -108.5}
   m_SizeDelta: {x: 217, y: 217}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &347517567
@@ -11937,10 +11969,12 @@ MonoBehaviour:
   inputMoneyText: {fileID: 785199414}
   itemPrice: 500
   itemName: "\uAE30\uBCF8\uBC25\uD1B5"
-  itemShape: {fileID: 0}
+  itemShape:
+  - {fileID: 21300000, guid: efa2355455916a249ada77094911bdd3, type: 3}
+  - {fileID: 21300000, guid: e62a367047f39c64eb3a447ea3f31ec6, type: 3}
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
-  select: {fileID: 0}
+  select: {fileID: 930558206}
   warningOB: {fileID: 959241511111642953, guid: c6cbb10eb697c7742a3a07734950dd62,
     type: 3}
   warningScript: {fileID: 5124308242583296042, guid: c6cbb10eb697c7742a3a07734950dd62,
@@ -11948,7 +11982,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 1556280089}
   afterBuyingOB: {fileID: 1344770237}
   askOneMore: {fileID: 1868543947}
+  selectOB: {fileID: 930558202}
   ask: {fileID: 1868543951}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!1 &350095366
 GameObject:
   m_ObjectHideFlags: 0
@@ -12050,8 +12088,8 @@ GameObject:
   - component: {fileID: 350398536}
   - component: {fileID: 350398535}
   m_Layer: 8
-  m_Name: dish_Cage1 (2)
-  m_TagString: Dish
+  m_Name: dish_Cage3
+  m_TagString: Dish3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13935,7 +13973,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 1003897368}
   itemPrice: 15000
   itemName: "\uBE59\uC218\uCEF5"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -13946,7 +13984,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 1956284954}
   afterBuyingOB: {fileID: 441262217}
   askOneMore: {fileID: 1116118682}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!114 &417595346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14040,7 +14082,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 1281142276}
   itemPrice: 20000
   itemName: "\uAC1C\uAD6C\uB9AC\uBC25"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -14051,7 +14093,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 519840059}
   afterBuyingOB: {fileID: 1047498495}
   askOneMore: {fileID: 1321030829}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!114 &418702179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14964,8 +15010,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 930558206}
-        m_MethodName: SelectOpen
+      - m_Target: {fileID: 1137184250}
+        m_MethodName: SelectSetActiveTrue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18018,7 +18064,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 516214883}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 930558206}
+        m_MethodName: Cage2OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &516214883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18845,7 +18902,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 1505846728}
   itemPrice: 20000
   itemName: "\uAC1C\uAD6C\uB9AC\uBC25"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -18856,7 +18913,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 160960856}
   afterBuyingOB: {fileID: 125183730}
   askOneMore: {fileID: 1321030829}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!224 &527613202
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19062,7 +19123,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 1526363283}
   itemPrice: 3500
   itemName: "\uCD08\uCF54 \uB6AB\uC5B4\uBEE5"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -19073,7 +19134,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 196439760}
   afterBuyingOB: {fileID: 460294276}
   askOneMore: {fileID: 1114378842}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!114 &548109788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19150,7 +19215,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0000208423}
+  m_AnchoredPosition: {x: 0, y: -0.000071589675}
   m_SizeDelta: {x: 0, y: 1171.61}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &550420543
@@ -19818,7 +19883,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 1571503421}
   itemPrice: 20000
   itemName: "\uAC1C\uAD6C\uB9AC\uBC25"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -19829,7 +19894,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 57479767}
   afterBuyingOB: {fileID: 1246772502}
   askOneMore: {fileID: 1911053014}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!114 &566431203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20854,7 +20923,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 1491535221}
   itemPrice: 5000
   itemName: "\uCEE8\uD14C\uC774\uB108"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -20865,7 +20934,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 319301305}
   afterBuyingOB: {fileID: 1375904669}
   askOneMore: {fileID: 659993498}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!114 &592248640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21967,7 +22040,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 1410359941}
   itemPrice: 15000
   itemName: "\uBE59\uC218\uCEF5"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -21978,7 +22051,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 585010038}
   afterBuyingOB: {fileID: 1057596334}
   askOneMore: {fileID: 267025238}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!114 &617500632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22653,7 +22730,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 1380135201}
   itemPrice: 3500
   itemName: "\uCD08\uCF54 \uB6AB\uC5B4\uBEE5"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -22664,7 +22741,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 2133317290}
   afterBuyingOB: {fileID: 1343437604}
   askOneMore: {fileID: 228896155}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!114 &640365543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23591,8 +23672,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 930558206}
-        m_MethodName: SelectOpen
+      - m_Target: {fileID: 298470039}
+        m_MethodName: SelectSetActiveTrue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -24579,7 +24660,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 38682279}
   itemPrice: 20000
   itemName: "\uAC1C\uAD6C\uB9AC\uBC25"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -24590,7 +24671,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 1399982534}
   afterBuyingOB: {fileID: 897044429}
   askOneMore: {fileID: 2003587002}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!224 &689240648
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25606,8 +25691,8 @@ GameObject:
   - component: {fileID: 711040056}
   - component: {fileID: 711040055}
   m_Layer: 8
-  m_Name: dish_Cage1 (1)
-  m_TagString: Dish
+  m_Name: dish_Cage2
+  m_TagString: Dish2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27239,7 +27324,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 852543196}
   itemPrice: 5000
   itemName: "\uCEE8\uD14C\uC774\uB108"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -27250,7 +27335,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 1112552864}
   afterBuyingOB: {fileID: 1282386164}
   askOneMore: {fileID: 1615304895}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!114 &751425818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29355,9 +29444,9 @@ RectTransform:
   m_Father: {fileID: 550420542}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 108.5, y: -724.7}
   m_SizeDelta: {x: 217, y: 217}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &817397894
@@ -29411,10 +29500,12 @@ MonoBehaviour:
   inputMoneyText: {fileID: 190715400}
   itemPrice: 13500
   itemName: "\uBCD1\uC544\uB9AC\uC9D1"
-  itemShape: {fileID: 0}
+  itemShape:
+  - {fileID: 21300000, guid: 7b4f41173e5191b4aadb5a563f85829e, type: 3}
+  - {fileID: 21300000, guid: 0aba7e399c5f6a24292c18a048b90c04, type: 3}
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
-  select: {fileID: 0}
+  select: {fileID: 930558206}
   warningOB: {fileID: 959241511111642953, guid: c6cbb10eb697c7742a3a07734950dd62,
     type: 3}
   warningScript: {fileID: 5124308242583296042, guid: c6cbb10eb697c7742a3a07734950dd62,
@@ -29422,7 +29513,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 144560831}
   afterBuyingOB: {fileID: 1678571661}
   askOneMore: {fileID: 1868543947}
+  selectOB: {fileID: 930558202}
   ask: {fileID: 1868543951}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!1 &825365735
 GameObject:
   m_ObjectHideFlags: 0
@@ -29962,9 +30057,9 @@ RectTransform:
   m_Father: {fileID: 550420542}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 108.5, y: -519.3}
   m_SizeDelta: {x: 217, y: 217}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &841795860
@@ -30018,10 +30113,12 @@ MonoBehaviour:
   inputMoneyText: {fileID: 308076522}
   itemPrice: 5000
   itemName: "\uCEE8\uD14C\uC774\uB108"
-  itemShape: {fileID: 0}
+  itemShape:
+  - {fileID: 21300000, guid: a5c0b3f847525b24aa7c200d9eb03156, type: 3}
+  - {fileID: 21300000, guid: 544970f4007e48144bb3d2355da62730, type: 3}
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
-  select: {fileID: 0}
+  select: {fileID: 930558206}
   warningOB: {fileID: 959241511111642953, guid: c6cbb10eb697c7742a3a07734950dd62,
     type: 3}
   warningScript: {fileID: 5124308242583296042, guid: c6cbb10eb697c7742a3a07734950dd62,
@@ -30029,7 +30126,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 1198960414}
   afterBuyingOB: {fileID: 1519916080}
   askOneMore: {fileID: 1868543947}
+  selectOB: {fileID: 930558202}
   ask: {fileID: 1868543951}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!1 &849348291
 GameObject:
   m_ObjectHideFlags: 0
@@ -32814,10 +32915,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866ed1a824d3bf34a9cd844ba48040d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectShapeCage1: {fileID: 0}
-  objectShapeCage2: {fileID: 0}
-  objectShapeCage3: {fileID: 0}
-  itemShape: {fileID: 0}
+  cage1OB:
+  - {fileID: 841262587}
+  - {fileID: 1968519876}
+  - {fileID: 1110160874}
+  cage2OB:
+  - {fileID: 711040057}
+  - {fileID: 1665240957}
+  - {fileID: 1444842132}
+  cage3OB:
+  - {fileID: 350398537}
+  - {fileID: 751074790}
+  - {fileID: 1053447753}
+  cage1Button: {fileID: 1887283901}
+  cage2Button: {fileID: 516214883}
+  cage3Button: {fileID: 1447495036}
+  cage1: 0
+  cage2: 0
+  cage3: 0
+  selectedButtenImage: {fileID: 21300000, guid: 9ba66f47752ec8a4a8af02640d37bf9f,
+    type: 3}
+  notSelectedButtenImage: {fileID: 21300000, guid: 40abcea4560a7784aad6026c29d383d8,
+    type: 3}
+  buy_Script: {fileID: 0}
+  Buy_TurnOff:
+  - {fileID: 347517569}
+  - {fileID: 298470039}
+  - {fileID: 841795862}
+  - {fileID: 817397896}
+  - {fileID: 1000351662}
+  - {fileID: 1137184250}
 --- !u!1 &932516959
 GameObject:
   m_ObjectHideFlags: 0
@@ -33661,7 +33788,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 1547136882}
   itemPrice: 15000
   itemName: "\uBE59\uC218\uCEF5"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -33672,7 +33799,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 793045856}
   afterBuyingOB: {fileID: 1885439540}
   askOneMore: {fileID: 1121501919}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!114 &955489841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33823,7 +33954,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 1059320966}
   itemPrice: 500
   itemName: "\uAE30\uBCF8\uBC25\uD1B5"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -33834,7 +33965,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 586223370}
   afterBuyingOB: {fileID: 596439551}
   askOneMore: {fileID: 1093690764}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!114 &961337006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34571,9 +34706,9 @@ RectTransform:
   m_Father: {fileID: 550420542}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 108.5, y: -930.10004}
   m_SizeDelta: {x: 217, y: 217}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1000351660
@@ -34627,10 +34762,13 @@ MonoBehaviour:
   inputMoneyText: {fileID: 1849861853}
   itemPrice: 15000
   itemName: "\uBE59\uC218\uCEF5"
-  itemShape: {fileID: 0}
+  itemShape:
+  - {fileID: 21300000, guid: 20df162697a6c0a4a841e5bd9cf83923, type: 3}
+  - {fileID: 21300000, guid: 6cab8442f2656c34787e663515c5ac8b, type: 3}
+  - {fileID: 21300000, guid: a23d96bad2cddc24fa20a958beb22a58, type: 3}
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
-  select: {fileID: 0}
+  select: {fileID: 930558206}
   warningOB: {fileID: 959241511111642953, guid: c6cbb10eb697c7742a3a07734950dd62,
     type: 3}
   warningScript: {fileID: 5124308242583296042, guid: c6cbb10eb697c7742a3a07734950dd62,
@@ -34638,7 +34776,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 1775043130}
   afterBuyingOB: {fileID: 1928660088}
   askOneMore: {fileID: 1868543947}
+  selectOB: {fileID: 930558202}
   ask: {fileID: 1868543951}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!1 &1003546718
 GameObject:
   m_ObjectHideFlags: 0
@@ -37736,7 +37878,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 18706031}
   itemPrice: 13500
   itemName: "\uBCD1\uC544\uB9AC\uC9D1"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -37747,7 +37889,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 1530652886}
   afterBuyingOB: {fileID: 1530889215}
   askOneMore: {fileID: 1422501970}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!114 &1087755406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40556,9 +40702,9 @@ RectTransform:
   m_Father: {fileID: 550420542}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 108.5, y: -1135.5}
   m_SizeDelta: {x: 217, y: 217}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1137184248
@@ -40612,10 +40758,12 @@ MonoBehaviour:
   inputMoneyText: {fileID: 866828902}
   itemPrice: 20000
   itemName: "\uAC1C\uAD6C\uB9AC\uBC25"
-  itemShape: {fileID: 0}
+  itemShape:
+  - {fileID: 21300000, guid: 77990b867e06ff74c8a6d13ec9f56a0c, type: 3}
+  - {fileID: 21300000, guid: e4c0ff2c6260c3f4e9aa254efc6db0ee, type: 3}
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
-  select: {fileID: 0}
+  select: {fileID: 930558206}
   warningOB: {fileID: 959241511111642953, guid: c6cbb10eb697c7742a3a07734950dd62,
     type: 3}
   warningScript: {fileID: 5124308242583296042, guid: c6cbb10eb697c7742a3a07734950dd62,
@@ -40623,7 +40771,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 457690841}
   afterBuyingOB: {fileID: 431937348}
   askOneMore: {fileID: 1868543947}
+  selectOB: {fileID: 930558202}
   ask: {fileID: 1868543951}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!1 &1137952788
 GameObject:
   m_ObjectHideFlags: 0
@@ -40929,8 +41081,8 @@ GameObject:
   - component: {fileID: 1147777225}
   - component: {fileID: 1147777224}
   m_Layer: 0
-  m_Name: waterbowl_Cage1 (2)
-  m_TagString: WaterBowl
+  m_Name: waterbowl_Cage3
+  m_TagString: WaterBowl3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41396,7 +41548,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 540500586}
   itemPrice: 20000
   itemName: "\uAC1C\uAD6C\uB9AC\uBC25"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -41407,7 +41559,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 2042816968}
   afterBuyingOB: {fileID: 854697686}
   askOneMore: {fileID: 1321030829}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!114 &1160818811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45301,7 +45457,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 1236579278}
   itemPrice: 5000
   itemName: "\uCEE8\uD14C\uC774\uB108"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -45312,7 +45468,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 635039168}
   afterBuyingOB: {fileID: 1216701143}
   askOneMore: {fileID: 386605457}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!114 &1243112638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47684,7 +47844,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 2032713883}
   itemPrice: 13500
   itemName: "\uBCD1\uC544\uB9AC\uC9D1"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -47695,7 +47855,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 1045199853}
   afterBuyingOB: {fileID: 419603830}
   askOneMore: {fileID: 1739624833}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!114 &1310994159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48123,7 +48287,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 220016936}
   itemPrice: 5000
   itemName: "\uCEE8\uD14C\uC774\uB108"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -48134,7 +48298,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 355644797}
   afterBuyingOB: {fileID: 1650892152}
   askOneMore: {fileID: 1160530379}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!114 &1331410576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49304,8 +49472,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 930558206}
-        m_MethodName: SelectOpen
+      - m_Target: {fileID: 347517569}
+        m_MethodName: SelectSetActiveTrue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -50828,7 +50996,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 426756582}
   itemPrice: 15000
   itemName: "\uBE59\uC218\uCEF5"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -50839,7 +51007,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 1400868422}
   afterBuyingOB: {fileID: 884034482}
   askOneMore: {fileID: 248443094}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!114 &1384087063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52926,7 +53098,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1447495036}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 930558206}
+        m_MethodName: Cage3OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1447495036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53020,7 +53203,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 259276178}
   itemPrice: 500
   itemName: "\uAE30\uBCF8\uBC25\uD1B5"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -53031,7 +53214,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 485422618}
   afterBuyingOB: {fileID: 2102881285}
   askOneMore: {fileID: 68084753}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!114 &1447628084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55480,7 +55667,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 1878434784}
   itemPrice: 20000
   itemName: "\uAC1C\uAD6C\uB9AC\uBC25"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -55491,7 +55678,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 1879478304}
   afterBuyingOB: {fileID: 1484325679}
   askOneMore: {fileID: 1911053014}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!114 &1515602376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55610,8 +55801,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 930558206}
-        m_MethodName: SelectOpen
+      - m_Target: {fileID: 841795862}
+        m_MethodName: SelectSetActiveTrue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -55952,7 +56143,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 194834375}
   itemPrice: 20000
   itemName: "\uAC1C\uAD6C\uB9AC\uBC25"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -55963,7 +56154,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 1986136011}
   afterBuyingOB: {fileID: 326389044}
   askOneMore: {fileID: 655975849}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!224 &1523234541
 RectTransform:
   m_ObjectHideFlags: 0
@@ -59017,7 +59212,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 1777098224}
   itemPrice: 3500
   itemName: "\uCD08\uCF54 \uB6AB\uC5B4\uBEE5"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -59028,7 +59223,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 106639078}
   afterBuyingOB: {fileID: 915171392}
   askOneMore: {fileID: 434973623}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!114 &1588692390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59792,7 +59991,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 1936235321}
   itemPrice: 20000
   itemName: "\uAC1C\uAD6C\uB9AC\uBC25"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -59803,7 +60002,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 1228044204}
   afterBuyingOB: {fileID: 1201477243}
   askOneMore: {fileID: 1911053014}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!224 &1609473313
 RectTransform:
   m_ObjectHideFlags: 0
@@ -60142,7 +60345,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0.99943924}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -62840,8 +63043,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 930558206}
-        m_MethodName: SelectOpen
+      - m_Target: {fileID: 817397896}
+        m_MethodName: SelectSetActiveTrue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -63241,7 +63444,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 1543171849}
   itemPrice: 500
   itemName: "\uAE30\uBCF8\uBCA0\uB529"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -63252,7 +63455,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 1618302684}
   afterBuyingOB: {fileID: 438626582}
   askOneMore: {fileID: 230531292}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!114 &1697233859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64526,7 +64733,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 52090442}
   itemPrice: 15000
   itemName: "\uBE59\uC218\uCEF5"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -64537,7 +64744,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 166846388}
   afterBuyingOB: {fileID: 1497798293}
   askOneMore: {fileID: 971841560}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!114 &1740625783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70192,7 +70403,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1887283901}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 930558206}
+        m_MethodName: Cage1OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1887283901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70286,7 +70508,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 1307574765}
   itemPrice: 5000
   itemName: "\uCEE8\uD14C\uC774\uB108"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -70297,7 +70519,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 1021366745}
   afterBuyingOB: {fileID: 662256488}
   askOneMore: {fileID: 1873045180}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!114 &1889493133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71636,8 +71862,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 930558206}
-        m_MethodName: SelectOpen
+      - m_Target: {fileID: 1000351662}
+        m_MethodName: SelectSetActiveTrue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -72617,9 +72843,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -17, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1963014404
 MonoBehaviour:
@@ -72844,7 +73070,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 1906520806}
   itemPrice: 500
   itemName: "\uAE30\uBCF8\uBC25\uD1B5"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -72855,7 +73081,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 1185092285}
   afterBuyingOB: {fileID: 1184432042}
   askOneMore: {fileID: 199473305}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!114 &1966509363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75990,7 +76220,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 28439190}
   itemPrice: 3500
   itemName: "\uCD08\uCF54 \uB6AB\uC5B4\uBEE5"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -76001,7 +76231,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 2105392987}
   afterBuyingOB: {fileID: 1512297787}
   askOneMore: {fileID: 1229125547}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!114 &2060132506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77974,7 +78208,7 @@ MonoBehaviour:
   inputMoneyText: {fileID: 875181309}
   itemPrice: 13500
   itemName: "\uBCD1\uC544\uB9AC\uC9D1"
-  itemShape: {fileID: 0}
+  itemShape: []
   manager: {fileID: 25234058}
   buttenManager: {fileID: 1377640742}
   select: {fileID: 0}
@@ -77985,7 +78219,11 @@ MonoBehaviour:
   beforeBuyingOB: {fileID: 891157054}
   afterBuyingOB: {fileID: 1090675618}
   askOneMore: {fileID: 264751762}
+  selectOB: {fileID: 0}
   ask: {fileID: 0}
+  cage1: 0
+  cage2: 0
+  cage3: 0
 --- !u!114 &2143509858
 MonoBehaviour:
   m_ObjectHideFlags: 0

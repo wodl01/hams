@@ -14,6 +14,8 @@ public class ButtenUiManagerScript : MonoBehaviour
     [SerializeField] dongScript manager;
 
     [SerializeField] Text shopMenuText;
+
+
     public bool canActive;
     public bool shop_CanActive;
 

@@ -5,6 +5,6 @@ using UnityEngine.UI;
 
 public class DishChoiceScript : MonoBehaviour
 {
-    [SerializeField] 
+    
 
 }

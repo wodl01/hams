@@ -52,24 +52,28 @@ public class Buy_Script : MonoBehaviour
 
     public void BuyingItem()
     {
-        if(manager.score >= itemPrice)
+        if(buttenManager.shop_CanActive == true)
         {
-            //success
-            buttenManager.shop_CanActive = false;
-            ask.itemName = itemName;
+            if (manager.score >= itemPrice)
+            {
+                //success
+                buttenManager.shop_CanActive = false;
+                ask.itemName = itemName;
 
 
-            ask.itemPrice = itemPrice;
-            askOneMore.SetActive(true);
-            ask.beforeButten = beforeBuyingOB;
-            ask.afterButten = afterBuyingOB;
+                ask.itemPrice = itemPrice;
+                askOneMore.SetActive(true);
+                ask.beforeButten = beforeBuyingOB;
+                ask.afterButten = afterBuyingOB;
 
+            }
+            else
+            {
+                warningScript.InputWord = "코인이 부족합니다.";
+                Instantiate(warningOB, new Vector3(0, 0, 0), Quaternion.identity);
+            }
         }
-        else
-        {
-            warningScript.InputWord = "코인이 부족합니다.";
-            Instantiate(warningOB, new Vector3(0, 0, 0), Quaternion.identity);
-        }
+        
     }
 
         
@@ -77,10 +81,16 @@ public class Buy_Script : MonoBehaviour
 
     public void SelectSetActiveTrue()
     {
-        select.buy_Script = this;
+        if(buttenManager.shop_CanActive == true)
+        {
+            select.buy_Script = this;
+            buttenManager.shop_CanActive = false;
 
-        selectOB.SetActive(true);
-        ChangeButtemImage();
+            selectOB.SetActive(true);
+
+            ChangeButtemImage();
+        }
+        
     }
 
     public void ChangeButtemImage()
@@ -127,8 +137,5 @@ public class Buy_Script : MonoBehaviour
     }
     
 
-    public void XButten()
-    {
-        selectOB.SetActive(false);
-    }
+    
 }

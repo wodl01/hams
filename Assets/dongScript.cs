@@ -17,9 +17,9 @@ public class dongScript : MonoBehaviour
     public GameObject warningPreFap;
 
 
-    [SerializeField] DishScript[] dishscript;
+    public DishScript[] dishscript;
 
-    [SerializeField] WaterBowlScript[] waterBowlScript;
+    public WaterBowlScript[] waterBowlScript;
 
     [SerializeField] WarningScript warning;
 
@@ -41,6 +41,11 @@ public class dongScript : MonoBehaviour
     public bool cage3;
 
     [SerializeField] int cageNum;
+
+    public GameObject[] dishPoses;
+    public GameObject[] wsterBowlPoses;
+    public GameObject[] bathPoses;
+
     void Update()
     {
         scoreText.text = "    " + "<color=#000000>" + score + "</color>" + "@";
@@ -119,10 +124,9 @@ public class dongScript : MonoBehaviour
                 Debug.Log("1click");
 
             }
-            else if (Input.GetMouseButtonDown(0) && time > 0 && doubleClick_Cool_Time < 0 )
+            else if (Input.GetMouseButtonDown(0) && time > 0 && doubleClick_Cool_Time < 0)//더블클릭
             {
-                //더블클릭
-                //Instantiate(doubleClickOB, new Vector3(mousePos.x, mousePos.y, 0), Quaternion.identity);
+
                 Debug.Log("2click");
                 doubleClickOB.SetActive(true);
                 followScript.Check();
@@ -140,8 +144,16 @@ public class dongScript : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        time -= Time.deltaTime;
-        doubleClick_Cool_Time -= Time.deltaTime;
+        if(time > -5)
+        {
+            time -= Time.deltaTime;
+        }
+        
+        if(doubleClick_Cool_Time > -5)
+        {
+            doubleClick_Cool_Time -= Time.deltaTime;
+        }
+        
     }
     void DdongEvent(RaycastHit2D hit)
     {
@@ -164,46 +176,54 @@ public class dongScript : MonoBehaviour
 
     public void Next()
     {
-        if(cageNum == 1 && cage2 == true)
+        if(canActive_My && canActive_Name && canActive_Shop)
         {
-            Debug.Log("케이지2");
-            cageNum = 2;
-            maincamera.transform.position = new Vector3(cage_transform[1].position.x , cage_transform[1].position.y , -10);
+            if (cageNum == 1 && cage2 == true)
+            {
+                Debug.Log("케이지2");
+                cageNum = 2;
+                maincamera.transform.position = new Vector3(cage_transform[1].position.x, cage_transform[1].position.y, -10);
+            }
+            else if (cageNum == 2 && cage3 == true)
+            {
+                Debug.Log("케이지3");
+                cageNum = 3;
+                maincamera.transform.position = new Vector3(cage_transform[2].position.x, cage_transform[2].position.y, -10);
+            }
+            else if (cageNum == 3)
+            {
+                Debug.Log("케이지1");
+                cageNum = 1;
+                maincamera.transform.position = new Vector3(cage_transform[0].position.x, cage_transform[0].position.y, -10);
+            }
         }
-        else if(cageNum == 2 && cage3 == true)
-        {
-            Debug.Log("케이지3");
-            cageNum = 3;
-            maincamera.transform.position = new Vector3(cage_transform[2].position.x, cage_transform[2].position.y, -10);
-        }
-        else if(cageNum == 3)
-        {
-            Debug.Log("케이지1");
-            cageNum = 1;
-            maincamera.transform.position = new Vector3(cage_transform[0].position.x, cage_transform[0].position.y, -10);
-        }
+        
     }
 
     public void Back()
     {
-        if(cageNum == 1 && cage3 == true)
+        if (canActive_My && canActive_Name && canActive_Shop)
         {
-            Debug.Log("케이지3");
-            cageNum = 3;
-            maincamera.transform.position = new Vector3(cage_transform[2].position.x, cage_transform[2].position.y, -10);
+            if (cageNum == 1 && cage3 == true)
+            {
+                Debug.Log("케이지3");
+                cageNum = 3;
+                maincamera.transform.position = new Vector3(cage_transform[2].position.x, cage_transform[2].position.y, -10);
+            }
+            else if (cageNum == 3 && cage2 == true)
+            {
+                Debug.Log("케이지2");
+                cageNum = 2;
+                maincamera.transform.position = new Vector3(cage_transform[1].position.x, cage_transform[1].position.y, -10);
+            }
+            else if (cageNum == 2)
+            {
+                Debug.Log("케이지1");
+                cageNum = 1;
+                maincamera.transform.position = new Vector3(cage_transform[0].position.x, cage_transform[0].position.y, -10);
+            }
         }
-        else if(cageNum == 3 && cage2 == true)
-        {
-            Debug.Log("케이지2");
-            cageNum = 2;
-            maincamera.transform.position = new Vector3(cage_transform[1].position.x, cage_transform[1].position.y, -10);
-        }
-        else if(cageNum == 2)
-        {
-            Debug.Log("케이지1");
-            cageNum = 1;
-            maincamera.transform.position = new Vector3(cage_transform[0].position.x, cage_transform[0].position.y, -10);
-        }
+            
     }
 
     void DishCage1()

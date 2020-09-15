@@ -8,6 +8,7 @@ public class Move : MonoBehaviour
     public string name;
     public bool isNamed;
     public bool iHave;
+    public int cageNum;
 
     [SerializeField] bool canMove;
 
@@ -49,6 +50,7 @@ public class Move : MonoBehaviour
     public float timeToSleep;
     public bool isSleep;
     bool bathing;
+    [SerializeField] bool isEmoting;
 
     public bool isGoingtoPointer;
     public bool iamHungry;
@@ -66,7 +68,7 @@ public class Move : MonoBehaviour
 
     [SerializeField] float eatingTime;
 
-    public bool isLeft;
+    [SerializeField] bool isLeft;
 
     public Animator ani;
 
@@ -144,9 +146,11 @@ public class Move : MonoBehaviour
         {
             randomTime = 5;            
             ani.SetBool(" Interaction1Start", true);
+            isEmoting = true;
             canMove = false;
             yield return new WaitForSeconds(randomTime);
             ani.SetBool(" Interaction1Start", false);
+            isEmoting = false;
             randomTime = 0;
 
         }
@@ -349,7 +353,7 @@ public class Move : MonoBehaviour
             Debug.Log("목욕시간");
             gameObject.transform.position = bathPos.transform.position;
             aiPath.canMove = false;
-
+            isLeft = true;
             hamsterIsMovingToOB = false;
             bathing = true;
 
@@ -387,9 +391,14 @@ public class Move : MonoBehaviour
         }
 
 
+            dishScript = manager.dishscript[0];
+            waterbowlScript = manager.waterBowlScript[0];
+        assaaae
+
+
 
         //포인터로 이동
-        if (!hamsterIsMovingToOB && randomNumCanActive && isGoingtoPointer && !isSleep && !eatingFood && !eatingWater && !bathing)
+        if (!hamsterIsMovingToOB && randomNumCanActive && isGoingtoPointer && !isSleep && !eatingFood && !eatingWater && !bathing && !isEmoting)
         {
 
             aiScript.target = pointPos.transform;
@@ -435,7 +444,7 @@ public class Move : MonoBehaviour
         }
 
         //물통으로 이동
-        if (iamThirsty && waterbowlScript.waterGauge > 0 && !eatingFood  && randomNumCanActive && !isSleep)
+        if (iamThirsty && waterbowlScript.waterGauge > 0 && !eatingFood  && randomNumCanActive && !isSleep && !isEmoting)
         {
             hamsterIsMovingToOB = true;
             Debug.Log("물통으로간다");
@@ -453,7 +462,7 @@ public class Move : MonoBehaviour
             aiPath.canMove = true;    
         }
         //먹이로 이동
-        else if (iamHungry && dishScript.isFull && !eatingWater && randomNumCanActive && !isSleep)
+        else if (iamHungry && dishScript.isFull && !eatingWater && randomNumCanActive && !isSleep && !isEmoting)
         {
             hamsterIsMovingToOB = true;
             Debug.Log("먹이로간다");
@@ -470,7 +479,7 @@ public class Move : MonoBehaviour
             ani.SetBool("isStop", false);
             
         }
-        else if (!isClean && !eatingWater && randomNumCanActive && !isSleep)
+        else if (!isClean && !eatingWater && !eatingFood && randomNumCanActive && !isSleep && !isEmoting)
         {
             hamsterIsMovingToOB = true;
             Debug.Log("화장실에간다");

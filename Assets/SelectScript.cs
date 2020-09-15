@@ -20,6 +20,7 @@ public class SelectScript : MonoBehaviour
     public bool cage3;
 
 
+    [SerializeField] ButtenUiManagerScript buttenManager;
 
     [SerializeField] Sprite selectedButtenImage;
     [SerializeField] Sprite notSelectedButtenImage;
@@ -27,12 +28,10 @@ public class SelectScript : MonoBehaviour
     public Buy_Script buy_Script;
 
     [SerializeField] Buy_Script[] Buy_TurnOff;
-    public void SelectOpen()
-    {
-        gameObject.SetActive(true);
-    }
+
     public void XButten()
     {
+        buttenManager.shop_CanActive = true;
         gameObject.SetActive(false);
     }
 

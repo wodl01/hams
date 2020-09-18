@@ -15,13 +15,12 @@ public class dongScript : MonoBehaviour
     [SerializeField] GameObject doubleClickOB;
 
     public GameObject warningPreFap;
-
+    [SerializeField] WarningScript warning;
 
     public DishScript[] dishscript;
-
     public WaterBowlScript[] waterBowlScript;
 
-    [SerializeField] WarningScript warning;
+
 
     [SerializeField] Hamster_Follow_Script followScript;
 
@@ -34,6 +33,7 @@ public class dongScript : MonoBehaviour
     public int score;
     public Text scoreText;
     public Text scoreTextInShop;
+    [SerializeField] Text cageNumberText;
 
     [SerializeField] Transform[] cage_transform;
 
@@ -44,7 +44,8 @@ public class dongScript : MonoBehaviour
 
     public GameObject[] dishPoses;
     public GameObject[] wsterBowlPoses;
-    public GameObject[] bathPoses;
+    public GameObject[] bathActivePoses;
+    public GameObject[] bathingPoses;
 
     void Update()
     {
@@ -182,18 +183,21 @@ public class dongScript : MonoBehaviour
             {
                 Debug.Log("케이지2");
                 cageNum = 2;
+                cageNumberText.text = "Cage2";
                 maincamera.transform.position = new Vector3(cage_transform[1].position.x, cage_transform[1].position.y, -10);
             }
             else if (cageNum == 2 && cage3 == true)
             {
                 Debug.Log("케이지3");
                 cageNum = 3;
+                cageNumberText.text = "Cage3";
                 maincamera.transform.position = new Vector3(cage_transform[2].position.x, cage_transform[2].position.y, -10);
             }
             else if (cageNum == 3)
             {
                 Debug.Log("케이지1");
                 cageNum = 1;
+                cageNumberText.text = "Cage1";
                 maincamera.transform.position = new Vector3(cage_transform[0].position.x, cage_transform[0].position.y, -10);
             }
         }
@@ -208,18 +212,21 @@ public class dongScript : MonoBehaviour
             {
                 Debug.Log("케이지3");
                 cageNum = 3;
+                cageNumberText.text = "Cage3";
                 maincamera.transform.position = new Vector3(cage_transform[2].position.x, cage_transform[2].position.y, -10);
             }
             else if (cageNum == 3 && cage2 == true)
             {
                 Debug.Log("케이지2");
                 cageNum = 2;
+                cageNumberText.text = "Cage2";
                 maincamera.transform.position = new Vector3(cage_transform[1].position.x, cage_transform[1].position.y, -10);
             }
             else if (cageNum == 2)
             {
                 Debug.Log("케이지1");
                 cageNum = 1;
+                cageNumberText.text = "Cage1";
                 maincamera.transform.position = new Vector3(cage_transform[0].position.x, cage_transform[0].position.y, -10);
             }
         }

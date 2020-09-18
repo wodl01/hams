@@ -7,6 +7,7 @@ public class Buy_Script : MonoBehaviour
 {
 
     [SerializeField] Text inputMoneyText;
+    [SerializeField] Text inputItemNameText;
 
 
     [SerializeField] int itemPrice;
@@ -48,7 +49,9 @@ public class Buy_Script : MonoBehaviour
     private void Start()
     {
         inputMoneyText.text = "" + "<color=#000000>" + itemPrice + "</color>" + "@";
+        //inputItemNameText.text = itemName;
     }
+
 
     public void BuyingItem()
     {

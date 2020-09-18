@@ -390,10 +390,39 @@ public class Move : MonoBehaviour
             cleanTime -= Time.deltaTime;
         }
 
-
+        if(cageNum == 1)
+        {
             dishScript = manager.dishscript[0];
             waterbowlScript = manager.waterBowlScript[0];
-        assaaae
+
+            eatingPos = manager.dishPoses[0];
+            drinkingPos = manager.wsterBowlPoses[0];
+            bathPos = manager.bathActivePoses[0];
+            bathingPos = manager.bathingPoses[0].transform;
+
+        }
+        else if(cageNum == 2)
+        {
+            dishScript = manager.dishscript[1];
+            waterbowlScript = manager.waterBowlScript[1];
+
+            eatingPos = manager.dishPoses[1];
+            drinkingPos = manager.wsterBowlPoses[1];
+            bathPos = manager.bathActivePoses[1];
+            bathingPos = manager.bathingPoses[1].transform;
+        }
+        else if (cageNum == 3)
+        {
+            dishScript = manager.dishscript[2];
+            waterbowlScript = manager.waterBowlScript[2];
+
+            eatingPos = manager.dishPoses[2];
+            drinkingPos = manager.wsterBowlPoses[2];
+            bathPos = manager.bathActivePoses[2];
+            bathingPos = manager.bathingPoses[2].transform;
+        }
+
+
 
 
 

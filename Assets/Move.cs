@@ -360,7 +360,9 @@ public class Move : MonoBehaviour
             StartCoroutine(Bathing());
 
         }
+
     }
+
 
 
     void ThinkIconUp()

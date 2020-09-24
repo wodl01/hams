@@ -21,6 +21,7 @@ TagManager:
   - Dish3
   - WaterBowl2
   - WaterBowl3
+  - LeftOB
   layers:
   - Default
   - TransparentFX

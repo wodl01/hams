@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 301828622}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: HamsterEatPoss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1368508428580914455}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &301828622
 BoxCollider2D:
@@ -368,7 +368,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1368508428580914455}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1368508427959884015
 GameObject:
@@ -382,6 +382,8 @@ GameObject:
   - component: {fileID: 1368508427959884011}
   - component: {fileID: 1368508427959884010}
   - component: {fileID: 1368508427959884009}
+  - component: {fileID: 1904240952}
+  - component: {fileID: 1904240953}
   m_Layer: 0
   m_Name: Think_Icon
   m_TagString: HamSter
@@ -508,6 +510,53 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b420e8a319e7aee4ebbb0abff70c99f9, type: 3}
   - {fileID: 21300000, guid: baaf68047ed39c940bc9be110aa1b2c6, type: 3}
   - {fileID: 21300000, guid: 2e4a93f889ac84a4b9a184dac6da3fd8, type: 3}
+--- !u!50 &1904240952
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368508427959884015}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &1904240953
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368508427959884015}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.315, y: 0.33}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 1, y: 0}
+    oldSize: {x: 0.63, y: 0.66}
+    newSize: {x: 0.63, y: 0.66}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.63, y: 0.66}
+  m_EdgeRadius: 0
 --- !u!1 &1368508427968491124
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,9 +622,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368508428580914457}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.17, y: -0.44, z: 0}
+  m_LocalPosition: {x: -0.12, y: -0.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0.2087777}
   m_Children:
+  - {fileID: 91643798379791496}
   - {fileID: 1368508427949507906}
   - {fileID: 301828621}
   m_Father: {fileID: 1368508427968491125}
@@ -665,16 +715,20 @@ MonoBehaviour:
   name: 
   isNamed: 1
   iHave: 0
+  cageNum: 1
+  canMove: 0
   ddGoldRate: 20
-  ddValue: 10
+  ddValue: 20
   dD_CoolTime: 5
   percent: 0
   randomNumCanActive: 1
-  hamsterIsMovingToFood: 0
+  hamsterIsMovingToOB: 0
   barrierUp: 0
   barrierDawn: 0
   barrierLeft: 0
   barrierRight: 0
+  isPropBarrier: 0
+  barrierWaitTime: 0
   eatingFood: 0
   eatingWater: 0
   hamsterLv: 0
@@ -682,19 +736,21 @@ MonoBehaviour:
   hamsterStressValue: 0
   speed: 0.005
   hunger: 100
-  hungerToFeed: 98
+  cleanTime: 60
+  hungerToFeed: 90
   thirsty: 100
-  thirstyToDrink: 98
-  foodcalorie: 40
-  watercalorie: 40
+  thirstyToDrink: 90
+  foodcalorie: 100
+  watercalorie: 100
   tiredValue: 100
-  timeToSleep: 4.05
+  timeToSleep: 20
   isSleep: 0
+  isEmoting: 0
   isGoingtoPointer: 0
   iamHungry: 0
   iamThirsty: 0
+  isClean: 1
   hamsterSprite: {fileID: 1368508428580914454}
-  rigid: {fileID: 966709937}
   dishIsClosedByHamSter: 0
   barrierNum: 0
   randomNum: 0
@@ -702,14 +758,16 @@ MonoBehaviour:
   eatingTime: 5
   isLeft: 0
   ani: {fileID: 1368508428580914453}
+  bathingPos: {fileID: 0}
+  bath: {fileID: 0}
   eatingPos: {fileID: 0}
   drinkingPos: {fileID: 0}
   pointPos: {fileID: 0}
+  bathPos: {fileID: 0}
   ddPrefap: {fileID: 5397444336073475650, guid: 29823e76ade9edc43a549d715fa6389d,
     type: 3}
   goldenDDPrefap: {fileID: 5397444336073475650, guid: bb1f8e7dc0ad1d440953493e1618cc7d,
     type: 3}
-  hamster: {fileID: 1368508428580914457}
   hamsterNameUi: {fileID: 8334169359455799842}
   thinkScript: {fileID: 1368508427959884009}
   dishScript: {fileID: 0}
@@ -811,7 +869,7 @@ MonoBehaviour:
   endReachedDistance: 0
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
+  whenCloseToDestination: 1
   constrainInsideGraph: 0
 --- !u!114 &966709932
 MonoBehaviour:
@@ -1608,6 +1666,87 @@ MonoBehaviour:
   areYouSure: {fileID: 705670320}
   parents: {fileID: 8334169359455799842}
   manager: {fileID: 0}
+--- !u!1 &4281087001482579870
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 91643798379791496}
+  - component: {fileID: 6961959857609371560}
+  m_Layer: 0
+  m_Name: face3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &91643798379791496
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4281087001482579870}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.14499998, y: 0.044999976, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 4.7897835}
+  m_Children: []
+  m_Father: {fileID: 1368508428580914455}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &6961959857609371560
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4281087001482579870}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 6
+  m_Sprite: {fileID: 21300000, guid: cde953c0ff60643479efd7bab5c1ea0e, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.5, y: 0.35}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &6201357145315797766
 GameObject:
   m_ObjectHideFlags: 0
